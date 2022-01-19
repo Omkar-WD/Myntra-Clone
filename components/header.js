@@ -45,7 +45,7 @@ function header() {
     </div>
 
     <div>
-      <a href="">
+      <a href="../bagSection( O )/bag.html">
         <img
           id="svg"
           src="https://www.svgrepo.com/show/17522/bag.svg"

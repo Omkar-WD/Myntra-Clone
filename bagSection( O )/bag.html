@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Bag</title>
     <link rel="stylesheet" href="../styles/bag.css" />
     <link rel="stylesheet" href="../styles/index.css" />
     <link rel="stylesheet" href="../styles/modal.css" />
@@ -17,6 +17,7 @@
         <div id="applyCouponContainer"></div>
       </div>
     </div>
+    <div class="empty-cart"></div>
     <div class="bag-container">
       <div class="bag-container-left">
         <div class="bag-container-left-change-address"></div>
@@ -72,30 +73,7 @@
             </div>
           </div>
         </div>
-        <div class="bag-container-right-price-details">
-          <h4>PRICE DETAILS (<span>1</span> Item)</h4>
-          <div>
-            <p>Total MRP</p>
-            <p>Rs.899</p>
-          </div>
-          <div>
-            <p>Discount on MRP</p>
-            <p>-Rs.630</p>
-          </div>
-          <div>
-            <p>Coupon Discount</p>
-            <p class="themeColor">Apply Coupon</p>
-          </div>
-          <div>
-            <p>Convenience Fee <span class="themeColor">Know More</span></p>
-            <p>Rs.99</p>
-          </div>
-          <div>
-            <p>Total Amount</p>
-            <p>Rs.368</p>
-          </div>
-          <button class="btnStyle">PLACE ORDER</button>
-        </div>
+        <div class="bag-container-right-price-details"></div>
       </div>
     </div>
     <div class="suggetion-container">
@@ -121,109 +99,163 @@
     displayNameAndAddress,
   } from "../scripts/bag.js";
   import header from "../components/header.js";
+  import displayTotal from "../scripts/displayTotal.js";
+  import calculateDiscount from "../scripts/calculateDiscount.js";
 
   document.querySelector(".header").innerHTML = header();
 
-  let cartData = [
-    {
-      title: "Roadster",
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/1072681/2020/1/20/9de2d7dc-e239-4327-b7d0-096c80ac3a121579503443912-Roadster-Men-Charcoal-Melange-Printed-Round-Neck-T-shirt-364-1.jpg",
-      soldBy: "Vision Star",
-      desc: "Graphic Cotton T-shirt",
-      price: 224,
-      maxprice: 499,
-      discount: "70% OFF",
-    },
-  ];
-  let suggestionData = [
-    {
-      title: "MANCODE",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/3/18/9d72cd96-4288-457d-bfd1-fd85b904a7fd1616054183218-1.jpg",
-      desc: "Men Pre-Shave Balm",
-      price: 249,
-      maxprice: 350,
-      discount: "Rs.101 OFF",
-    },
-    {
-      title: "Fantraa",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/5/25/d8b0685c-08e8-425f-972d-2871793024a01621931515125-1.jpg",
-      desc: "Activated Charcoal Facewash",
-      price: 200,
-      maxprice: 250,
-      discount: "20% OFF",
-    },
-    {
-      title: "Fantraa",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/6/15/5a1c276a-c581-47e9-95cd-f2e74cef48d21623755631551-1.jpg",
-      desc: "Men Beard & Hair Fragrance...",
-      price: 227,
-      maxprice: 350,
-      discount: "35% OFF",
-    },
-    {
-      title: "Jewel Junction",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2019/6/12/c2685f41-3d68-4c64-9918-5c0aa223c63e1560313429001-1.jpg",
-      desc: "Geometric Cufflinks",
-      price: 413,
-      maxprice: 1799,
-      discount: "77% OFF",
-    },
-    {
-      title: "Romeo Rossi",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2019/7/24/887fec3a-87fb-44f0-82dc-7126c58408af1563914904029-1.jpg",
-      desc: "Pack of 3 Ankle-length Socks",
-      price: 315,
-      maxprice: 450,
-      discount: "30% OFF",
-    },
-    {
-      title: "UrbanMooch",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/15039506/2021/8/5/3ec9a2da-45ca-4043-add0-d8f7afff72511628151732763ArganShampoo100ml1.jpg",
-      desc: "Argan Shampoo 100ml",
-      price: 224,
-      maxprice: 350,
-      discount: "36% OFF",
-    },
-    {
-      title: "Tistabene",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/12078638/2020/7/17/4617e9ea-849a-438d-9635-b86422fe95051594993966934-Swag-Vala-Bhai-Hindi-English-Design-Name-Rakhi-3161594993965-1.jpg",
-      desc: "Swag Wala Bhai Rakhi",
-      price: 399,
-      maxprice: "",
-      discount: "",
-    },
-    {
-      title: "Jewel Junction",
-      img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/7056275/2018/7/31/9a004784-430d-4bec-9b93-4ba1e421dbf31533019910542-na-8551533019910409-1.jpg",
-      desc: "Round Cufflinks",
-      price: 383,
-      maxprice: 1599,
-      discount: "76% OFF",
-    },
-  ];
+  let cartData = JSON.parse(localStorage.getItem("cartArr")) || [];
+  if (cartData.length !== 0) {
+    // let cartData = [
+    //   {
+    //     title: "Roadster",
+    //     img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/1072681/2020/1/20/9de2d7dc-e239-4327-b7d0-096c80ac3a121579503443912-Roadster-Men-Charcoal-Melange-Printed-Round-Neck-T-shirt-364-1.jpg",
+    //     soldBy: "Vision Star",
+    //     desc: "Graphic Cotton T-shirt",
+    //     price: 224,
+    //     maxprice: 499,
+    //     discount: "70% OFF",
+    //   },
+    // ];
 
-  displayNameAndAddress(
-    "Shubham Marne",
-    "H.No.72113,Dropathi Chaya Compound , Purna Village, Thane,Bhiwandi,Bhiwandi",
-    "421302"
-  );
+    let suggestionData = [
+      {
+        title: "MANCODE",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/3/18/9d72cd96-4288-457d-bfd1-fd85b904a7fd1616054183218-1.jpg",
+        desc: "Men Pre-Shave Balm",
+        price: 249,
+        maxprice: 350,
+        discount: "Rs.101 OFF",
+      },
+      {
+        title: "Fantraa",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/5/25/d8b0685c-08e8-425f-972d-2871793024a01621931515125-1.jpg",
+        desc: "Activated Charcoal Facewash",
+        price: 200,
+        maxprice: 250,
+        discount: "20% OFF",
+      },
+      {
+        title: "Fantraa",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2021/6/15/5a1c276a-c581-47e9-95cd-f2e74cef48d21623755631551-1.jpg",
+        desc: "Men Beard & Hair Fragrance...",
+        price: 227,
+        maxprice: 350,
+        discount: "35% OFF",
+      },
+      {
+        title: "Jewel Junction",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2019/6/12/c2685f41-3d68-4c64-9918-5c0aa223c63e1560313429001-1.jpg",
+        desc: "Geometric Cufflinks",
+        price: 413,
+        maxprice: 1799,
+        discount: "77% OFF",
+      },
+      {
+        title: "Romeo Rossi",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/productimage/2019/7/24/887fec3a-87fb-44f0-82dc-7126c58408af1563914904029-1.jpg",
+        desc: "Pack of 3 Ankle-length Socks",
+        price: 315,
+        maxprice: 450,
+        discount: "30% OFF",
+      },
+      {
+        title: "UrbanMooch",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/15039506/2021/8/5/3ec9a2da-45ca-4043-add0-d8f7afff72511628151732763ArganShampoo100ml1.jpg",
+        desc: "Argan Shampoo 100ml",
+        price: 224,
+        maxprice: 350,
+        discount: "36% OFF",
+      },
+      {
+        title: "Tistabene",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/12078638/2020/7/17/4617e9ea-849a-438d-9635-b86422fe95051594993966934-Swag-Vala-Bhai-Hindi-English-Design-Name-Rakhi-3161594993965-1.jpg",
+        desc: "Swag Wala Bhai Rakhi",
+        price: 399,
+        maxprice: "",
+        discount: "",
+      },
+      {
+        title: "Jewel Junction",
+        img: "https://assets.myntassets.com/q_95,w_172,c_limit,f_webp,fl_progressive/assets/images/7056275/2018/7/31/9a004784-430d-4bec-9b93-4ba1e421dbf31533019910542-na-8551533019910409-1.jpg",
+        desc: "Round Cufflinks",
+        price: 383,
+        maxprice: 1599,
+        discount: "76% OFF",
+      },
+    ];
+    localStorage.setItem("cartArr", JSON.stringify(cartData));
+    localStorage.setItem("suggetionArr", JSON.stringify(suggestionData));
 
-  appendCartData(cartData);
-  appendSuggestionData(suggestionData);
+    displayNameAndAddress(
+      "Shubham Marne",
+      "H.No.72113,Dropathi Chaya Compound , Purna Village, Thane,Bhiwandi,Bhiwandi",
+      "421302"
+    );
 
-  document.querySelector("#myBtn").addEventListener("click", () => {
-    showMore();
-  });
+    appendCartData(cartData);
+    appendSuggestionData(suggestionData);
 
-  document.querySelector("#more").innerHTML = `<br/>
-  . 5% Unlimited Cashback on Flipkart Axis Bank Ctedit Card TCA<br /><br />
-              . 10% Cashback upto Rs 250 on a minimum spend of Rs 1500 with
-              PayZapp TCA<br /><br />
-              . Upto Rs 500 Cashback on Mobikwik wallet transaction of min Rs
-              999. Use code MBK500 on mobikwik TCA<br /><br />
-              . Flat Rs 200 Cashback on first Airtel Payments Bank transcation
-              on myntra on a min spend of Rs 2000 TCA`;
-  document.querySelector("#count-of-items").innerHTML = `<h4>
-    <span>TOTAL ITEMS : ${cartData.length}</span>
-  </h4>`;
+    document.querySelector("#myBtn").addEventListener("click", () => {
+      showMore();
+    });
+
+    document.querySelector("#more").innerHTML = `<br/>
+    . 5% Unlimited Cashback on Flipkart Axis Bank Ctedit Card TCA<br /><br />
+                . 10% Cashback upto Rs 250 on a minimum spend of Rs 1500 with
+                PayZapp TCA<br /><br />
+                . Upto Rs 500 Cashback on Mobikwik wallet transaction of min Rs
+                999. Use code MBK500 on mobikwik TCA<br /><br />
+                . Flat Rs 200 Cashback on first Airtel Payments Bank transcation
+                on myntra on a min spend of Rs 2000 TCA`;
+
+    displayTotalItems(cartData);
+
+    function displayTotalItems(arr) {
+      document.querySelector("#count-of-items").innerHTML = `<h4>
+      <span>TOTAL ITEMS : ${arr.length}</span>
+    </h4>`;
+    }
+
+    let couponVar = "true";
+    let totalItems, subTotalInRs;
+    discountSection(cartData);
+
+    function discountSection(arr) {
+      totalItems = cartData.length;
+      subTotalInRs = calculateDiscount(cartData);
+      document.querySelector(".bag-container-right-price-details").innerHTML =
+        displayTotal(totalItems, subTotalInRs, couponVar);
+    }
+
+    let addToCart = document.querySelectorAll("#addToCart");
+    addToCart.forEach(function (e, i) {
+      e.addEventListener("click", function () {
+        cartData.push(suggestionData[i]);
+        localStorage.setItem("cartArr", JSON.stringify(cartData));
+        window.location.href = "";
+      });
+    });
+
+    let removeFromCart = document.querySelectorAll("#removeFromCart");
+    removeFromCart.forEach(function (elem, i) {
+      elem.addEventListener("click", function () {
+        console.log(cartData);
+        cartData.splice(i, 1);
+        localStorage.setItem("cartArr", JSON.stringify(cartData));
+        window.location.href = "";
+      });
+    });
+  } else {
+    document.querySelector(".bag-container").style.display = "none";
+    document.querySelector(".suggetion-container").style.display = "none";
+    document.querySelector(".empty-cart").style.display = "flex";
+    document.querySelector(".empty-cart").innerHTML = ` <img
+        src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp"
+      />
+      <h2>Hey, it feels so light!</h2>
+      <h4>There is nothing in your bag. Let's add some items.</h4>
+      <button class="btnStyle">ADD ITEMS FROM WISHLIST</button>`;
+    console.log("Nothing in cart");
+  }
 </script>
