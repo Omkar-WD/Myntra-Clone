@@ -9,6 +9,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+  background-color: white;
 }
 .company-logo {
   padding: 10px;
