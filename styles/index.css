@@ -30,13 +30,16 @@ body {
   border-bottom: 2px solid transparent;
 }
 .menu-options > div:hover {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #e83b6a;
 }
 .menu-options > div > a {
   text-decoration: none;
   color: black;
   font-weight: bolder;
   font-size: 15px;
+}
+.menu-options > div > a:hover {
+  color: #e83b6a;
 }
 .search-bar {
   display: flex;

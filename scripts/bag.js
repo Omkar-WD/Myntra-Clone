@@ -19,6 +19,7 @@ function appendSuggestionData(data) {
     descVar.textContent = desc;
     let btn = document.createElement("button");
     btn.setAttribute("class", "btnStyle");
+    btn.setAttribute("id", "addToCart");
     btn.textContent = "Add to Bag";
     imgdiv.append(imgVar);
     textdiv.append(titleVar, descVar, pricediv);
@@ -29,9 +30,10 @@ function appendSuggestionData(data) {
 }
 function appendCartData(data) {
   let x = ``;
+  document.querySelector(".bag-lists").innerHTML = "";
   data.forEach(({ title, img, soldBy, desc, price, maxprice, discount }) => {
     x += `<div id="bag-item">
-              <img src="${img}" alt="" />
+              <img src="${img}" />
               <div>
                 <h4>${title}</h4>
                 <p>${desc}</p>
@@ -63,7 +65,7 @@ function appendCartData(data) {
                   Rs: ${price} <span class="line-through"> Rs: ${maxprice}</span>
                   <span class="discount">${discount}</span>
                 </h4>
-                <button class="btnStyle">Remove From Bag</button>
+                <button class="btnStyle" id="removeFromCart">Remove From Bag</button>
               </div>
             </div>`;
   });
