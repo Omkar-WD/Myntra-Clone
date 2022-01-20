@@ -22,7 +22,7 @@ function displayTotal(totalItems, cartTotal, couponVar) {
     <p>Total Amount</p>
     <p>Rs.${cartTotal - discount + 99}</p>
   </div>
-  <button class="btnStyle">PLACE ORDER</button>`;
+  <button class="btnStyle" id="remove-coupon">Remove Coupon</button> <button class="btnStyle">PLACE ORDER</button>`;
 }
 
 export default displayTotal;
