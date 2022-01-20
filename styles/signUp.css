@@ -1,0 +1,63 @@
+#signUpContainer {
+  text-align: center;
+}
+#logo {
+  margin-left: 15px;
+  width: 10%;
+}
+label {
+  color: black;
+  display: block;
+  margin: 10px 0;
+}
+
+input {
+  border: 2px solid #e83b6a;
+  padding: 10px 10px;
+  width: 90%;
+  color: white;
+}
+
+#signupButton1 {
+  margin-top: 20px;
+  width: 96%;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #e83b6a;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+#signupButton1:hover {
+  background-color: white;
+  border: 2px solid #e83b6a;
+  color: #e83b6a;
+}
+
+#signupButton1 > button {
+  padding: 10px 20px;
+  background-color: #e83b6a;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#loginButton1 > button {
+  padding: 10px 20px;
+  background-color: #e83b6a;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#loginButton1 > button:hover {
+  background-color: white;
+  color: #e83b6a;
+}

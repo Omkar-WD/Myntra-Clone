@@ -250,7 +250,8 @@
   text-align: center;
   padding: 10px 0;
 }
-.coupon-1-heading {
+.coupon-1-heading,
+.coupon-2-heading {
   text-align: center;
   display: flex;
   justify-content: center;
@@ -260,10 +261,17 @@
   width: 40%;
   border: 2px dotted #e83b6a;
 }
+.coupon-2-heading > h3 {
+  padding: 5px;
+  width: 40%;
+  color: grey;
+  border: 2px dotted grey;
+}
 .available-coupon > h3 {
   margin: 0;
 }
-.coupon-1 > h4 {
+.coupon-1 > h4,
+.coupon-2 > h4 {
   margin: 10px;
 }
 @media only screen and (min-width: 0) and (max-width: 416px) {

@@ -53,6 +53,22 @@ function header() {
         />
       </a>
       <div>Bag</div>
+    </div>
+    <div>
+    <button id="loginModal">Login</button>
+    <button id="signUpModal">SignUp</button>
+    </div>
+    <div id="openLoginPage" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="loginContainer"></div>
+      </div>
+    </div>
+    <div id="openSignUpPage" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="signUpContainer"></div>
+      </div>
     </div>`;
 }
 export default header;
