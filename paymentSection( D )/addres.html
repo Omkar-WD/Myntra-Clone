@@ -5,154 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-      
-        
-        *{
-          font-family: Whitney,Helvetica,Arial,sans-serif;
-          padding: 0px;
-          margin: 0px;
-      }
-      #container1{
-          display: flex;
-          justify-content: center;
-          gap: 10%;
-          
-      }
-      #main1{
-          
-          width: 30%;
-          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-          
-        }
-        #main2{
-            border: 2px solid blue;
-            height: 50%;
-            display: flex;
-            width: 20%;
-            justify-content: space-between;
-            padding: 10px;
-            
-
-      }
-      input{
-          height: 15px;
-          padding: 10px;
-
-      }
-      .input1{
-        width:95% ;
-        /* border-width: thin; */
-        border: 1px solid #dcdcdf;;
-        border-radius: 3px;
-      }
-      .input2{
-          width:44% ;
-          border-width: thin;
-          border: 1px solid #dcdcdf;;
-          border-radius: 2px;
-          background-color: rgb(229, 226, 226);
-
-      }
-      .button1{
-          padding: 6px 15px;
-          border-radius: 18px;
-          background-color: white;
-          margin-right: 5px;
-          margin-top: 10px;
-      }
-      .button2{
-          width: 100%;
-          height: 50px;
-          background-color: #ff3f6c;
-          cursor: pointer;
-          color: white;
-          border: none;
-          font-size: 15px;
-          font-weight: 600;
-          font-style: normal;
-           margin-bottom: 5px;
-
-      }
-      .addaddres{
-         background: #fff; 
-
-         padding: 8px;
-         box-shadow: 0 -1px 4px 0 #1f1e1e4d;
-      }
-      .saveaddress{
-          margin-bottom: 10%;
-      }
-
-      
-      h3{
-          font-style: normal;
-          font-size: 12px;
-          font-weight: 600;
-      }
-      #container2{
-          display: flex;
-          justify-content: center;
-          
-      }
-
-
-        .footer {
-            border-top: 1px solid #F5F5F6;
-            margin: 0 0 10px 0;
-        }
-     
-        .images {
-            width: 70px;
-            margin-top: 10px;
-            height: 40px;
-        }
-        .help{
-            margin:  20px 50px ;
-        }
-        .forpadding{
-            padding: 20px;
-        }
-        #main2>div{
-            line-height: 30px;
-        }
-        #main{
-          grid-area: right;
-        }
-        @media only screen and (min-width:0px) and (max-width:376px){
-          
-              #container2,#main2{
-                display: none;
-              }
-             #main1{
-              width: 100%;
-              
-             }
-             .input2{
-               width: 42%;
-               
-             }
-
-        }
-        @media only screen and (min-width:377px) and (max-width:768px){
-            
-              #container2,#main2{
-                display: none;
-              }
-             #main1{
-              width: 100%;
-              
-             }
-             .input2{
-               width: 45%;
-               
-             }
-
-        }
-
-    </style>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/addres.css">
 </head>
 <body>
+  <div class="header"></div>
     <div id="container1">
        <div id="main1">
            <form id="formdata" >
@@ -262,4 +119,8 @@
 
 </body>
 </html>
-<script src="./addres.js"></script>
+<script src="../scripts/addres.js"></script>
+<script type="module">
+    import header from "../components/header.js";
+    document.querySelector(".header").innerHTML = header();
+</script>
