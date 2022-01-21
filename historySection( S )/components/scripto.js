@@ -1,4 +1,4 @@
-function appendData(orderdata,loco){
+function appendDatao(orderdata,loco){
     orderdata.forEach(function(ele){
  
  let carddiv=document.createElement("div");
@@ -50,4 +50,4 @@ function appendData(orderdata,loco){
     })
  
 }
-export default appendData;
+export default appendDatao;

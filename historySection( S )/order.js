@@ -1,6 +1,6 @@
 let cont=document.getElementById("rightdiv");
-    import appendData from "./components/script.js";
-    console.log(appendData);
+    import appendDatao from "./components/scripto.js";
+    console.log(appendDatao);
     let cartdata=[{
                     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogIW3H4yInOm6C8GtTt_tyw9zrXZS7iymOw&usqp=CAU",
                     productname:"woman green Ethnic Motifs Panelled",
@@ -30,7 +30,7 @@ console.log(paymentDone);
 if(paymentDone==="true"){
 
 orderarr.push(cartdata.pop());
-appendData(orderarr,cont);
+appendDatao(orderarr,cont);
 console.log(orderarr);
 }
 else 
