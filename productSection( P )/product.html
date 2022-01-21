@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- <link href="../styles/index.css" rel="stylesheet"> -->
     <style>
       #main {
         display: flex;
@@ -15,49 +16,80 @@
         justify-content: space-evenly;
       }
       #products_div > div {
-        height: 350px;
-        width: 200px;
-        /* line-height: 1; */
+        height: 300px;
+        width: 180px;
       }
-      /* #products_div > div > h4{
-            line-height: 1;
-        } */
+      #products_div > div:hover{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      #products_div > div:hover #wishdiv{
+          display: flex;
+          position: absolute;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+          text-align: center;
+          margin-left: 80px;
+          margin-top: -30px;
+          background-color: white;
+          opacity: 0.9;
+          height: 20px;
+          padding: 0 10px;
+          font-size: small;
+      }
       #products_div > div > div:nth-child(1) {
         height: 70%;
         width: 100%;
+        
       }
       #products_div > div > div:nth-child(1) > img {
         height: 100%;
         width: 100%;
+        position: relative;
+        
+      }
+      #ratingol{
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-content: center;text-align: center;
+          position: absolute;
+          margin-left: 5px;
+          margin-top: -30px;
+         background-color: white;
+         opacity: 0.75;
+          padding: 0px 5px;
+          
+          
+      }
+      #wishdiv{
+          display: none;
+      }
+      #wishdiv > img{
+          height: 15px;
+          width: 15px;
+          margin-right: 5px;
       }
       #products_div > div > div:nth-child(2) {
-        /* border: 1px solid black; */
-        font-size: 14px;
+        font-size: 12px;
         line-height: 0;
-        /* z-index: 3; */
-        /* margin-top: 12px; */
-        /* position: relative; */
         padding: 0 10px;
-        /* overflow: hidden; */
         box-sizing: border-box;
-        /* height: 100%; */
       }
       #products_div > div > div:nth-child(2) > div {
-        /* border: 1px solid black; */
-        /* line-height: 0; */
         margin-top: 25px;
-        /* padding: 0; */
       }
       #products_div > div > div:nth-child(2) > div > span:nth-child(1) {
         font-weight: bold;
       }
       #products_div > div > div:nth-child(2) > div > span:nth-child(2) {
-        font-size: x-small;
+        font-size: xx-small;
         color: gray;
         text-decoration: line-through;
       }
       #products_div > div > div:nth-child(2) > div > span:nth-child(3) {
-        font-size: small;
+        font-size: x-small;
         color: rgb(116, 69, 55);
       }
       #products_div > div > div:nth-child(2) > div > span {
@@ -134,15 +166,45 @@
         text-align: end;
         flex: 3;
       }
+      /* #header{
+          border: 1px solid black;
+          display: flex;
+          flex-direction: row;
+      }
+      #header > img{
+          height: 10px;
+          width: 10px;
+      } */
+      #topfilter_div{
+          line-height: 0;
+      }
+      #topfilter_div > div > div:nth-child(1){
+          /* border: 1px solid black; */
+          display: flex;
+          align-items: center;
+      }
+      
+      @media only screen  and (min-width: 0) and (max-width: 376px){
+        #header{
+            display: none;
+        }
+        #topfilter_div{
+            display: none;
+        }
+        #filters_div{
+            display: none;
+        }
+      }
     </style>
   </head>
   <body>
     <div id="container">
+        <div id="header"></div>
       <div id="topfilter_div">
           <span>Home </span>/ <span>Clothing </span>/ <span><b> Men T-Shirts</b></span>
           <h4>Men T-Shirts</h4>
           <div id="rem_filters">
-              <div>FILTERS</div>
+              <div><b>FILTERS</b></div>
               <div id="malecious_filters">
                   <select>
                       <option>Bundles</option>
@@ -316,7 +378,11 @@
   </body>
 </html>
 <script>
+    // import navbar from "../components/header.js"
+    // document.querySelector("#header").innerHTML = navbar();
 
+    
+    let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
   function appendData(data) {
     document.querySelector("#products_div").innerHTML = "";
     data.forEach((elem) => {
@@ -326,7 +392,39 @@
       let pricediv = document.createElement("div");
       let img = document.createElement("img");
       img.src = elem.img;
-      let title = document.createElement("h4");
+      let rating = document.createElement("h6");
+      rating.textContent = (Math.random() * (5 - 3) + 3).toFixed(1)+"⭐";
+      let vote = document.createElement("h6");
+      vote.textContent = (Math.random() * (50 - 1) + 1).toFixed(1)+"k";
+      let ratingdiv = document.createElement("div");
+      ratingdiv.append(rating," "+" "+"|"+" "+" ",vote);
+      ratingdiv.setAttribute("id", "ratingol");
+      let wishdiv = document.createElement("div");
+      let wishtext = document.createElement("p");
+      wishtext.textContent = "Wishlist";
+      let wishpng = document.createElement("img");
+      wishpng.src = "https://img.icons8.com/material-outlined/24/000000/like--v1.png";
+      wishdiv.append(wishpng, wishtext);
+      wishdiv.setAttribute("id","wishdiv");
+      wishdiv.onclick = () =>{
+          wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
+          wishpng.src = "https://www.freeiconspng.com/uploads/heart-png-8.png";
+          wishtext.textContent = "Wishlisted"
+          wishtext.style.color = "white";
+          let wishobj = {
+              img:elem.img,
+              rating: rating.textContent,
+              votes:vote.textContent,
+              title:title.textContent,
+              price: price.textContent,
+              maxprice:maxprice.textContent,
+              discount:discount.textContent,
+              desc:desc.textContent  
+          }
+          wisharr.push(wishobj);
+        localStorage.setItem("wisharr", JSON.stringify(wisharr))
+      }
+      let title = document.createElement("h3");
       title.textContent = elem.title;
       let price = document.createElement("span");
       price.textContent = "Rs: " + Math.round(elem.price);
@@ -334,13 +432,28 @@
       maxprice.textContent = "Rs: " + elem.maxprice;
       let discount = document.createElement("span");
       discount.textContent =
-        "(" + Math.round((elem.price * 100) / elem.maxprice) + "% OFF)";
+        "(" + (100 - (Math.round((elem.price * 100) / elem.maxprice))) + "% OFF)";
       let desc = document.createElement("p");
       desc.textContent = "Men Regular Solid Casual Shirt";
-      imgdiv.append(img);
+      imgdiv.append(img,ratingdiv,wishdiv);
       textdiv.append(title, desc, pricediv);
       pricediv.append(price, maxprice, discount);
       maindiv.append(imgdiv, textdiv);
+      maindiv.addEventListener("click", () =>{
+          
+        let prodobj = {
+              img:elem.img,
+              rating: rating.textContent,
+              votes:vote.textContent,
+              title:title.textContent,
+              price: elem.price,
+              maxprice:elem.maxprice,
+              discount:discount.textContent,
+              desc:desc.textContent  
+          }
+          localStorage.setItem("prodobj", JSON.stringify(prodobj));
+          window.location.href = "productdetails.html";
+      })
       document.querySelector("#products_div").append(maindiv);
     });
   }
@@ -633,17 +746,19 @@
     }
   };
   let partdata1 = [];
+  let pricedata = []
   let Checkbox1 = (a,b,e) =>{
       if(e.checked){
           console.log(e);
       if(partdata.length === 0){
+          
       data1.filter((elem) =>{
         if(elem.price <= b && elem.price > a){
-            partdata.unshift(elem);
+            pricedata.unshift(elem);
         }
       })
       
-      appendData(partdata);
+      appendData(pricedata);
     }
     else{
         let newpartdata = partdata;
@@ -678,7 +793,7 @@
     if(partdata.length === 0){
         var discountdata = [];
         data1.filter((elem) =>{
-            let percent = Math.round((elem.price * 100) / elem.maxprice);
+            let percent = (100 - (Math.round((elem.price * 100) / elem.maxprice)));
             if(percent >= a){
                 discountdata.push(elem);
             }
@@ -689,7 +804,7 @@
         let newpartdata = partdata;
         let partdata1 = [];
         newpartdata.filter((elem) =>{
-            let percent = Math.round((elem.price * 100) / elem.maxprice);
+            let percent = (100 - (Math.round((elem.price * 100) / elem.maxprice)));
             if(percent >= a){
                 partdata1.unshift(elem);
             }
@@ -759,10 +874,11 @@
       else if(value == "discount"){
           let discdata = [];
           discdata = data1.sort((a,b) =>{
-              return Math.round((b.price * 100) / b.maxprice) - Math.round((a.price * 100) / a.maxprice);
+              return (100 -(Math.round((b.price * 100) / b.maxprice))) - (100 - (Math.round((a.price * 100) / a.maxprice)));
           })
           appendData(discdata);
       }
   }
-
+  
+  
 </script>

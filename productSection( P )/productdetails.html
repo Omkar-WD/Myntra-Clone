@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: flex;
+
+        }
+        #main > div{
+            width: 50%;
+        }
+        #imgcontainer{
+            display: flex;
+            justify-content: center;
+           
+        }
+
+        #prodimg{
+            width: 80%;
+            height: 500px;
+            
+        }
+        #product_desc{
+            color: gray;
+        }
+        #product_ratings{
+            border: 0.1px solid gray;
+            width: fit-content;
+            padding: 0 5px;
+        }
+        #product_maxprice{
+            font-size: small;
+            color: gray;
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+        #product_price{
+            font-weight: bold;
+        }
+        #product_discount{
+            color: rgb(59, 142, 190);
+            font-weight: bold;
+        }
+        #pricetax{
+            color: #03A685;
+            
+        }
+        /* .product-size{
+            border: 0.1px solid gray;
+            padding: 20px 20px;
+            border-radius: 50%;
+            
+        } */
+        #addtobag{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            border-radius: 5px;
+            width: fit-content;
+            padding: 10px 60px;
+            line-height: 0;
+            background-color: #FF527B;
+            color: white;
+            font-weight: bold;
+            
+        }
+        #addtobag:hover{
+            background-color: #9b1a38;
+            
+            
+        }
+        #addtobag > img{
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+            border-radius: 20px;
+            background-color: #FF527B;
+            
+            
+        }
+        #productsize_div{
+            display: flex;
+            /* border: 1px solid black; */
+            gap: 5px;
+        }
+        #productsize_div > div{
+            border: 1px solid black;
+            display: flex;
+            min-width: 40px;
+            min-height: 40px;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            border-radius: 50%;
+            
+        }
+        #productsize_div > div:hover{
+            border: 1px solid #FF527B;
+        }
+        #true_pincode{
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+        #false_pincode{
+            color: red;
+            display: none;
+        }
+        /* #location{
+            flex-basis: 100%;
+        } */
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <!-- <div id="location"><span>Home / Clothing / Men Clothing / T-shirts /</span><span id="current-shirt"></span></div> -->
+            <div id="imgcontainer">
+                <img id="prodimg" src="">
+            </div>
+            <div id="proddetails_container">
+                <h2 id="product_title">Nike</h2>
+                <p id="product_desc">desc</p>
+                <div id="product_ratings"></div>
+                <hr>
+                <span id="product_price">Price</span>
+                <span id="product_maxprice"></span>
+                <span id="product_discount"></span>
+                <p id="pricetax">inclusive of all taxes</p>
+                <h3>SELECT SIZE</h3>
+                <div id="productsize_div">
+                <div class="product-size">S</div>
+                <div class="product-size">M</div>
+                <div class="product-size">L</div>
+                <div class="product-size">XL</div>
+                <div class="product-size">XXL</div>
+                </div>
+                <br>
+                <div id="addtobag"><img src="../images/addtobag.png">
+                <p>ADD TO BAG</p>
+                </div>
+                <h5>DELIVERY OPTIONS 🚚</h5>
+                <input type="text" id="pincode" placeholder="enter pincode">
+                <div  id="true_pincode"></div>
+                <p id="false_pincode">Can't deliver at this pincode</p>
+                <div id="del_details">
+                <p>🔜 Get it by Sat, Jan 22</p>
+                <p>💵 Pay on delivery available</p>
+                <p>Easy 30 days return & exchange available</p>
+                </div>
+                <p>100% Original Products</p>
+                <div id="offers_div">
+                    <h3>BEST OFFERS 🏷️</h3>
+                    <p>This product is already at its best price</p>
+                    <p><b>10% Instant Savings on Citi Credit and Debit Cards</b></p>
+                    <p>: Min spend Rs 3,000; Max discount Rs 1,000. TCA</p>
+                    <p>View Eligible Products</p>
+                    <p><b>EMI option available</b></p>
+                    <p>: EMI starting from RS 70/month</p>
+                    <p>View Plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let pincodeStatus = async(e) =>{
+        try{
+        if(e.key == "Enter"){
+            let entered = pincode.value;
+            let url = `https://api.postalpincode.in/pincode/${entered}`
+            let api = await fetch(url);
+            let res = await api.json();
+            if(res[0].Status == "Success"){
+                let distnstate = document.createElement("p");
+                // distnstate.innerHTML = "";
+                let x = `<p>Can deliver at this pincode</p>
+                <p>${res[0].PostOffice[0].District}, ${res[0].PostOffice[0].State}`
+                // distnstate.textContent = res[0].PostOffice[0].District+" ,"+res[0].PostOffice[0].State;
+                document.querySelector("#true_pincode").innerHTML = x;
+                document.querySelector("#true_pincode").style.display = "block";
+                document.querySelector("#false_pincode").style.display = "none";
+            }
+            else{
+                document.querySelector("#true_pincode").style.display = "none";
+                document.querySelector("#false_pincode").style.display = "block";
+            }
+        }}
+        catch(err){
+            console.log(err);
+        }
+    }
+    
+    let proddetails = JSON.parse(localStorage.getItem("prodobj"))
+    console.log(proddetails)
+    document.querySelector("#prodimg").src = proddetails.img;
+
+    document.querySelector("#product_title").textContent = proddetails.title;
+    document.querySelector("#product_desc").textContent = proddetails.desc;
+    document.querySelector("#product_ratings").textContent = proddetails.rating+" | "+proddetails.votes;
+    document.querySelector("#product_price").textContent = "Rs. "+proddetails.price;
+    document.querySelector("#product_maxprice").textContent = "Rs "+proddetails.maxprice;
+    document.querySelector("#product_discount").textContent = proddetails.discount;
+
+    let pincode = document.querySelector("#pincode");
+    pincode.addEventListener("keypress", pincodeStatus);
+    
+    
+</script>
