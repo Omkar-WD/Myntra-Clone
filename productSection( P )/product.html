@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link href="../styles/index.css" rel="stylesheet"> -->
     <style>
       #main {
         display: flex;
@@ -184,6 +183,7 @@
           align-items: center;
       }
       
+      
       @media only screen  and (min-width: 0) and (max-width: 376px){
         #header{
             display: none;
@@ -198,8 +198,9 @@
     </style>
   </head>
   <body>
+    
     <div id="container">
-        <div id="header"></div>
+      <div id="header_container"></div>
       <div id="topfilter_div">
           <span>Home </span>/ <span>Clothing </span>/ <span><b> Men T-Shirts</b></span>
           <h4>Men T-Shirts</h4>
@@ -378,8 +379,6 @@
   </body>
 </html>
 <script>
-    // import navbar from "../components/header.js"
-    // document.querySelector("#header").innerHTML = navbar();
 
     
     let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
@@ -434,28 +433,49 @@
       discount.textContent =
         "(" + (100 - (Math.round((elem.price * 100) / elem.maxprice))) + "% OFF)";
       let desc = document.createElement("p");
-      desc.textContent = "Men Regular Solid Casual Shirt";
+      desc.textContent = elem.desc;
       imgdiv.append(img,ratingdiv,wishdiv);
+      img.addEventListener("click", () =>{
+        productDeatils(elem,rating,vote);
+      });
       textdiv.append(title, desc, pricediv);
+      textdiv.addEventListener("click", () =>{
+        productDeatils(elem,rating,vote);
+      });
       pricediv.append(price, maxprice, discount);
       maindiv.append(imgdiv, textdiv);
-      maindiv.addEventListener("click", () =>{
+      // maindiv.addEventListener("click", () =>{
           
-        let prodobj = {
+      //   // let prodobj = {
+      //   //       img:elem.img,
+      //   //       rating: rating.textContent,
+      //   //       votes:vote.textContent,
+      //   //       title:title.textContent,
+      //   //       price: elem.price,
+      //   //       maxprice:elem.maxprice,
+      //   //       discount:discount.textContent,
+      //   //       desc:desc.textContent  
+      //   //   }
+      //   //   localStorage.setItem("prodobj", JSON.stringify(prodobj));
+      //   //   window.location.href = "productdetails.html";
+      // })
+      document.querySelector("#products_div").append(maindiv);
+    });
+  }
+
+  let productDeatils = (elem,rating,vote) =>{
+    let prodobj = {
               img:elem.img,
               rating: rating.textContent,
               votes:vote.textContent,
-              title:title.textContent,
+              title:elem.title,
               price: elem.price,
               maxprice:elem.maxprice,
-              discount:discount.textContent,
-              desc:desc.textContent  
+              discount:(100 - (Math.round((elem.price * 100) / elem.maxprice))),
+              desc:elem.desc,  
           }
           localStorage.setItem("prodobj", JSON.stringify(prodobj));
           window.location.href = "productdetails.html";
-      })
-      document.querySelector("#products_div").append(maindiv);
-    });
   }
   let data1 = [
     {
