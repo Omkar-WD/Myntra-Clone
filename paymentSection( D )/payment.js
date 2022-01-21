@@ -25,17 +25,28 @@ function showMore() {
     append.innerHTML="";
     append.innerHTML=`     <div>
     <h4>CREDIT/DEBIT CARD</h4><br><br>
-    <input class="cardinput"  type="number" placeholder="Card Number"><br><br>
-    <input class="cardinput" type="text" placeholder="Name on card"><br><br>
-    <input class="cardinput" id="cardvalid"  type="number" placeholder="Valid Thru (MM/YY)">
-    <input class="cardinput" id="cardcvv" type="number" placeholder="CVV" ><br><br>
+    <form id="cardform">
+    <input class="cardinput"  type="number" placeholder="Card Number" required><br><br>
+    <input class="cardinput" type="text" placeholder="Name on card" required><br><br>
+    <input class="cardinput" id="cardvalid"  type="number" placeholder="Valid Thru (MM/YY)" required>
+    <input class="cardinput" id="cardcvv" type="number" placeholder="CVV" required ><br><br>
     <input  type="checkbox"> <label>Save this card for faster payments </label><br><br>
 
-    <button id="paynowbut">PAY NOW</button>
-    
+    <input type="submit" id="paynowbut" value="PAY NOW">
+    </form>
 
 </div>`
+document.querySelector("#cardform").addEventListener("submit",function(event){
+  event.preventDefault()
+  alert("order sussesfull")
+})
   }
+
+  
+
+
+
+
   function paydata(){
     append.innerHTML="";
 
@@ -54,7 +65,20 @@ function showMore() {
 </div>
 
 </div>`
+var placeorderbut=document.getElementById("butplaceorder")
+placeorderbut.addEventListener("click",cashonDel);
 
+function cashonDel(){
+var inputData=document.querySelector(".inputdiv").value
+console.log(inputData)
+console.log(inputData)
+  if(inputData=="1738"){
+    alert("Order Successful placed")
+  }
+  else{
+    alert("please enter correct captcha")
+  }
+}
   }
   function upidata(){
     append.innerHTML="";
@@ -150,14 +174,18 @@ function appendData1(){
     
     var otp = prompt("Please enter your OTP:", "");
     if (otp != "1234" || otp == "") {
-      console.log("Enter Correct OTP")
+      alert("Enter Correct OTP")
     
     } else {
-      console.log("Order Succsesful")
+      setTimeout(function(){
+
+        alert("Order Succsesful")
+      },3000)
     }
     
   }
-  
+ 
+ 
  
 
  
