@@ -3,7 +3,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 80px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -13,13 +13,18 @@
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
+.modal-name {
+  text-align: center;
+}
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
+  border-radius: 10px;
+  z-index: 1000; /* Sit on top */
 }
 
 /* The Close Button */
@@ -35,4 +40,10 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 0) and (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+  }
 }

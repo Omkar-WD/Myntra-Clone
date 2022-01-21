@@ -5,155 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-   <style>
-        *{
-          font-family: Whitney,Helvetica,Arial,sans-serif;
-          padding: 0px;
-          margin: 0px;
-      }
-      #cont1{
-          
-          display: flex;
-          justify-content: center;
-          gap: 2%;
-          
-      }
-      #main1{
-         
-        width:40% ;
-
-      }
-      #main11{
-          
-          display: flex;
-          justify-content:space-between;
-          width: 100%;
-          line-height: 30px;
-      }
-      .but1{
-          padding: 10px 15px;
-          background-color: white;
-          border-radius: 5px;
-          font-weight: bold;
-        
-          cursor: pointer;
-          margin: 0px 5px;
-      }
-      .butdiv{
-          margin: 15px 0px;
-      }
-      .main121{
-          display: flex;
-      }
-      #homebutton{
-          margin: 0px 10px;
-          padding: 2px 10px;
-          background-color: white;
-          
-          text-decoration: none;
-          
-          color: green;
-          border-radius: 18px;
-          cursor: pointer;
-
-      }
-      #main13{
-        color: #ff3f6c;
-      }
-      #main12{
-          padding: 20px;
-          line-height: 25px;
-          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-
-      }
-      #main13{
-          margin-top: 10px;
-          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-          padding: 15px;
-      }
-      .main21{
-          margin-top: 20px;
-          margin-bottom: 20px;
-        
-          display: flex;
-          width: 100%;
-          height: 20%;
-      }
-      .imgdiv{
-          
-          height: 100%;
-          width: 30%;
-      }
-      img{
-          height: 100%;
-          width: 100%;
-      }
-      .textdiv>p{
-          display: inline;
-      }
-      .textdiv{
-          padding:20px 4px ;
-          font-size: 15px;
-      }
-      #main2{
-        
-          width: 22%;
-          box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-          padding: 10px;
-          
-
-      }
-      #pricedetail{
-          display: flex;
-          justify-content: space-between;
-          line-height: 25px;
-      }
-      #contbutton{
-          height: 100%;
-          width: 100%;
-          margin-top: 10px;
-          background-color:red;
-          color: white;
-          padding: 15px;
-          border: none;
-          cursor: pointer;
-      }
-
-      /* h3{
-          font-style: normal;
-          font-size: 12px;
-          font-weight: 600;
-      } */
-      #container2{
-          display: flex;
-          justify-content: center;
-          margin-top: 30px;
-          
-      }
-
-
-        .footer {
-            border-top: 1px solid #F5F5F6;
-            margin: 0 0 10px 0;
-        }
-     
-        .images {
-            width: 70px;
-            margin-top: 10px;
-            height: 40px;
-        }
-        .help{
-            margin:  20px 50px ;
-        }
-        .forpadding{
-            padding: 20px;
-        }
-
-   
-   </style>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/address1.css">
 </head>
 <body>
+  <div class="header"></div>
     <div id="container">
         <div id="cont1">
             <div id="main1">
@@ -163,7 +19,7 @@
                         <p>DEFAULT ADDRESS</p>
                     </div>
                     <div class="main112">
-                        <button class="but1">ADD NEW ADDRESS</button>
+                        <a href="./addres.html"><button class="but1">ADD NEW ADDRESS</button></a>
                     </div>
                 </div>
                 <div id="main12">
@@ -180,13 +36,16 @@
                     </div>
                     <p>Pay on Delivery available</p>
                     <div class="butdiv">
-                    <button class="but1">REMOVE</button>
-                    <button class="but1">EDIT</button>
+                        
+                   <a href="./addres.html"> <button class="but1">REMOVE</button></a>
+                   <a href="./addres.html"> <button class="but1">EDIT</button></a>
+
+                    
                     </div>
                     
                 </div>
                 <div id="main13">
-                    <h3>+Add New Address</h3>
+                    <a href="./addres.html"> <h3>+Add New Address</h3></a>                   
                 </div>
             </div>
             <div id="main2">
@@ -273,3 +132,8 @@
     </div>
 </body>
 </html>
+
+<script type="module">
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+</script>

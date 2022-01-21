@@ -1,0 +1,39 @@
+#pop-up {
+  position: relative;
+  top: 200px;
+  /* width: 500px; */
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+}
+.container > h3 {
+  margin: 10px 0;
+}
+#pop-up .container {
+  color: white;
+  background-color: #e83b6a;
+  position: absolute;
+  top: 50px;
+  width: auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#pop-up {
+  top: -650px;
+  animation: drop 1s ease forwards;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(700px);
+  }
+  100% {
+    transform: translateY(650px);
+    opacity: 1;
+  }
+}

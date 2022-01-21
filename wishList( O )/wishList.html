@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/signUp.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/modal.css" />
+    <link rel="stylesheet" href="../styles/wishList.css" />
+    <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <div class="header"></div>
+
+    <!-- for animation add to cart -->
+    <div id="pop-up">
+      <div class="container"></div>
+    </div>
+
+    <!-- products container -->
+    <div id="products_div"></div>
+  </body>
+</html>
+
+<script src="../scripts/loginModal.js"></script>
+<script src="../scripts/signUpModal.js"></script>
+
+<script type="module">
+  import header from "../components/header.js";
+  import animationForConfirmation from "../components/animationForConfirmation.js";
+  import appendWishListData from "../scripts/appendWishListData.js";
+
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+
+  let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
+  let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
+
+  appendWishListData(wisharr, cartArr, animationForConfirmation);
+</script>
