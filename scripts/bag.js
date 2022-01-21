@@ -10,7 +10,7 @@ function appendSuggestionData(data) {
     let titleVar = document.createElement("h4");
     titleVar.textContent = title;
     let priceVar = document.createElement("span");
-    priceVar.textContent = "Rs: " + Math.round(price);
+    priceVar.textContent = price;
     let maxpriceVar = document.createElement("span");
     maxpriceVar.textContent = "Rs: " + maxprice;
     let discountVar = document.createElement("span");
@@ -31,38 +31,35 @@ function appendSuggestionData(data) {
 function appendCartData(data) {
   let x = ``;
   document.querySelector(".bag-lists").innerHTML = "";
-  data.forEach(({ title, img, soldBy, desc, price, maxprice, discount }) => {
+  data.forEach(({ title, img, desc, price, maxprice, discount }) => {
     x += `<div id="bag-item">
               <img src="${img}" />
               <div>
                 <h4>${title}</h4>
                 <p>${desc}</p>
-                <h5>Sold by: ${soldBy}</h5>
                 <div class="select-options">
-                  <select class="btnStyle"id="">
-                    <option value="">Size</option>
-                    <option value="">S</option>
-                    <option value="">M</option>
-                    <option value="">L</option>
-                    <option value="">XL</option>
-                    <option value="">XXL</option>
+                  <select class="btnStyle" id="item-size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
                   </select>
-                  <select class="btnStyle" id="">
-                    <option value="">Qty</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                    <option value="">6</option>
-                    <option value="">7</option>
-                    <option value="">8</option>
-                    <option value="">9</option>
-                    <option value="">10</option>
+                  <select class="btnStyle" id="item-qty">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                   </select>
                 </div>
                 <h4>
-                  Rs: ${price} <span class="line-through"> Rs: ${maxprice}</span>
+                  ${price} <span class="line-through">${maxprice}</span>
                   <span class="discount">${discount}</span>
                 </h4>
                 <button class="btnStyle" id="removeFromCart">Remove From Bag</button>

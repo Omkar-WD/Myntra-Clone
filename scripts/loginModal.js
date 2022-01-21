@@ -8,7 +8,7 @@ function loginDesign() {
           <input
             type="text"
             placeholder="enter email or mobile"
-            id="username"
+            id="login_data"
             required
           />
           <label>Password</label>
@@ -34,6 +34,17 @@ setTimeout(function () {
   loginBtn.onclick = function () {
     document.querySelector("#loginContainer").innerHTML = loginDesign();
     loginModal.style.display = "block";
+    let loginButton = document.querySelector("#login");
+    loginButton.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let loginData = {
+        login_input: document.querySelector("#login_data").value,
+        password: document.querySelector("#password").value,
+      };
+      console.log(loginData);
+      localStorage.setItem("loginData", JSON.stringify(loginData));
+      // window.location.href = "";
+    });
   };
   for (let i = 0; i < loginSpan.length; i++) {
     loginSpan[i].addEventListener("click", function () {

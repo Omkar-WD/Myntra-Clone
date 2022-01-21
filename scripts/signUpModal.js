@@ -4,11 +4,11 @@ function signUpDesign() {
         <div class="signUp_container">
           <form id="signUp">
             <h1>SignUp</h1>
-            <label>Username</label>
+            <label>Full Name</label>
             <input
               type="text"
-              placeholder="enter username"
-              id="username"
+              placeholder="enter full name"
+              id="full_name"
               required
             />
             <label>Email</label>
@@ -49,10 +49,24 @@ setTimeout(function () {
   signUpBtn.onclick = function () {
     document.querySelector("#signUpContainer").innerHTML = signUpDesign();
     signUpModal.style.display = "block";
+    let submitButton = document.querySelector("#signUp");
+    submitButton.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let signUpData = {
+        full_name: document.querySelector("#full_name").value,
+        email: document.querySelector("#email").value,
+        mobile: document.querySelector("#mobile").value,
+        password: document.querySelector("#password").value,
+      };
+
+      console.log(signUpData);
+      localStorage.setItem("signUpData", JSON.stringify(signUpData));
+      window.location.href = "";
+    });
   };
   for (let i = 0; i < signUpSpan.length; i++) {
     signUpSpan[i].addEventListener("click", function () {
       signUpModal.style.display = "none";
     });
   }
-}, 1000);
+}, 2000);

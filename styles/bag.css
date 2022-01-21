@@ -1,3 +1,15 @@
+#moveToWishList {
+  cursor: pointer;
+}
+#moveToWishList:hover {
+  color: #e83b6a;
+}
+#emptyCart {
+  cursor: pointer;
+}
+#emptyCart:hover {
+  color: red;
+}
 .empty-cart {
   min-height: 80vh;
   display: none;
@@ -245,6 +257,7 @@
   font-weight: bold;
   border: 1px solid #e83b6a;
   border-radius: 5px;
+  color: black;
 }
 .available-coupon-heading {
   text-align: center;

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/signUp.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/modal.css" />
+    <style>
+      #products_div {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 20px;
+      }
+      #products_div > div {
+        height: 330px;
+        width: 180px;
+      }
+      #products_div > div:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      #products_div > div > div:nth-child(1) {
+        height: 70%;
+        width: 100%;
+      }
+      #products_div > div > div:nth-child(1) > img {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: -2;
+      }
+      #ratingol {
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        position: absolute;
+        margin-left: 5px;
+        margin-top: -30px;
+        background-color: white;
+        opacity: 0.75;
+        padding: 0px 5px;
+        z-index: -1;
+      }
+      #products_div > div > div:nth-child(2) {
+        font-size: 12px;
+        line-height: 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+      #products_div > div > div:nth-child(2) > div {
+        margin-top: 25px;
+      }
+      #products_div > div > div:nth-child(2) > div > span:nth-child(1) {
+        font-weight: bold;
+      }
+      #products_div > div > div:nth-child(2) > div > span:nth-child(2) {
+        font-size: xx-small;
+        color: gray;
+        text-decoration: line-through;
+      }
+      #products_div > div > div:nth-child(2) > div > span:nth-child(3) {
+        font-size: x-small;
+        color: rgb(116, 69, 55);
+      }
+      #products_div > div > div:nth-child(2) > div > span {
+        margin-right: 10px;
+      }
+      .btnStyle {
+        border: 1px solid #e83b6a;
+        color: #e83b6a;
+        padding: 5px 10px;
+        background-color: transparent;
+        border-radius: 2px;
+        cursor: pointer;
+        font-weight: bolder;
+        margin: 10px 0;
+      }
+      .btnStyle:hover {
+        color: white;
+        background-color: #e83b6a;
+      }
+      .themeColor {
+        color: #e83b6a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div id="products_div"></div>
+  </body>
+</html>
+
+<script src="../scripts/loginModal.js"></script>
+<script src="../scripts/signUpModal.js"></script>
+
+<script type="module">
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+
+  let wisharr = [
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/1072681/2020/1/20/9de2d7dc-e239-4327-b7d0-096c80ac3a121579503443912-Roadster-Men-Charcoal-Melange-Printed-Round-Neck-T-shirt-364-1.jpg",
+      rating: "4.9⭐",
+      votes: "49.3k",
+      title: "Roadster",
+      price: "Rs: 224",
+      maxprice: "Rs: 499",
+      discount: "(55% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/1295511/2018/5/2/11525248119235-Roadster-Men-Navy--Blue-Melange-Colour-Blocked-T-Shirt-751525248119047-1.jpg",
+      rating: "3.9⭐",
+      votes: "9.1k",
+      title: "Roadster",
+      price: "Rs: 244",
+      maxprice: "Rs: 699",
+      discount: "(65% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/16057830/2021/11/20/fdf57fbd-29f6-4432-b8a9-46af4d31730a1637387006450-Puma-Men-Tshirts-8981637387005959-1.jpg",
+      rating: "4.6⭐",
+      votes: "18.6k",
+      title: "Puma",
+      price: "Rs: 519",
+      maxprice: "Rs: 1299",
+      discount: "(60% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/13971578/2021/4/6/248ce33e-48e7-4151-a1a0-0df964c8222c1617705074553-Puma-Men-Tshirts-8221617705073367-1.jpg",
+      rating: "4.3⭐",
+      votes: "14.7k",
+      title: "Puma",
+      price: "Rs: 683",
+      maxprice: "Rs: 1799",
+      discount: "(62% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/13971574/2021/4/6/834f746e-b578-447b-b0fd-6cb2766640d81617705069948-Puma-Men-Tshirts-2901617705069081-1.jpg",
+      rating: "3.3⭐",
+      votes: "37.4k",
+      title: "Puma",
+      price: "Rs: 649",
+      maxprice: "Rs: 1299",
+      discount: "(50% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/1295511/2018/5/2/11525248119235-Roadster-Men-Navy--Blue-Melange-Colour-Blocked-T-Shirt-751525248119047-1.jpg",
+      rating: "4.3⭐",
+      votes: "31.0k",
+      title: "Roadster",
+      price: "Rs: 244",
+      maxprice: "Rs: 699",
+      discount: "(65% OFF)",
+      desc: "Men Regular Solid Casual Shirt",
+    },
+  ];
+
+  localStorage.setItem("wisharr", JSON.stringify(wisharr));
+
+  wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
+  let cartArr = JSON.parse(localStorage.getItem("cartArr")) || [];
+  appendData(wisharr);
+  function appendData(data) {
+    document.querySelector("#products_div").innerHTML = "";
+    data.forEach((elem, i) => {
+      let maindiv = document.createElement("div");
+      let imgdiv = document.createElement("div");
+      let textdiv = document.createElement("div");
+      let pricediv = document.createElement("div");
+      let img = document.createElement("img");
+      img.src = elem.img;
+      let rating = document.createElement("h6");
+      rating.textContent = elem.rating;
+      let vote = document.createElement("h6");
+      vote.textContent = elem.votes;
+      let ratingdiv = document.createElement("div");
+      ratingdiv.append(rating, " " + " " + "|" + " " + " ", vote);
+      ratingdiv.setAttribute("id", "ratingol");
+      let title = document.createElement("h3");
+      title.textContent = elem.title;
+      let price = document.createElement("span");
+      price.textContent = elem.price;
+      let maxprice = document.createElement("span");
+      maxprice.textContent = elem.maxprice;
+      let discount = document.createElement("span");
+      discount.setAttribute("class", "themeColor");
+      discount.textContent = elem.discount;
+      let desc = document.createElement("p");
+      desc.textContent = elem.desc;
+      let movetobagbutton = document.createElement("button");
+      movetobagbutton.textContent = "MOVE TO BAG";
+      movetobagbutton.setAttribute("id", "moveToBagBtn");
+      movetobagbutton.setAttribute("class", "btnStyle");
+      movetobagbutton.addEventListener("click", function () {
+        cartArr.push(elem);
+        localStorage.setItem("cartArr", JSON.stringify(cartArr));
+        console.log("click", i);
+      });
+      imgdiv.append(img, ratingdiv);
+      textdiv.append(title, desc, pricediv);
+      pricediv.append(price, maxprice, discount);
+      maindiv.append(imgdiv, textdiv, movetobagbutton);
+      imgdiv.addEventListener("click", () => {
+        let prodobj = {
+          img: elem.img,
+          rating: rating.textContent,
+          votes: vote.textContent,
+          title: title.textContent,
+          price: price.textContent,
+          maxprice: maxprice.textContent,
+          discount: discount.textContent,
+          desc: desc.textContent,
+        };
+        localStorage.setItem("prodobj", JSON.stringify(prodobj));
+        window.location.href = "productdetails.html";
+      });
+      textdiv.addEventListener("click", () => {
+        let prodobj = {
+          img: elem.img,
+          rating: rating.textContent,
+          votes: vote.textContent,
+          title: title.textContent,
+          price: price.textContent,
+          maxprice: maxprice.textContent,
+          discount: discount.textContent,
+          desc: desc.textContent,
+        };
+        localStorage.setItem("prodobj", JSON.stringify(prodobj));
+        window.location.href = "productdetails.html";
+      });
+      document.querySelector("#products_div").append(maindiv);
+    });
+  }
+</script>

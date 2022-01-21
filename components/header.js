@@ -34,7 +34,7 @@ function header() {
     </div>
 
     <div>
-      <a href="">
+      <a href="../wishList( O )/wishList.html">
         <img
           id="svg"
           src="https://www.svgrepo.com/show/14970/heart.svg"
