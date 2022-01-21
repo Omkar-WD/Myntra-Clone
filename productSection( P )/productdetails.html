@@ -117,16 +117,18 @@
         font-size: smaller;
         display: none;
       }
-      /* #location{
-            flex-basis: 100%;
-        } */
+      #location{
+          padding: 20px 0px;
+      }
+      
     </style>
   </head>
   <body>
       <div id="header_container"></div>
     <div id="container">
-      <div id="main">
-        <!-- <div id="location"><span>Home / Clothing / Men Clothing / T-shirts /</span><span id="current-shirt"></span></div> -->
+      
+        <div id="location"><span>Home / Clothing / Men Clothing / T-shirts / </span><b><span id="current-shirt"></span></b></div>
+        <div id="main">
         <div id="imgcontainer">
           <img class="prodimg" src="" />
           <img class="prodimg" src="" />
@@ -219,6 +221,7 @@
   imgs.forEach((elem) => {
     elem.src = proddetails.img;
   });
+  document.querySelector("#current-shirt").textContent = proddetails.title;
   document.querySelector("#product_title").textContent = proddetails.title;
   document.querySelector("#product_desc").textContent = proddetails.desc;
   document.querySelector("#product_ratings").textContent =

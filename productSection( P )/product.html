@@ -218,7 +218,7 @@
                 </select>
               </div>
               <div id="sortby_filter">
-                  <select id="sortby" onchange="sortBy()">
+                  <select id="sortby">
                       <option value="sort" disabled selected>Sort by: <b>Reccommended</b></option>
                       <option value="new">What's New</option>
                       <option value="popular">Popularity</option>
@@ -239,7 +239,7 @@
                 type="checkbox"
                 id="Roadster"
                 name="Roadster"
-                onchange="Checkbox(Roadster)"
+                
               />
               <label for="Roadster">Roadster</label>
             </div>
@@ -248,7 +248,7 @@
                 type="checkbox"
                 id="Puma"
                 name="Puma"
-                onchange="Checkbox(Puma)"
+                
               />
               <label for="Puma">Puma</label>
             </div>
@@ -257,7 +257,7 @@
                 type="checkbox"
                 id="WROGN"
                 name="WROGN"
-                onchange="Checkbox(WROGN)"
+                
               />
               <label for="WROGN">WROGN</label>
             </div>
@@ -266,7 +266,7 @@
                 type="checkbox"
                 id="HRX"
                 name="HRX by Hrithik Roshan"
-                onchange="Checkbox(HRX)"
+                
               />
               <label for="HRX by Hrithik Roshan">HRX by Hrithik Roshan</label>
             </div>
@@ -275,7 +275,7 @@
                 type="checkbox"
                 id="Huetrap"
                 name="Huetrap"
-                onchange="Checkbox(Huetrap)"
+                
               />
               <label for="Huetrap">Huetrap</label>
             </div>
@@ -284,7 +284,7 @@
                 type="checkbox"
                 id="Friskers"
                 name="Friskers"
-                onchange="Checkbox(Friskers)"
+                
               />
               <label for="Friskers">Friskers</label>
             </div>
@@ -293,7 +293,7 @@
                 type="checkbox"
                 id="Duke"
                 name="Duke"
-                onchange="Checkbox(Duke)"
+                
               />
               <label for="Duke">Duke</label>
             </div>
@@ -305,7 +305,7 @@
                   type="checkbox"
                   id="below300"
                   name="Rs. 200 to Rs. 300"
-                  onchange="Checkbox1(0,300,below300)"
+                  
                 />
                 <label for="below300">Rs. 200 to Rs. 300</label>
               </div>
@@ -314,7 +314,7 @@
                   type="checkbox"
                   id="below500"
                   name="Rs. 300 to Rs. 500"
-                  onchange="Checkbox1(300,500,below500)"
+                  
                 />
                 <label for="below500">Rs. 300 to Rs. 500</label>
               </div>
@@ -323,7 +323,7 @@
                   type="checkbox"
                   id="below750"
                   name="Rs. 500 to Rs. 750"
-                  onchange="Checkbox1(500,750,below750)"
+                 
                 />
                 <label for="below750">Rs. 500 to Rs. 750</label>
               </div>
@@ -332,7 +332,7 @@
                   type="checkbox"
                   id="below1300"
                   name="Rs. 750 to Rs. 1300"
-                  onchange="Checkbox1(750,1300,below1300)"
+                  
                 />
                 <label for="below1300">Rs. 750 to Rs. 1300</label>
               </div>
@@ -340,35 +340,35 @@
           <div id="discount_filter">
               <h3>Discount</h3>
               <div>
-                  <input type="radio" id="ten" name="myradio" onchange="radiob(10,ten)">
+                  <input type="radio" id="ten" name="myradio">
                   <label for="ten">10% and above</label>
               </div>
               <div>
-                <input type="radio" id="twenty" name="myradio" onchange="radiob(20,twenty)">
+                <input type="radio" id="twenty" name="myradio">
                 <label for="twenty">20% and above</label>
             </div>
             <div>
-                <input type="radio" id="thirty" name="myradio" onchange="radiob(30,thirty)">
+                <input type="radio" id="thirty" name="myradio">
                 <label for="thirty">30% and above</label>
             </div>
             <div>
-                <input type="radio" id="fourty" name="myradio" onchange="radiob(40,fourty)">
+                <input type="radio" id="fourty" name="myradio">
                 <label for="fourty">40% and above</label>
             </div>
             <div>
-                <input type="radio" id="fifty" name="myradio" onchange="radiob(50,fifty)">
+                <input type="radio" id="fifty" name="myradio">
                 <label for="fifty">50% and above</label>
             </div>
             <div>
-                <input type="radio" id="sixty" name="myradio" onchange="radiob(60,sixty)">
+                <input type="radio" id="sixty" name="myradio">
                 <label for="sixty">60% and above</label>
             </div>
             <div>
-                <input type="radio" id="seventy" name="myradio" onchange="radiob(70,seventy)">
+                <input type="radio" id="seventy" name="myradio">
                 <label for="seventy">70% and above</label>
             </div>
             <div>
-                <input type="radio" id="eighty" name="myradio" onchange="radiob(80,eighty)">
+                <input type="radio" id="eighty" name="myradio">
                 <label for="eighty">80% and above</label>
             </div>
           </div>
@@ -900,5 +900,24 @@
       }
   }
   
-  
+  document.querySelector("#sortby").addEventListener("change", sortBy);
+  document.querySelector("#Roadster").addEventListener("change", Checkbox.bind(null,Roadster));
+  document.querySelector("#Puma").addEventListener("change", Checkbox.bind(null,Puma));
+  document.querySelector("#WROGN").addEventListener("change", Checkbox.bind(null,WROGN));
+  document.querySelector("#HRX").addEventListener("change", Checkbox.bind(null,HRX));
+  document.querySelector("#Huetrap").addEventListener("change", Checkbox.bind(null,Huetrap));
+  document.querySelector("#Friskers").addEventListener("change", Checkbox.bind(null,Friskers));
+  document.querySelector("#Duke").addEventListener("change", Checkbox.bind(null,Duke));
+  document.querySelector("#below300").addEventListener("change", Checkbox1.bind(null,0,300,below300));
+  document.querySelector("#below500").addEventListener("change", Checkbox1.bind(null,300,500,below500));
+  document.querySelector("#below750").addEventListener("change", Checkbox1.bind(null,500,750,below750));
+  document.querySelector("#below1300").addEventListener("change", Checkbox1.bind(null,750,1300,below1300));
+  document.querySelector("#ten").addEventListener("change", radiob.bind(null,10,ten));
+  document.querySelector("#twenty").addEventListener("change", radiob.bind(null,20,twenty));
+  document.querySelector("#thirty").addEventListener("change", radiob.bind(null,30,thirty));
+  document.querySelector("#fourty").addEventListener("change", radiob.bind(null,40,fourty));
+  document.querySelector("#fifty").addEventListener("change", radiob.bind(null,50,fifty));
+  document.querySelector("#sixty").addEventListener("change", radiob.bind(null,60,sixty));
+  document.querySelector("#seventy").addEventListener("change", radiob.bind(null,70,seventy));
+  document.querySelector("#eighty").addEventListener("change", radiob.bind(null,80,eighty));
 </script>
