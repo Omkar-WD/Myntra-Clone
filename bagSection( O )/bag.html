@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bag</title>
+    <link rel="stylesheet" href="../styles/header.css" />
     <link rel="stylesheet" href="../styles/bag.css" />
-    <link rel="stylesheet" href="../styles/index.css" />
     <link rel="stylesheet" href="../styles/modal.css" />
     <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/signUp.css" />
@@ -117,7 +117,24 @@
   import calculateSubtotal from "../components/calculateSubtotal.js";
   import emptyBag from "../components/emptyBag.js";
 
+  // Header append and function
   document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
 
   suggetionDataAddedToLocalStorage();
 
