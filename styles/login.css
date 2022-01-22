@@ -5,13 +5,13 @@
   margin-left: 15px;
   width: 10%;
 }
-label {
+#login > label {
   color: black;
   display: block;
   margin: 10px 0;
 }
 
-input {
+#login > input {
   border: 2px solid #e83b6a;
   padding: 10px 10px;
   width: 90%;
