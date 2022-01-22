@@ -6,6 +6,7 @@
   margin: 0 auto;
   text-align: center;
   display: none;
+  z-index: 20;
 }
 .container > h3 {
   margin: 10px 0;

@@ -138,7 +138,7 @@
 
   suggetionDataAddedToLocalStorage();
 
-  let cartData = JSON.parse(localStorage.getItem("cartArr")) || [];
+  let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
   let suggestionData = JSON.parse(localStorage.getItem("suggetionArr")) || [];
 
   document
@@ -149,7 +149,7 @@
 
   document.querySelector("#emptyCart").addEventListener("click", function () {
     let cartData = [];
-    localStorage.setItem("cartArr", JSON.stringify(cartData));
+    localStorage.setItem("cartarr", JSON.stringify(cartData));
     window.location.href = "";
   });
 
@@ -219,7 +219,7 @@
     addToCart.forEach(function (e, i) {
       e.addEventListener("click", function () {
         cartData.push(suggestionData[i]);
-        localStorage.setItem("cartArr", JSON.stringify(cartData));
+        localStorage.setItem("cartarr", JSON.stringify(cartData));
         window.location.href = "";
       });
     });
@@ -228,7 +228,7 @@
     removeFromCart.forEach(function (elem, i) {
       elem.addEventListener("click", function () {
         cartData.splice(i, 1);
-        localStorage.setItem("cartArr", JSON.stringify(cartData));
+        localStorage.setItem("cartarr", JSON.stringify(cartData));
         window.location.href = "";
       });
     });

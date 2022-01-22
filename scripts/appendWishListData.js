@@ -1,4 +1,4 @@
-function appendWishListData(data, cartArr, animationForConfirmation) {
+function appendWishListData(data, cartarr, animationForConfirmation) {
   document.querySelector("#products_div").innerHTML = "";
   data.forEach((elem, i) => {
     let maindiv = document.createElement("div");
@@ -30,8 +30,8 @@ function appendWishListData(data, cartArr, animationForConfirmation) {
     movetobagbutton.setAttribute("id", "moveToBagBtn");
     movetobagbutton.setAttribute("class", "btnStyle");
     movetobagbutton.addEventListener("click", function () {
-      cartArr.push(elem);
-      localStorage.setItem("cartArr", JSON.stringify(cartArr));
+      cartarr.push(elem);
+      localStorage.setItem("cartarr", JSON.stringify(cartarr));
       animationForConfirmation("Added To Bag");
       console.log("click", i);
     });

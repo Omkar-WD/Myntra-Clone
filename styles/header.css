@@ -5,6 +5,7 @@ body {
 .header {
   top: 0;
   position: sticky;
+  z-index: 10;
 }
 .navbar {
   display: flex;
@@ -32,10 +33,10 @@ body {
 
 #myLinks {
   display: none;
-  z-index: 1;
   position: sticky;
   top: 12%;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: white;
 }
 
 #menuIcon {
