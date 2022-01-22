@@ -150,9 +150,9 @@ input {
   display: flex;
   align-items: center;
 }
-label {
+/* label {
   font-size: small;
-}
+} */
 #rem_filters {
   display: flex;
   padding: 10px 0px;

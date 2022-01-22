@@ -37,10 +37,10 @@ function header() {
   <ul>
     <li id="loginMenubar"><a id="loginModal">Login</a></li>
     <li id="signupMenubar"><a id="signUpModal">SignUp</a></li>
-    <li id="fullname"><a >FullName</a></li>
-    <li id="profile"><a >Profile</a></li>
-    <li id="orders"><a >Orders</a></li>
-    <li id="logout"><a >Logout</a></li>
+    <li id="fullname"><a></a></li>
+    <li id="profile"><a></a></li>
+    <li id="orders"><a></a></li>
+    <li id="logout"><a></a></li>
   </ul>
   </div>
     <div class="dropdown-content5 dropdown-content">

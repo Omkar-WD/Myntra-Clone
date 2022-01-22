@@ -110,9 +110,9 @@ function dropDown5() {
 
 setInterval(() => {
   let bagItems = document.querySelector("#bag-items");
-  let cartarr = JSON.parse(localStorage.getItem("cartarr"));
+  let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   let wishlistItems = document.querySelector("#wishlist-items");
-  let wishlistarrarr = JSON.parse(localStorage.getItem("wisharr"));
+  let wishlistarrarr = JSON.parse(localStorage.getItem("wisharr")) || [];
   bagItems.innerHTML = cartarr.length;
   wishlistItems.innerHTML = wishlistarrarr.length;
 }, 1000);
@@ -128,8 +128,8 @@ setTimeout(() => {
   let profile = document.querySelector("#profile");
   let orders = document.querySelector("#orders");
   let logout = document.querySelector("#logout");
-  let { Fullname } = JSON.parse(localStorage.getItem("signUpData"));
-  let isUserLogin = localStorage.getItem("isUserLogin") || "true";
+  let { Fullname } = JSON.parse(localStorage.getItem("signUpData")) || {};
+  let isUserLogin = localStorage.getItem("isUserLogin") || "false";
   if (isUserLogin == "true") {
     login.style.display = "none";
     signup.style.display = "none";
