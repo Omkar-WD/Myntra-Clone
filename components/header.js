@@ -80,7 +80,8 @@ function header() {
   </div>
   <img
     id="menuIcon"
-    src="https://via.placeholder.com/50"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU8oEovY6qaEOkBZX9UOv2Or9F_Y-H6NMZ9M3EjRdJFRAeHN9IBCHiuawugBprC_REcw4&usqp=CAU"
+    width="50px"
   />
 </div>
 <div id="myLinks">
