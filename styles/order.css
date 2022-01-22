@@ -33,7 +33,7 @@
 }
 
 #carddivposterimage > div {
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,13 +48,32 @@
   height: 10%;
 }
 
-button {
+.btnStyle {
+  border: 1px solid #e83b6a;
+  color: #e83b6a;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bolder;
+  margin: 10px;
   width: 46%;
   margin-top: 2%;
   margin-left: 2%;
   background-color: white;
   color: black;
 }
+.btnStyle:hover {
+  color: white;
+  background-color: #e83b6a;
+}
+/* #buttondiv > button {
+  width: 46%;
+  margin-top: 2%;
+  margin-left: 2%;
+  background-color: white;
+  color: black;
+} */
 
 a {
   color: black;
@@ -65,20 +84,7 @@ a {
   width: 60%;
   margin-right: 75%;
 }
-.btnStyle {
-  border: 1px solid #e83b6a;
-  color: #e83b6a;
-  padding: 5px 10px;
-  background-color: transparent;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: bolder;
-  margin: 10px;
-}
-.btnStyle:hover {
-  color: white;
-  background-color: #e83b6a;
-}
+
 #myntrainsider {
   text-align: center;
   width: 90%;
@@ -90,7 +96,7 @@ a {
   font-weight: bolder;
 }
 
-img {
+#carddivposterimage > div > img {
   width: 100%;
   height: 100%;
 }
