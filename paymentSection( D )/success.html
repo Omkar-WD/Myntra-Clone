@@ -20,6 +20,17 @@
 
 <script>
   localStorage.setItem("isCouponApplied", "false");
+  let date = new Date();
+  let orderDateArr = JSON.parse(localStorage.getItem("orderDateArr")) || [];
+  let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
+  let orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
+  while (cartData.length !== 0) {
+    orderDateArr.push(String(date).substring(0, 24));
+    orderArr.push(cartData.pop());
+  }
+  localStorage.setItem("orderDateArr", JSON.stringify(orderDateArr));
+  localStorage.setItem("cartarr", JSON.stringify(cartData));
+  localStorage.setItem("orderArr", JSON.stringify(orderArr));
   setTimeout(() => {
     window.location.href = "../index.html";
   }, 1800);
