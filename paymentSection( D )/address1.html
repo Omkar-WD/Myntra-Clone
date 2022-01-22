@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/address1.css">
 </head>
@@ -16,23 +17,24 @@
                 <div id="main11">
                     <div class="main111">
                         <h3>Select Delivery Address</h3>
-                        <p>DEFAULT ADDRESS</p>
                     </div>
                     <div class="main112">
-                        <a href="./addres.html"><button class="but1">ADD NEW ADDRESS</button></a>
+                        <a href="./addres.html"><button class="but1 but11">ADD NEW ADDRESS</button></a>
                     </div>
                 </div>
                 <div id="main12">
                     <div class="main121">
-                        <div><h3>Dhananajya dhoke</h3></div>
+                        <div><h3 id="h31">Dhananajya dhoke</h3></div>
                         <div>  <button id="homebutton">HOME</button></div>
                     </div>
-                    
-                  
-                    <P>AT. POST ADDDRESS</P>
-                    <div class="main121">
-                        <div>Mobile :</div>
-                        <div><h4>987456123</h4></div>
+                    <div>
+                      <span id="span1">hingna road ,</span><br>
+                      <span id="span2">Nagpur ,</span>
+                      <span id="span3">Maharashtra, </span>
+                      <span id="span4">441106</span><br>
+                      <span >Mobile :</span><span id="span5">987465123</span>
+
+
                     </div>
                     <p>Pay on Delivery available</p>
                     <div class="butdiv">
@@ -45,42 +47,10 @@
                     
                 </div>
                 <div id="main13">
-                    <a href="./addres.html"> <h3>+Add New Address</h3></a>                   
+                    <a href="./addres.html"> <h3 class="onlyh3">+Add New Address</h3></a>                   
                 </div>
             </div>
             <div id="main2">
-                 <h4>DElIVERY ESTIMATES</h4>
-                 <div class="main21">
-                    <div class="imgdiv">
-                      <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2503522/2019/5/11/0690d08e-829c-4876-82a5-98421d48d3791557550179671-Roadster-Men-Teal-Regular-Fit-Solid-Casual-Shirt-47815575501-1.jpg" alt="">
-                    </div>
-                    <div class="textdiv">
-                      <p>Estimated delivery by</p>
-                      <p>20 jan 2022</p>
-                   </div>
-                   </div>
-                   <h3>PRICE DETAILS</h3>
-                  <div id="pricedetail">
-                    <div class="pricediv1">
-                        <p>Total MRP</p>
-                        <p>Discount on MRP</p>
-                        <p>Convenience Fee</p> 
-                        <h4>Total Amount</h4>  
-                    </div>
-                    <div class="pricediv2">
-                    
-                        <p>899</p>
-                        <p>630</p>
-                        <p>99</p>
-                        <h4>269</h4>
-                    </div>
-                  </div>
-                    <div id="buttondiv">
-                        <button id="contbutton">CONTINUE</button>
-                    </div>
-                   
-                  </div>
-                 </div>
             </div>
         </div>
         <div id="cont2">
@@ -132,8 +102,47 @@
     </div>
 </body>
 </html>
-
+<script src="../scripts/addresss1.js"></script>
 <script type="module">
   import header from "../components/header.js";
   document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
+  let {totalItems,cartTotal,discount,finalTotal} = objDetails;
+  document.querySelector("#main2").innerHTML=` <h3>PRICE DETAILS</h3>
+                  <div id="pricedetail">
+                    <div class="pricediv1">
+                        <p>Total MRP</p>
+                        <p>Discount on MRP</p>
+                        <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span></p> 
+                        <h4>Total Amount</h4>  
+                    </div>
+                    <div class="pricediv2">                   
+                        <p>Rs.${cartTotal}</p>
+                        <p class="green">-Rs.${discount}</p>
+                        <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+                        <h4>Rs.${finalTotal}</h4>
+                    </div>
+                  </div>
+                    <div id="buttondiv">
+                       <a href="./payment.html"> <button id="contbutton">CONTINUE</button></a>
+                    </div>
+                   
+                  </div>
+                 </div>`;
 </script>

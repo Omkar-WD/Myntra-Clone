@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 10%;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 #main1 {
   width: 30%;
@@ -10,12 +10,20 @@
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 #main2 {
-  border: 2px solid blue;
   height: 50%;
   display: flex;
   width: 20%;
   justify-content: space-between;
   padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.linep {
+  display: inline;
+  text-decoration: line-through;
+}
+.green {
+  color: green;
 }
 input {
   height: 15px;
@@ -63,9 +71,9 @@ input {
   margin-bottom: 10%;
 }
 
-h3 {
+.onlyh3 {
   font-style: normal;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 }
 #container2 {
@@ -89,12 +97,7 @@ h3 {
 .forpadding {
   padding: 20px;
 }
-#main2 > div {
-  line-height: 30px;
-}
-#main {
-  grid-area: right;
-}
+
 @media only screen and (min-width: 0px) and (max-width: 376px) {
   #container2,
   #main2 {

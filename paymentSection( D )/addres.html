@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/addres.css">
 </head>
@@ -15,14 +16,14 @@
            <form id="formdata" >
                <div class="forpadding">
                <div class="formdiv contact">
-                <h3>CONTACT DETAILS</h3><br>
+                <h3 class="onlyh3">CONTACT DETAILS</h3><br>
                 <input id="name" class="input1" type="text" placeholder="Name*"><br><br>
                 <input id="mobile" class="input1" type="number" placeholder="Mobile No*"><br><br>
             
               </div>
               
             <div class="formdiv Addres">
-               <h3>ADDRESS</h3><br>
+               <h3 class="onlyh3">ADDRESS</h3><br>
                <input id="pin" class="input1"  type="number" placeholder="Pin Code*"><br><br>
                <input id="add" class="input1" type="text" placeholder="Addres (House No,Building,Street,Area)*"><br><br>
                <input id="town" class="input1" type="text" placeholder="Locality/Town*"><br><br>
@@ -31,7 +32,7 @@
 
             </div><br>
             <div class="formdiv saveaddress">
-                <h3>SAVE ADDRESS AS</h3><br>
+                <h3 class="onlyh3">SAVE ADDRESS AS</h3><br>
                 <button  class="button1 homebutton" >Home</button>
                 <button class="button1 workbutton" >Work</button><br><br><br>
                 
@@ -45,24 +46,6 @@
            </form>
        </div>
        <div id="main2">
-
-       
-        <div class="submain2div1">
-            <h4>PRICE DETAILS</h4>
-            <p>Total MRP</p>
-            <p>Discount on MRP</p>
-            <p>Convenience Fee</p> 
-            <h4>Total Amount</h4>  
-        </div>
-        <div class="submain2div2">
-            <p>(1 Items)</p>
-            <p>899</p>
-            <p>630</p>
-            <p>99</p>
-            <h4>269</h4>
-        </div>
-       
-
         </div>
        </div>
 
@@ -123,4 +106,36 @@
 <script type="module">
     import header from "../components/header.js";
     document.querySelector(".header").innerHTML = header();
+    document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
+  let {totalItems,cartTotal,discount,finalTotal} = objDetails;
+  document.querySelector("#main2").innerHTML=`<div class="submain2div1">
+            <h4>PRICE DETAILS</h4>
+            <p>Total MRP</p>
+            <p>Discount on MRP</p>
+            <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span> </p>
+            <h4>Total Amount</h4>  
+        </div>
+        <div class="submain2div2">
+            <h4>(${totalItems} Items)</h4>
+            <p>Rs.${cartTotal}</p>
+            <p class="green">-Rs.${discount}</p>
+            <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+            <h4>Rs.${finalTotal}</h4>
+        </div>`;
 </script>
