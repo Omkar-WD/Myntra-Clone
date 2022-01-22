@@ -5,130 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-        
-      #main {
-        display: flex;
-      }
-      /* #main > div{
-            
-        } */
-      #imgcontainer {
-        display: flex;
-        flex-wrap: wrap;
-        /* justify-content: center; */
-        gap: 20px;
-
-        flex: 4;
-      }
-      .prodimg {
-        transition: 0.5s all ease-in-out;
-      }
-      .prodimg:hover {
-        transform: scale(1.05);
-        cursor: -webkit-zoom-in;
-      }
-      #proddetails_container {
-        flex: 3;
-      }
-
-      #product_desc {
-        color: gray;
-      }
-      #product_ratings {
-        border: 0.1px solid gray;
-        width: fit-content;
-        padding: 0 5px;
-      }
-      #product_maxprice {
-        font-size: small;
-        color: gray;
-        text-decoration: line-through;
-        margin-left: 5px;
-      }
-      #product_price {
-        font-weight: bold;
-      }
-      #product_discount {
-        color: rgb(59, 142, 190);
-        font-weight: bold;
-      }
-      #pricetax {
-        color: #03a685;
-      }
-      /* .product-size{
-            border: 0.1px solid gray;
-            padding: 20px 20px;
-            border-radius: 50%;
-            
-        } */
-      #addtobag {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        border-radius: 5px;
-        width: fit-content;
-        padding: 10px 60px;
-        line-height: 0;
-        background-color: #ff527b;
-        color: white;
-        font-weight: bold;
-      }
-      #addtobag:hover {
-        background-color: #9b1a38;
-      }
-      #addtobag > img {
-        height: 30px;
-        width: 30px;
-        margin-right: 10px;
-        border-radius: 20px;
-        background-color: #ff527b;
-      }
-      #productsize_div {
-        display: flex;
-        /* border: 1px solid black; */
-        gap: 5px;
-      }
-      #productsize_div > div {
-        border: 1px solid black;
-        display: flex;
-        min-width: 40px;
-        min-height: 40px;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        border-radius: 50%;
-      }
-      #productsize_div > div:hover {
-        border: 1px solid #ff527b;
-      }
-      #true_pincode {
-        color: green;
-        font-weight: bold;
-        display: none;
-      }
-      #false_pincode {
-        color: red;
-        display: none;
-      }
-      #select_size {
-        color: red;
-        font-size: smaller;
-        display: none;
-      }
-      #location{
-          padding: 20px 0px;
-      }
-      
-    </style>
+    <link rel="stylesheet" href="../styles/productdetails.css" />
+    <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
   </head>
   <body>
-      <div id="header_container"></div>
+    <div id="header_container"></div>
+    <!-- for animation add to cart -->
+    <div id="pop-up">
+      <div class="container"></div>
+    </div>
     <div id="container">
-      
-        <div id="location"><span>Home / Clothing / Men Clothing / T-shirts / </span><b><span id="current-shirt"></span></b></div>
-        <div id="main">
+      <div id="location">
+        <span>Home / Clothing / Men Clothing / T-shirts / </span
+        ><b><span id="current-shirt"></span></b>
+      </div>
+      <div id="main">
         <div id="imgcontainer">
           <img class="prodimg" src="" />
           <img class="prodimg" src="" />
@@ -183,9 +74,10 @@
     </div>
   </body>
 </html>
-<script>
-//     import header from "../components/header.js";
-//   document.querySelector("#header_container").innerHTML = header();
+<script type="module">
+  import animationForConfirmation from "../components/animationForConfirmation.js";
+  //     import header from "../components/header.js";
+  //   document.querySelector("#header_container").innerHTML = header();
 
   let pincodeStatus = async (e) => {
     try {
@@ -260,10 +152,11 @@
     } else if (pincode.value.length === 0) {
       document.querySelector("#select_size").textContent =
         "Please enter pincode";
-        document.querySelector("#select_size").style.display = "block";
+      document.querySelector("#select_size").style.display = "block";
     } else {
       cartarr.push(proddetails);
       localStorage.setItem("cartarr", JSON.stringify(cartarr));
+      animationForConfirmation("Added To Bag");
     }
   });
 </script>
