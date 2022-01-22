@@ -43,7 +43,8 @@ setTimeout(function () {
       };
       console.log(loginData);
       localStorage.setItem("loginData", JSON.stringify(loginData));
-      // window.location.href = "";
+      localStorage.setItem("isUserLogin", "true");
+      window.location.href = "";
     });
   };
   for (let i = 0; i < loginSpan.length; i++) {

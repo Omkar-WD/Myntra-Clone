@@ -1,23 +1,23 @@
 let rightdiv = document.getElementById("rightdiv");
 let profilediv = document.getElementById("profilediv");
 let profilecenterdiv = document.getElementById("profilecenterdiv");
+
 let profiledata = JSON.parse(localStorage.getItem("profileDetails"));
+let signUpData = JSON.parse(localStorage.getItem("signUpData"));
 
 profile(profiledata);
 
-// var x, y, z, n, d, l, hn;
-// let profileObject = {
-//   Fullname: "Omkar Pasalkar",
-//   Mobile: "95667",
-//   Email: "omaker@hsxsh",
-//   Gender: "MALE",
-//   DOB: "N/A",
-//   Location: "N/A",
-//   Alternate_Mobile: "1100223",
-//   Hint_Name: "N/A",
-// };
-// console.log(profileObject);
-// localStorage.setItem("profileDetails", JSON.stringify(profileObject));
+let profileObject = {
+  Fullname: signUpData.Fullname,
+  Mobile: signUpData.Mobile,
+  Email: signUpData.Email,
+  Gender: "N/A",
+  DOB: "N/A",
+  Location: "N/A",
+  Alternate_Mobile: "N/A",
+  Hint_Name: "N/A",
+};
+localStorage.setItem("profileDetails", JSON.stringify(profileObject));
 
 function profile(profiledata) {
   if (profiledata != null) {
@@ -349,8 +349,19 @@ function editfun() {
       profiledata.DOB = dobeediit.value || profiledata.DOB;
       profiledata.Location = locationediit.value || profiledata.Location;
 
+      signUpData.Mobile = mobiledetail.value || profiledata.Mobile;
+      signUpData.Email = emailedit.value || profiledata.Email;
+      profiledata.Alternate_Mobile =
+        alternatemobiledetail.value || profiledata.Alternate_Mobile;
+      profiledata.Hint_Name = hintediit.value || profiledata.Hint_Name;
+      signUpData.Fullname = fullnameediit.value || profiledata.Fullname;
+      profiledata.DOB = dobeediit.value || profiledata.DOB;
+      profiledata.Location = locationediit.value || profiledata.Location;
+
       console.log(profiledata);
+      console.log(signUpData);
       localStorage.setItem("profileDetails", JSON.stringify(profiledata));
+      localStorage.setItem("signUpData", JSON.stringify(signUpData));
 
       // again calling profile page
       window.location.href = "";
