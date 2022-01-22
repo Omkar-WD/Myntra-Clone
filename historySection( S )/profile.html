@@ -1,72 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/order.css">
-</head>
-<body>
-     
+    <link rel="stylesheet" href="../styles/order.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+  <body>
+    <div class="header"></div>
     <div id="container">
-        <div id="leftdiv">
-            <!--  -->
-            <div id="overview hoverp">
-                <a href=""><p class="hoverp">Overview</p></a> 
-                 <hr class="hrrulerwidth">
-
-             </div>
-
-             <div id="returns">
-                <a href=""><p class="hoverp">Order</p></a> 
-                 <a href=""><p class="colorgreen hoverp">Order & Returns</p></a>
-                 <hr class="hrrulerwidth">
-
-
-             </div>
-             
-             <div id="credits" >
-                 <a href=""><p class="hoverp">CREDITS</p></a>
-                 <a href=""><p class="hoverp">Coupons</p></a>
-                 <a href=""><p class="hoverp">Myntra Credit</p></a>
-                 <a href=""><p class="hoverp">MynCash</p></a>
-                 <hr class="hrrulerwidth">
-
-             </div>
-
-             <div id="profile">
-                 <a href=""><p class="hoverp">ACCOUNT</p></a>
-             <a href=""><p class="hoverp"> Profile</p></a>
-        <a href=""><p class="hoverp">Saved Cards</p></a> 
-         <a href=""><p class="hoverp">Addresses</p></a>
-         <a href=""><p class="hoverp">Myntra Insider</p></a>
-
-             </div>
-
-
-
-            
-
+      <div id="leftdiv">
+        <div id="overview hoverp">
+          <a href=""><p class="hoverp">Overview</p></a>
+          <hr class="hrrulerwidth" />
         </div>
-
-<div id="rightdiv">
-
-    <div id="profilediv">
-        <h3 class="aliglrftprofilehead">Profile Details</h3>
-        <div id="profilecenterdiv">
-           
-
+        <div id="returns">
+          <a href="./order.html"><p class="hoverp">Order</p></a>
+          <a href=""><p class="colorgreen hoverp">Order & Returns</p></a>
+          <hr class="hrrulerwidth" />
         </div>
-
+        <div id="credits">
+          <a href=""><p class="hoverp">CREDITS</p></a>
+          <a href=""><p class="hoverp">Coupons</p></a>
+          <a href=""><p class="hoverp">Myntra Credit</p></a>
+          <a href=""><p class="hoverp">MynCash</p></a>
+          <hr class="hrrulerwidth" />
+        </div>
+        <div id="profile">
+          <a href=""><p class="hoverp">ACCOUNT</p></a>
+          <a href=""><p class="hoverp">Profile</p></a>
+          <a href=""><p class="hoverp">Saved Cards</p></a>
+          <a href=""><p class="hoverp">Addresses</p></a>
+          <a href=""><p class="hoverp">Myntra Insider</p></a>
+        </div>
+      </div>
+      <div id="rightdiv">
+        <div id="profilediv">
+          <h3 class="aliglrftprofilehead">Profile Details</h3>
+          <div id="profilecenterdiv"></div>
+        </div>
+      </div>
     </div>
-
-
-
-</div>
-
-
-
-</body>
+  </body>
 </html>
 <script src="../scripts/profile.js"></script>
+<script type="module">
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+</script>
