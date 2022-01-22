@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link
+    rel="icon"
+    href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
+    type="image/icon type"
+  />
+  <link rel="stylesheet" href="../styles/signUp.css" />
+<link rel="stylesheet" href="../styles/login.css" />
+<link rel="stylesheet" href="../styles/modal.css" />
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/address1.css">
+</head>
+<body>
+  <div class="header"></div>
+    <div id="container">
+        <div id="cont1">
+            <div id="main1">
+                <div id="main11">
+                    <div class="main111">
+                        <h3>Select Delivery Address</h3>
+                    </div>
+                    <div class="main112">
+                        <a href="./addres.html"><button class="but1 but11">ADD NEW ADDRESS</button></a>
+                    </div>
+                </div>
+                <div id="main12">
+                    <div class="main121">
+                        <div><h3 id="h31">Dhananajya dhoke</h3></div>
+                        <div>  <button id="homebutton">HOME</button></div>
+                    </div>
+                    <div>
+                      <span id="span1">hingna road ,</span><br>
+                      <span id="span2">Nagpur ,</span>
+                      <span id="span3">Maharashtra, </span>
+                      <span id="span4">441106</span><br>
+                      <span >Mobile :</span><span id="span5">987465123</span>
+
+
+                    </div>
+                    <p>Pay on Delivery available</p>
+                    <div class="butdiv">
+                        
+                   <a href="./addres.html"> <button class="but1">REMOVE</button></a>
+                   <a href="./addres.html"> <button class="but1">EDIT</button></a>
+
+                    
+                    </div>
+                    
+                </div>
+                <div id="main13">
+                    <a href="./addres.html"> <h3 class="onlyh3">+Add New Address</h3></a>                   
+                </div>
+            </div>
+            <div id="main2">
+            </div>
+        </div>
+        <div id="cont2">
+            <div id="container2">
+                <div class="footer">
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+                    />
+                    <img
+                      class="images"
+                      src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+                    />
+                  </div>
+                  <div class="help"> Need Help? Contact Us</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../scripts/loginModal.js"></script>
+<script src="../scripts/signUpModal.js"></script>
+<script src="../scripts/headerMenubar.js"></script>
+<script src="../scripts/addresss1.js"></script>
+<script type="module">
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
+  let {totalItems,cartTotal,discount,finalTotal} = objDetails;
+  document.querySelector("#main2").innerHTML=` <h3>PRICE DETAILS</h3>
+                  <div id="pricedetail">
+                    <div class="pricediv1">
+                        <p>Total MRP</p>
+                        <p>Discount on MRP</p>
+                        <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span></p> 
+                        <h4>Total Amount</h4>  
+                    </div>
+                    <div class="pricediv2">                   
+                        <p>Rs.${cartTotal}</p>
+                        <p class="green">-Rs.${discount}</p>
+                        <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+                        <h4>Rs.${finalTotal}</h4>
+                    </div>
+                  </div>
+                    <div id="buttondiv">
+                       <a href="./payment.html"> <button id="contbutton">CONTINUE</button></a>
+                    </div>
+                   
+                  </div>
+                 </div>`;
+</script>

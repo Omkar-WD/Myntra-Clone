@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      rel="shortcut icon"
+      href="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../styles/productdetails.css" />
+    <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/signUp.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/modal.css" />
+  </head>
+  <body>
+    <div class="header"></div>
+    <!-- for animation add to cart -->
+    <div id="pop-up">
+      <div class="container"></div>
+    </div>
+    <div id="container">
+      <div id="location">
+        <span>Home / Clothing / Men Clothing / T-shirts / </span
+        ><b><span id="current-shirt"></span></b>
+      </div>
+      <div id="main">
+        <div id="imgcontainer">
+          <img class="prodimg" src="" />
+          <img class="prodimg" src="" />
+          <img class="prodimg" src="" />
+          <img class="prodimg" src="" />
+        </div>
+        <div id="proddetails_container">
+          <h2 id="product_title">Nike</h2>
+          <p id="product_desc">desc</p>
+          <div id="product_ratings"></div>
+          <hr />
+          <span id="product_price">Price</span>
+          <span id="product_maxprice"></span>
+          <span id="product_discount"></span>
+          <p id="pricetax">inclusive of all taxes</p>
+          <h3>SELECT SIZE</h3>
+          <div id="productsize_div">
+            <div class="product-size">S</div>
+            <div class="product-size">M</div>
+            <div class="product-size">L</div>
+            <div class="product-size">XL</div>
+            <div class="product-size">XXL</div>
+          </div>
+          <br />
+          <p id="select_size">Please select size</p>
+          <div id="addtobag">
+            <img src="../images/addtobag.png" />
+            <p>ADD TO BAG</p>
+          </div>
+          <h5>DELIVERY OPTIONS 🚚</h5>
+          <input type="text" id="pincode" placeholder="enter pincode" />
+          <div id="true_pincode"></div>
+          <p id="false_pincode">Can't deliver at this pincode</p>
+          <div id="del_details">
+            <p>🔜 Get it by Sat, Jan 22</p>
+            <p>💵 Pay on delivery available</p>
+            <p>Easy 30 days return & exchange available</p>
+          </div>
+          <p>100% Original Products</p>
+          <div id="offers_div">
+            <h3>BEST OFFERS 🏷️</h3>
+            <p>This product is already at its best price</p>
+            <p><b>10% Instant Savings on Citi Credit and Debit Cards</b></p>
+            <p>: Min spend Rs 3,000; Max discount Rs 1,000. TCA</p>
+            <p>View Eligible Products</p>
+            <p><b>EMI option available</b></p>
+            <p>: EMI starting from RS 70/month</p>
+            <p>View Plan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+<script src="../scripts/headerMenubar.js"></script>
+<script src="../scripts/loginModal.js"></script>
+<script src="../scripts/signUpModal.js"></script>
+<script type="module">
+  import animationForConfirmation from "../components/animationForConfirmation.js";
+  import header from "../components/header.js";
+  import footer from "../components/footer.js";
+  document.querySelector(".footer").innerHTML = footer();
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  let pincodeStatus = async (e) => {
+    try {
+      if (e.key == "Enter") {
+        let entered = pincode.value;
+        let url = `https://api.postalpincode.in/pincode/${entered}`;
+        let api = await fetch(url);
+        let res = await api.json();
+        if (res[0].Status == "Success") {
+          let distnstate = document.createElement("p");
+          // distnstate.innerHTML = "";
+          let x = `<p>Can deliver at this pincode</p>
+                <p>${res[0].PostOffice[0].District}, ${res[0].PostOffice[0].State}`;
+          // distnstate.textContent = res[0].PostOffice[0].District+" ,"+res[0].PostOffice[0].State;
+          document.querySelector("#true_pincode").innerHTML = x;
+          document.querySelector("#true_pincode").style.display = "block";
+          document.querySelector("#false_pincode").style.display = "none";
+          proddetails.pincode = entered;
+          document.querySelector("#select_size").style.display = "none";
+        } else {
+          document.querySelector("#true_pincode").style.display = "none";
+          document.querySelector("#false_pincode").style.display = "block";
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  let proddetails = JSON.parse(localStorage.getItem("prodobj"));
+  console.log(proddetails);
+  let imgs = document.querySelectorAll(".prodimg");
+  imgs.forEach((elem) => {
+    elem.src = proddetails.img;
+  });
+  document.querySelector("#current-shirt").textContent = proddetails.title;
+  document.querySelector("#product_title").textContent = proddetails.title;
+  document.querySelector("#product_desc").textContent = proddetails.desc;
+  document.querySelector("#product_ratings").textContent =
+    proddetails.rating + " | " + proddetails.votes;
+  document.querySelector("#product_price").textContent = proddetails.price;
+  document.querySelector("#product_maxprice").textContent =
+    proddetails.maxprice;
+  document.querySelector("#product_discount").textContent =
+    proddetails.discount;
+
+  let pincode = document.querySelector("#pincode");
+  pincode.addEventListener("keypress", pincodeStatus);
+
+  let sizes = document.querySelectorAll(".product-size");
+
+  sizes.forEach((elem) => {
+    elem.addEventListener("click", () => {
+      elem.style.border = "1px solid #FF527B";
+      elem.style.color = "#FF527B";
+      sizes.forEach((e) => {
+        if (e != elem) {
+          e.style.border = "1px solid black";
+          e.style.color = "black";
+        }
+      });
+      proddetails.size = elem.textContent;
+      document.querySelector("#select_size").style.display = "none";
+    });
+  });
+
+  let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
+  document.querySelector("#addtobag").addEventListener("click", () => {
+    if (proddetails.size === undefined) {
+      document.querySelector("#select_size").style.display = "block";
+    } else if (pincode.value.length === 0) {
+      document.querySelector("#select_size").textContent =
+        "Please enter pincode";
+      document.querySelector("#select_size").style.display = "block";
+    } else {
+      cartarr.push(proddetails);
+      localStorage.setItem("cartarr", JSON.stringify(cartarr));
+      animationForConfirmation("Added To Bag");
+    }
+  });
+</script>
