@@ -1,3 +1,15 @@
+#moveToWishList {
+  cursor: pointer;
+}
+#moveToWishList:hover {
+  color: #e83b6a;
+}
+#emptyCart {
+  cursor: pointer;
+}
+#emptyCart:hover {
+  color: red;
+}
 .empty-cart {
   min-height: 80vh;
   display: none;
@@ -228,6 +240,52 @@
 }
 .themeColor {
   color: #e83b6a;
+}
+
+.bottom-line {
+  border-bottom: 1px solid #e83b6a;
+}
+
+.enter-coupon-code {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.enter-coupon-code > input {
+  padding: 5px 20px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #e83b6a;
+  border-radius: 5px;
+  color: black;
+}
+.available-coupon-heading {
+  text-align: center;
+  padding: 10px 0;
+}
+.coupon-1-heading,
+.coupon-2-heading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.coupon-1-heading > h3 {
+  padding: 5px;
+  width: 40%;
+  border: 2px dotted #e83b6a;
+}
+.coupon-2-heading > h3 {
+  padding: 5px;
+  width: 40%;
+  color: grey;
+  border: 2px dotted grey;
+}
+.available-coupon > h3 {
+  margin: 0;
+}
+.coupon-1 > h4,
+.coupon-2 > h4 {
+  margin: 10px;
 }
 @media only screen and (min-width: 0) and (max-width: 416px) {
   #bag-item {
