@@ -8,6 +8,9 @@
     <link href="../styles/header.css" rel="stylesheet" />
     <link rel="stylesheet" href="../styles/product.css" />
     <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
   </head>
   <body>
     <div class="header"></div>
@@ -143,15 +146,37 @@
         <div id="products_div"></div>
       </div>
     </div>
+    <div class="footer"></div>
   </body>
 </html>
 
 <script src="../scripts/productData.js"></script>
+<script src="../scripts/headerMenubar.js"></script>
 
 <script type="module">
   import navbar from "../components/header.js";
   import animationForConfirmation from "../components/animationForConfirmation.js";
-  document.querySelector(".header").innerHTML = navbar();
+  import header from "../components/header.js";
+  import footer from "../components/footer.js";
+
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  document.querySelector(".footer").innerHTML = footer();
 
   let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
   function appendData(data) {

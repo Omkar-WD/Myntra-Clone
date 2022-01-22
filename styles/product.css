@@ -1,6 +1,10 @@
 #main {
   display: flex;
 }
+
+#container {
+  padding: 0 10px;
+}
 .btnStyle {
   border: 1px solid #e83b6a;
   color: #e83b6a;

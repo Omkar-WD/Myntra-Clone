@@ -8,22 +8,13 @@ function header() {
     />
   </div>
   </a>
-  <div id="menu" class="categories">
-  <ul>
-    <li class="dropdown-content1 dropdown-content">
-      <a href="mens.html">Men</a>
-    </li>
-    <li class="dropdown-content2 dropdown-content">
-      <a href="">Women</a>
-    </li>
-    <li class="dropdown-content3 dropdown-content">
-      <a href="">Kids</a>
-    </li>
-    <li class="dropdown-content4 dropdown-content">
-      <a href="">Beauty</a>
-    </li>
-  </ul>
-</div>
+  <div id="menu">
+    <a href="">MEN</a>
+    <a href="">WOMEN</a>
+    <a href="">KIDS</a>
+    <a href="">BEAUTY</a>
+    <a href="">STUDIO</a>
+  </div>
   <div class="search-bar">
     <img
       id="searchpng"
@@ -75,49 +66,11 @@ function header() {
   />
 </div>
 <div id="myLinks">
-<a href="">MEN</a>
-<a href="">WOMEN</a>
-<a href="">KIDS</a>
-<a href="">BEAUTY</a>
-</div>
-<div class="dropdown-menu1 dropdown-menu">
-<ul>
-  <li><a href="products.html">Shirts</a></li>
-  <li><a href="../productSection( P )/product.html">Tshirts</a></li>
-  <li><a href="products.html">Jeans</a></li>
-  <li><a href="products.html">Shoes</a></li>
-  <li><a href="products.html">Accessories</a></li>
-</ul>
-</div>
-
-<div class="dropdown-menu2 dropdown-menu">
-<ul>
-  <li><a href="products.html">Ethnic</a></li>
-  <li><a href="products.html">western wear</a></li>
-  <li><a href="products.html">Footwear</a></li>
-  <li><a href="products.html">sports wear</a></li>
-  <li><a href="products.html">Accessories</a></li>
-</ul>
-</div>
-
-<div class="dropdown-menu3 dropdown-menu">
-<ul>
-  <li><a href="products.html">Boys Clothing</a></li>
-  <li><a href="products.html">Girls Clothing</a></li>
-  <li><a href="products.html">infants</a></li>
-  <li><a href="products.html">boys footwear</a></li>
-  <li><a href="products.html">girls footwear</a></li>
-</ul>
-</div>
-
-<div class="dropdown-menu4 dropdown-menu">
-<ul>
-  <li><a href="products.html">make up</a></li>
-  <li><a href="products.html">skincare</a></li>
-  <li><a href="products.html">haircare</a></li>
-  <li><a href="products.html">fragrances</a></li>
-  <li><a href="products.html">mens grooming</a></li>
-</ul>
+  <a href="">MEN</a>
+  <a href="">WOMEN</a>
+  <a href="">KIDS</a>
+  <a href="">BEAUTY</a>
+  <a href="">STUDIO</a>
 </div>
     <div>
     <button id="loginModal">Login</button>
@@ -137,3 +90,20 @@ function header() {
     </div>`;
 }
 export default header;
+
+<div class="categories">
+  <ul>
+    <li class="dropdown-content1 dropdown-content">
+      <a href="mens.html">Men</a>
+    </li>
+    <li class="dropdown-content2 dropdown-content">
+      <a href="">Women</a>
+    </li>
+    <li class="dropdown-content3 dropdown-content">
+      <a href="">Kids</a>
+    </li>
+    <li class="dropdown-content4 dropdown-content">
+      <a href="">Beauty</a>
+    </li>
+  </ul>
+</div>;
