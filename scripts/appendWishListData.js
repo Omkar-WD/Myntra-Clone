@@ -51,7 +51,7 @@ function appendWishListData(data, cartarr, animationForConfirmation) {
         desc: desc.textContent,
       };
       localStorage.setItem("prodobj", JSON.stringify(prodobj));
-      window.location.href = "productdetails.html";
+      window.location.href = "../productSection( P )/productdetails.html";
     });
     textdiv.addEventListener("click", () => {
       let prodobj = {
@@ -65,7 +65,7 @@ function appendWishListData(data, cartarr, animationForConfirmation) {
         desc: desc.textContent,
       };
       localStorage.setItem("prodobj", JSON.stringify(prodobj));
-      window.location.href = "productdetails.html";
+      window.location.href = "../productSection( P )/productdetails.html";
     });
     document.querySelector("#products_div").append(maindiv);
   });

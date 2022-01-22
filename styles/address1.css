@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2%;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 #main1 {
   width: 40%;
@@ -13,10 +13,9 @@
   justify-content: space-between;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-  rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
-.main111{
+.main111 {
   margin: 10px;
 }
 .but1 {
@@ -28,7 +27,7 @@
   cursor: pointer;
   margin: 0px 5px;
 }
-.but11{
+.but11 {
   margin: 10px 20px;
 }
 .butdiv {
@@ -54,7 +53,7 @@
 
 #main12 {
   padding: 20px;
-  
+
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
@@ -76,10 +75,11 @@
   height: 100%;
   width: 30%;
 }
-img {
+.imgdiv > img {
   height: 100%;
   width: 100%;
 }
+
 .textdiv > p {
   display: inline;
 }
@@ -109,13 +109,12 @@ img {
   cursor: pointer;
 }
 
-.green{
+.green {
   color: green;
-
 }
-.linep{
+.linep {
   display: inline;
-   text-decoration: line-through;
+  text-decoration: line-through;
 }
 #container2 {
   display: flex;
@@ -171,11 +170,10 @@ img {
     width: 90%;
     margin: 20px;
   }
- 
 }
 a {
   text-decoration: none;
 }
-.onlyh3{
+.onlyh3 {
   color: #ff3f6c;
 }

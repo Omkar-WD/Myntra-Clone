@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Product Details</title>
+    <link
+      rel="shortcut icon"
+      href="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="../styles/productdetails.css" />
     <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
   </head>
   <body>
-    <div id="header_container"></div>
+    <div class="header"></div>
     <!-- for animation add to cart -->
     <div id="pop-up">
       <div class="container"></div>
@@ -76,9 +82,24 @@
 </html>
 <script type="module">
   import animationForConfirmation from "../components/animationForConfirmation.js";
-  //     import header from "../components/header.js";
-  //   document.querySelector("#header_container").innerHTML = header();
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
 
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
   let pincodeStatus = async (e) => {
     try {
       if (e.key == "Enter") {
