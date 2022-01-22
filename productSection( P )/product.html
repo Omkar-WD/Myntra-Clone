@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="../styles/header.css" rel="stylesheet">
     <style>
       #main {
         display: flex;
@@ -45,6 +46,7 @@
         height: 100%;
         width: 100%;
         position: relative;
+       
         
       }
       #ratingol{
@@ -61,9 +63,11 @@
           padding: 0px 5px;
           
           
+          
       }
       #wishdiv{
           display: none;
+         
       }
       #wishdiv > img{
           height: 15px;
@@ -184,7 +188,7 @@
       }
       
       
-      @media only screen  and (min-width: 0) and (max-width: 376px){
+      /* @media only screen  and (min-width: 0) and (max-width: 376px){
         #header{
             display: none;
         }
@@ -194,13 +198,13 @@
         #filters_div{
             display: none;
         }
-      }
+      } */
     </style>
   </head>
   <body>
-    
+    <div class="header"></div>
     <div id="container">
-      <div id="header_container"></div>
+      
       <div id="topfilter_div">
           <span>Home </span>/ <span>Clothing </span>/ <span><b> Men T-Shirts</b></span>
           <h4>Men T-Shirts</h4>
@@ -378,7 +382,9 @@
     </div>
   </body>
 </html>
-<script>
+<script type="module">
+  import navbar from "../components/header.js"
+  document.querySelector(".header").innerHTML = navbar();
 
     
     let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
@@ -920,4 +926,21 @@
   document.querySelector("#sixty").addEventListener("change", radiob.bind(null,60,sixty));
   document.querySelector("#seventy").addEventListener("change", radiob.bind(null,70,seventy));
   document.querySelector("#eighty").addEventListener("change", radiob.bind(null,80,eighty));
+
+  document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
 </script>
