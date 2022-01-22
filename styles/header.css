@@ -34,7 +34,6 @@ body {
 #myLinks {
   display: none;
   position: sticky;
-  top: 12%;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   background-color: white;
 }
@@ -82,6 +81,125 @@ a {
   font-weight: bolder;
   margin: 10px 0;
 }
+
+/* navbar */
+.categories {
+  margin-left: 50px;
+  width: 33%;
+}
+.categories ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+.dropdown-content1:hover {
+  border-bottom: 5px solid rgb(6, 47, 109);
+}
+.dropdown-content2:hover {
+  border-bottom: 5px solid rgb(238, 0, 119);
+}
+.dropdown-content3:hover {
+  border-bottom: 5px solid orangered;
+}
+.dropdown-content4:hover {
+  border-bottom: 5px solid gold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: fixed;
+  background: white;
+  top: 70px;
+  z-index: 20;
+  padding: 10px 30px 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 6px -6px #aaa;
+}
+#dropdown-menu5 {
+  top: 55px;
+}
+.dropdown-menu1 {
+  left: 15%;
+}
+
+.dropdown-menu2 {
+  left: 20%;
+}
+
+.dropdown-menu3 {
+  left: 25%;
+}
+.dropdown-menu4 {
+  left: 30%;
+}
+.dropdown-menu5 {
+  right: 5%;
+}
+
+.dropdown-menu ul li {
+  margin-bottom: 10px;
+}
+.dropdown-menu ul li a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #282c3f;
+  -webkit-transition: left 0.2s ease-out, width 0.2s ease-out;
+  transition: left 0.2s ease-out, width 0.2s ease-out;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu ul li:hover a {
+  padding-left: 8px;
+  color: #ff0095;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+}
+
+.categories ul li a {
+  padding: 28px 17px 28px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #282c3f;
+  -webkit-transition: left 0.2s ease-out, width 0.2s ease-out;
+  transition: left 0.2s ease-out, width 0.2s ease-out;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.categories ul:hover {
+  border-bottom: #282c3f;
+}
+
+#bag-items {
+  position: relative;
+  bottom: 45px;
+  right: -13px;
+  background-color: #ff0095;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-weight: bolder;
+  color: white;
+}
+#wishlist-items {
+  position: relative;
+  bottom: 45px;
+  right: -29px;
+  background-color: #ff0095;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-weight: bolder;
+  color: white;
+}
 @media screen and (min-width: 0) and (max-width: 415px) {
   .company-logo {
     display: none;
@@ -99,7 +217,7 @@ a {
 @media screen and (min-width: 0) and (max-width: 768px) {
   .navbar {
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 10px;
   }
   #menuIcon {
     display: block;

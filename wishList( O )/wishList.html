@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wishlist</title>
+    <link
+      rel="icon"
+      href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
+      type="image/icon type"
+    />
     <link rel="stylesheet" href="../styles/header.css" />
     <link rel="stylesheet" href="../styles/signUp.css" />
     <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/modal.css" />
     <link rel="stylesheet" href="../styles/wishList.css" />
     <link rel="stylesheet" href="../styles/animationForConfirmation.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
   </head>
   <body>
     <!-- navigation bar -->
@@ -23,17 +29,22 @@
 
     <!-- products container -->
     <div id="products_div"></div>
+
+    <!-- footer -->
+    <div class="footer"></div>
   </body>
 </html>
 
 <script src="../scripts/loginModal.js"></script>
 <script src="../scripts/signUpModal.js"></script>
+<script src="../scripts/headerMenubar.js"></script>
 
 <script type="module">
   import header from "../components/header.js";
   import animationForConfirmation from "../components/animationForConfirmation.js";
   import appendWishListData from "../scripts/appendWishListData.js";
-
+  import footer from "../components/footer.js";
+  document.querySelector(".footer").innerHTML = footer();
   document.querySelector(".header").innerHTML = header();
   document.querySelector("#menuIcon").addEventListener("click", function () {
     let x = document.getElementById("myLinks");

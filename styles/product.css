@@ -1,6 +1,10 @@
 #main {
   display: flex;
 }
+
+#container {
+  padding: 0 10px;
+}
 .btnStyle {
   border: 1px solid #e83b6a;
   color: #e83b6a;
@@ -146,9 +150,9 @@ input {
   display: flex;
   align-items: center;
 }
-label {
+/* label {
   font-size: small;
-}
+} */
 #rem_filters {
   display: flex;
   padding: 10px 0px;

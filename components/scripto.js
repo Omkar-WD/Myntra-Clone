@@ -1,7 +1,8 @@
 function appendDatao(orderdata, orderDateArr, loco) {
   if (orderdata.length !== 0) {
-    orderdata.forEach(function (ele, i) {
-      console.log(ele);
+    // orderdata.forEach(function (ele, i) {
+    for (let i = orderdata.length - 1; i >= 0; i--) {
+      let ele = orderdata[i];
       let carddiv = document.createElement("div");
       carddiv.setAttribute("id", "carddiv");
       let carddivposterimage = document.createElement("div");
@@ -36,7 +37,7 @@ function appendDatao(orderdata, orderDateArr, loco) {
       buttondiv.append(butt1, butt2);
       carddiv.append(carddivposterimage, buttondiv);
       loco.append(carddiv);
-    });
+    }
   }
 }
 export default appendDatao;

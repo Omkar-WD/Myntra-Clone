@@ -61,7 +61,13 @@ setTimeout(function () {
 
       console.log(signUpData);
       localStorage.setItem("signUpData", JSON.stringify(signUpData));
-      window.location.href = "";
+      document.querySelector("#signUpContainer").style.display = "none";
+      signUpModal.style.display = "none";
+      setTimeout(function () {
+        let loginModal = document.getElementById("openLoginPage");
+        document.querySelector("#loginContainer").innerHTML = loginDesign();
+        loginModal.style.display = "block";
+      }, 1000);
     });
   };
   for (let i = 0; i < signUpSpan.length; i++) {
