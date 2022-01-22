@@ -11,7 +11,7 @@ function header() {
   <div id="menu" class="categories">
   <ul>
     <li class="dropdown-content1 dropdown-content">
-      <a href="mens.html">Men</a>
+      <a href="">Men</a>
     </li>
     <li class="dropdown-content2 dropdown-content">
       <a href="">Women</a>
@@ -63,6 +63,7 @@ function header() {
       </a>
 
       <div>Wishlist</div>
+      <div id="wishlist-items"></div>
     </div>
 
     <div>
@@ -73,8 +74,8 @@ function header() {
           alt=""
         />
       </a>
-
       <div>Bag</div>
+      <div id="bag-items"></div>
     </div>
   </div>
   <img

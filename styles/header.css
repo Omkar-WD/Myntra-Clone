@@ -177,6 +177,29 @@ a {
 .categories ul:hover {
   border-bottom: #282c3f;
 }
+
+#bag-items {
+  position: relative;
+  bottom: 45px;
+  right: -13px;
+  background-color: #ff0095;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-weight: bolder;
+  color: white;
+}
+#wishlist-items {
+  position: relative;
+  bottom: 45px;
+  right: -29px;
+  background-color: #ff0095;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-weight: bolder;
+  color: white;
+}
 @media screen and (min-width: 0) and (max-width: 415px) {
   .company-logo {
     display: none;
@@ -194,7 +217,7 @@ a {
 @media screen and (min-width: 0) and (max-width: 768px) {
   .navbar {
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 10px;
   }
   #menuIcon {
     display: block;

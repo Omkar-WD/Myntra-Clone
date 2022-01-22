@@ -108,13 +108,20 @@ function dropDown5() {
   });
 }
 
+setInterval(() => {
+  let bagItems = document.querySelector("#bag-items");
+  let cartarr = JSON.parse(localStorage.getItem("cartarr"));
+  let wishlistItems = document.querySelector("#wishlist-items");
+  let wishlistarrarr = JSON.parse(localStorage.getItem("wisharr"));
+  bagItems.innerHTML = cartarr.length;
+  wishlistItems.innerHTML = wishlistarrarr.length;
+}, 1000);
 setTimeout(() => {
   dropDown1();
   dropDown2();
   dropDown3();
   dropDown4();
   dropDown5();
-
   let login = document.querySelector("#loginMenubar");
   let signup = document.querySelector("#signupMenubar");
   let fullname = document.querySelector("#fullname");
@@ -139,7 +146,7 @@ setTimeout(() => {
     logout.style.display = "block";
     logout.addEventListener("click", () => {
       localStorage.setItem("isUserLogin", "false");
-      window.location.href = "./index.html";
+      window.location.href = "";
     });
   } else {
     login.style.display = "block";
