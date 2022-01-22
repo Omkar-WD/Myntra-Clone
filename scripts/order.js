@@ -1,5 +1,8 @@
 import appendDatao from "../components/scripto.js";
 import header from "../components/header.js";
+import footer from "../components/footer.js";
+document.querySelector(".footer").innerHTML = footer();
+
 document.querySelector(".header").innerHTML = header();
 document.querySelector("#menuIcon").addEventListener("click", function () {
   let x = document.getElementById("myLinks");

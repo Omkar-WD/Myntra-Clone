@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
+    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/signUp.css" />
   </head>
   <body>
     <div class="header"></div>
@@ -302,11 +305,15 @@
   </body>
 </html>
 
+<script src="./scripts/index.js"></script>
+<script src="./scripts/loginModal.js"></script>
+<script src="./scripts/signUpModal.js"></script>
 <script src="./scripts/headerMenubar.js"></script>
+
 <script type="module">
   import header from "./components/header.js";
   import footer from "./components/footer.js";
-
+  document.querySelector(".footer").innerHTML = footer();
   document.querySelector(".header").innerHTML = header();
   document.querySelector("#menuIcon").addEventListener("click", function () {
     let x = document.getElementById("myLinks");
@@ -324,37 +331,4 @@
       x.style.display = "flex";
     }
   });
-  document.querySelector(".footer").innerHTML = footer();
-</script>
-
-<script>
-  let timerID;
-  var slideIndex = 0;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
-
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-    slides[slideIndex - 1].style.display = "block";
-
-    timerID = setTimeout(() => {
-      showSlides();
-      timerID = null;
-    }, 3000); // Change image every 3 seconds
-  }
 </script>

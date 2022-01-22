@@ -33,7 +33,17 @@ function header() {
     <input type="text" placeholder="Search for products, brands and more" />
   </div>
   <div class="nav-last">
-    <div>
+  <div class="dropdown-menu5 dropdown-menu" id="dropdown-menu5">
+  <ul>
+    <li id="loginMenubar"><a id="loginModal">Login</a></li>
+    <li id="signupMenubar"><a id="signUpModal">SignUp</a></li>
+    <li id="fullname"><a >FullName</a></li>
+    <li id="profile"><a >Profile</a></li>
+    <li id="orders"><a >Orders</a></li>
+    <li id="logout"><a >Logout</a></li>
+  </ul>
+  </div>
+    <div class="dropdown-content5 dropdown-content">
       <a href="">
         <img
           id="svg"
@@ -41,10 +51,8 @@ function header() {
           alt=""
         />
       </a>
-
       <div>Profile</div>
     </div>
-
     <div>
       <a href="../wishList( O )/wishList.html">
         <img
@@ -82,47 +90,44 @@ function header() {
 </div>
 <div class="dropdown-menu1 dropdown-menu">
 <ul>
-  <li><a href="products.html">Shirts</a></li>
+  <li><a href="">Shirts</a></li>
   <li><a href="../productSection( P )/product.html">Tshirts</a></li>
-  <li><a href="products.html">Jeans</a></li>
-  <li><a href="products.html">Shoes</a></li>
-  <li><a href="products.html">Accessories</a></li>
+  <li><a href="">Jeans</a></li>
+  <li><a href="">Shoes</a></li>
+  <li><a href="">Accessories</a></li>
 </ul>
 </div>
 
 <div class="dropdown-menu2 dropdown-menu">
 <ul>
-  <li><a href="products.html">Ethnic</a></li>
-  <li><a href="products.html">western wear</a></li>
-  <li><a href="products.html">Footwear</a></li>
-  <li><a href="products.html">sports wear</a></li>
-  <li><a href="products.html">Accessories</a></li>
+  <li><a href="">Ethnic</a></li>
+  <li><a href="">western wear</a></li>
+  <li><a href="">Footwear</a></li>
+  <li><a href="">sports wear</a></li>
+  <li><a href="">Accessories</a></li>
 </ul>
 </div>
 
 <div class="dropdown-menu3 dropdown-menu">
 <ul>
-  <li><a href="products.html">Boys Clothing</a></li>
-  <li><a href="products.html">Girls Clothing</a></li>
-  <li><a href="products.html">infants</a></li>
-  <li><a href="products.html">boys footwear</a></li>
-  <li><a href="products.html">girls footwear</a></li>
+  <li><a href="">Boys Clothing</a></li>
+  <li><a href="">Girls Clothing</a></li>
+  <li><a href="">infants</a></li>
+  <li><a href="">boys footwear</a></li>
+  <li><a href="">girls footwear</a></li>
 </ul>
 </div>
 
 <div class="dropdown-menu4 dropdown-menu">
 <ul>
-  <li><a href="products.html">make up</a></li>
-  <li><a href="products.html">skincare</a></li>
-  <li><a href="products.html">haircare</a></li>
-  <li><a href="products.html">fragrances</a></li>
-  <li><a href="products.html">mens grooming</a></li>
+  <li><a href="">make up</a></li>
+  <li><a href="">skincare</a></li>
+  <li><a href="">haircare</a></li>
+  <li><a href="">fragrances</a></li>
+  <li><a href="">mens grooming</a></li>
 </ul>
 </div>
-    <div>
-    <button id="loginModal">Login</button>
-    <button id="signUpModal">SignUp</button>
-    </div>
+
     <div id="openLoginPage" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
