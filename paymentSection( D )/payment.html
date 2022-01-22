@@ -5,177 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            font-family: Whitney, Helvetica, Arial, sans-serif;
-            padding: 0px;
-            margin: 0px;
-        }
+    <script src="https://kit.fontawesome.com/c59888b87b.js" crossorigin="anonymous"></script>
+    <title>Payment</title>
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/payment.css">
 
-        #myBtn {
-            color: #ff3f6c;
-            background-color: white;
-            border: none;
-        }
-
-        #main1 {
-            border: 1px solid blue;
-            width: 40%;
-        }
-
-        #container {
-            display: flex;
-            justify-content: center;
-
-
-        }
-
-        #maincont2 {
-            display: flex;
-            border: 1px solid green;
-            width: 100%;
-             gap: 10px;
-        }
-
-        .parent {
-            margin-top: 20px;
-            border: 1px solid blue;
-            width: 100%;
-        }
-
-        .btn {
-            width: 100%;
-            border: none;
-            padding: 20px 10px;
-            margin: 3px;
-            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-
-        }
-
-        .btn:hover {
-            background: white;
-            border-left: 8px solid #ff3f6c;
-        }
-        #paymentcont1 {
-            border: 2px solid orange;
-            width: 45%;
-        }
-
-        #paymentcont2 {
-            border: 2px solid red;
-            width: 55%;
-            padding: 20px;
-        }
-
-        .captcha {
-            display: flex;
-            border: 2px solid black;
-            margin: 10px 0px;
-        }
-        .imgdiv{
-            border: 2px solid purple;
-            width: 60%;
-        }
-
-        img {
-            border: 1px solid blue;
-            height: 100%;
-            width: 100%;
-        }
-        .changeimgdiv{
-            padding: 20px 10px;
-            border: 2px solid yellow;
-            width:40%;
-            
-        }
-        .inputdiv{
-            width: 90%;
-            padding: 10px;
-        }
-        .onlyp{
-         font-size: 15px;
-         margin-top: 20px;
-
-        }
-        #butplaceorder{
-            margin-top: 20px;
-            width: 100%;
-            background-color: red;
-            padding: 10px;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        #container2{
-          display: flex;
-          justify-content: center;
-          margin-top: 30px;
-          
-      }
-
-
-        .footer {
-            border-top: 1px solid #F5F5F6;
-            margin: 0 0 10px 0;
-        }
-     
-        .images {
-            width: 70px;
-            margin-top: 10px;
-            height: 40px;
-        }
-        .help{
-            margin:  20px 50px ;
-        }
-        .forpadding{
-            padding: 20px;
-        }
-        .cardinput{
-            width: 90%;
-            padding: 10px;
-            border: 1px solid #dcdcdf;
-            border-radius: 5px;
-        }
-        #cardvalid{
-            width: 55%;
-            
-        }
-        #cardcvv{
-            width: 20%;
-            margin-left: 5%;
-        }
-        #paynowbut{
-            
-            width: 100%;
-            background-color: red;
-            padding: 10px;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 
 <body>
+    <div class="header"></div>
     <div id="container">
         <div id="main1">
             <div class="maincont1">
-                <h4>Bank Offer</h4>
-                <p>
-                    . 10% Instant Discount on RBL Bank Credit and Debit Cards on a minimum spend of 2500. TCA<br><br>
-                    <span id="tca">...</span><span id="more">
-                        . 10% Instant Discount with Standard Chartered Credit and Debit Cards on a minimum spend of
-                        2500. TCA<br><br>
-                        . 5% Unlimited Cashback on Flipkart Axis Bank Ctedit Card TCA<br><br>
-                        . 10% Cashback upto Rs 250 on a minimum spend of Rs 1000 with PayZapp TCA<br><br>
-                        . Upto Rs 500 Cashback on Mobikwik wallet transaction of min Rs 999. Use code MBK500 on mobikwik
-                        TCA<br><br>
-                        . Flat Rs 200 Cashback on first Airtel Payments Bank transcation on myntra on a min spend of Rs
-                        2000 TCA</span>
-                </p>
-                <button onclick="showMore()" id="myBtn">Show More</button>
             </div>
             <div id="maincont2">
                 <div id="paymentcont1">
@@ -197,13 +38,12 @@
                                 alt=""></div>
                             <div class="changeimgdiv">change Image</div>
                         </div>
-                        <input class="inputdiv" type="text" placeholder="Enetr code shown in above image*">
+                        <input class="inputdiv" type="text" placeholder="Enter code shown in above image*">
                         <p class="onlyp">You can pay via Cash/Card or UPI enabled app at the time of delivery.
                             Ask your delivery executive for these option.
                         </p>
                         <button id="butplaceorder">PLACE ORDER</button>
-                    </div>
-               
+                    </div>                   
                 </div>
             </div>
 
@@ -262,4 +102,5 @@
 </body>
 
 </html>
-<script src="./payment.js"></script>
+<script type="module" src="../scripts/payment.js">
+</script>
