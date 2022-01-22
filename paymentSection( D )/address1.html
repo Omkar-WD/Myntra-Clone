@@ -19,21 +19,28 @@
                         <p>DEFAULT ADDRESS</p>
                     </div>
                     <div class="main112">
-                        <a href="./addres.html"><button class="but1">ADD NEW ADDRESS</button></a>
+                        <a href="./addres.html"><button class="but1 but11">ADD NEW ADDRESS</button></a>
                     </div>
                 </div>
                 <div id="main12">
                     <div class="main121">
-                        <div><h3>Dhananajya dhoke</h3></div>
+                        <div><h3 id="h31">Dhananajya dhoke</h3></div>
                         <div>  <button id="homebutton">HOME</button></div>
                     </div>
-                    
+                    <div>
+                      <span id="span1">hingna road ,</span><br>
+                      <span id="span2">Nagpur ,</span>
+                      <span id="span3">Maharashtra, </span>
+                      <span id="span4">441106</span><br>
+                      <span >Mobile :</span><span id="span5">987465123</span>
+
+
+                    </div>
                   
-                    <P>AT. POST ADDDRESS</P>
-                    <div class="main121">
+                    <!-- <div class="main121">
                         <div>Mobile :</div>
                         <div><h4>987456123</h4></div>
-                    </div>
+                    </div> -->
                     <p>Pay on Delivery available</p>
                     <div class="butdiv">
                         
@@ -45,7 +52,7 @@
                     
                 </div>
                 <div id="main13">
-                    <a href="./addres.html"> <h3>+Add New Address</h3></a>                   
+                    <a href="./addres.html"> <h3 class="onlyh3">+Add New Address</h3></a>                   
                 </div>
             </div>
             <div id="main2">
@@ -64,19 +71,19 @@
                     <div class="pricediv1">
                         <p>Total MRP</p>
                         <p>Discount on MRP</p>
-                        <p>Convenience Fee</p> 
+                        <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span></p> 
                         <h4>Total Amount</h4>  
                     </div>
                     <div class="pricediv2">
                     
-                        <p>899</p>
-                        <p>630</p>
-                        <p>99</p>
-                        <h4>269</h4>
+                        <p>Rs.899</p>
+                        <p class="green">Rs.-630</p>
+                        <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+                        <h4>Rs.269</h4>
                     </div>
                   </div>
                     <div id="buttondiv">
-                        <button id="contbutton">CONTINUE</button>
+                       <a href="./payment.html"> <button id="contbutton">CONTINUE</button></a>
                     </div>
                    
                   </div>
@@ -132,7 +139,7 @@
     </div>
 </body>
 </html>
-
+<script src="./addresss1.js"></script>
 <script type="module">
   import header from "../components/header.js";
   document.querySelector(".header").innerHTML = header();
