@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/addres.css">
 </head>
@@ -45,25 +46,6 @@
            </form>
        </div>
        <div id="main2">
-
-       
-        <div class="submain2div1">
-            <h4>PRICE DETAILS</h4>
-            <p>Total MRP</p>
-            <p>Discount on MRP</p>
-            <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span> </p>
-            <h4>Total Amount</h4>  
-        </div>
-        <div class="submain2div2">
-            <h4>(1 Items)</h4>
-            <p>Rs.899</p>
-            <p class="green">Rs.-630</p>
-            <p class="linep">Rs.99 </p> <span class="green">FREE</span>
-            <h4>Rs.269</h4>
-        </div>
-      
-       
-
         </div>
        </div>
 
@@ -124,4 +106,36 @@
 <script type="module">
     import header from "../components/header.js";
     document.querySelector(".header").innerHTML = header();
+    document.querySelector("#menuIcon").addEventListener("click", function () {
+    let x = document.getElementById("myLinks");
+    let w, h;
+    setInterval(() => {
+      w = window.innerWidth;
+      if (w > 768) {
+        x.style.display = "none";
+      }
+    }, 500);
+
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  });
+  let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
+  let {totalItems,cartTotal,discount,finalTotal} = objDetails;
+  document.querySelector("#main2").innerHTML=`<div class="submain2div1">
+            <h4>PRICE DETAILS</h4>
+            <p>Total MRP</p>
+            <p>Discount on MRP</p>
+            <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span> </p>
+            <h4>Total Amount</h4>  
+        </div>
+        <div class="submain2div2">
+            <h4>(${totalItems} Items)</h4>
+            <p>Rs.${cartTotal}</p>
+            <p class="green">-Rs.${discount}</p>
+            <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+            <h4>Rs.${finalTotal}</h4>
+        </div>`;
 </script>

@@ -53,9 +53,9 @@ setTimeout(function () {
     submitButton.addEventListener("submit", function (event) {
       event.preventDefault();
       let signUpData = {
-        full_name: document.querySelector("#full_name").value,
-        email: document.querySelector("#email").value,
-        mobile: document.querySelector("#mobile").value,
+        Fullname: document.querySelector("#full_name").value,
+        Email: document.querySelector("#email").value,
+        Mobile: document.querySelector("#mobile").value,
         password: document.querySelector("#password").value,
       };
 
