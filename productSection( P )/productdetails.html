@@ -118,12 +118,11 @@
   document.querySelector("#product_desc").textContent = proddetails.desc;
   document.querySelector("#product_ratings").textContent =
     proddetails.rating + " | " + proddetails.votes;
-  document.querySelector("#product_price").textContent =
-    "Rs. " + proddetails.price;
+  document.querySelector("#product_price").textContent = proddetails.price;
   document.querySelector("#product_maxprice").textContent =
-    "Rs " + proddetails.maxprice;
+    proddetails.maxprice;
   document.querySelector("#product_discount").textContent =
-    "(" + proddetails.discount + "% OFF)";
+    proddetails.discount;
 
   let pincode = document.querySelector("#pincode");
   pincode.addEventListener("keypress", pincodeStatus);

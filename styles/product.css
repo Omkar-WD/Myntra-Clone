@@ -1,6 +1,20 @@
 #main {
   display: flex;
 }
+.btnStyle {
+  border: 1px solid #e83b6a;
+  color: #e83b6a;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bolder;
+  margin: 10px 0;
+}
+.btnStyle:hover {
+  color: white;
+  background-color: #e83b6a;
+}
 #products_div {
   display: flex;
   flex-wrap: wrap;

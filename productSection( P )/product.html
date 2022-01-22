@@ -23,18 +23,18 @@
         <div id="rem_filters">
           <div><b>FILTERS</b></div>
           <div id="malecious_filters">
-            <select>
+            <select class="btnStyle">
               <option>Bundles</option>
             </select>
-            <select>
+            <select class="btnStyle">
               <option>Country of Origin</option>
             </select>
-            <select>
+            <select class="btnStyle">
               <option>Size</option>
             </select>
           </div>
           <div id="sortby_filter">
-            <select id="sortby">
+            <select class="btnStyle" id="sortby">
               <option value="sort" disabled selected>
                 Sort by: <b>Reccommended</b>
               </option>
@@ -240,9 +240,11 @@
       rating: rating.textContent,
       votes: vote.textContent,
       title: elem.title,
-      price: elem.price,
-      maxprice: elem.maxprice,
-      discount: 100 - Math.round((elem.price * 100) / elem.maxprice),
+      price: `Rs: ${elem.price}`,
+      maxprice: `Rs: ${elem.maxprice}`,
+      discount: `(${
+        100 - Math.round((elem.price * 100) / elem.maxprice)
+      }% OFF)`,
       desc: elem.desc,
     };
     localStorage.setItem("prodobj", JSON.stringify(prodobj));
