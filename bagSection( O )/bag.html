@@ -176,7 +176,7 @@
                   999. Use code MBK500 on mobikwik TCA<br /><br />
                   . Flat Rs 200 Cashback on first Airtel Payments Bank transcation
                   on myntra on a min spend of Rs 2000 TCA`;
-    let { Fullname } = JSON.parse(localStorage.getItem("signUpData"));
+    let { Fullname } = JSON.parse(localStorage.getItem("signUpData")) || { Fullname : "Username"};
 
     displayNameAndAddress(Fullname);
     appendCartData(cartData);

@@ -21,9 +21,9 @@ function loginDesign() {
           <input id="loginButton2" type="submit" value="Login" />
         </form>
       </div>
-      <a id="signupButton2" href="">
-        <button>Click here for Signup</button>
-      </a>
+      <!--  <a id="signupButton2" href="">
+         <button>Click here for Signup</button>
+       </a> -->
     `;
 }
 let loginSpan = document.getElementsByClassName("close");
@@ -37,14 +37,43 @@ setTimeout(function () {
     let loginButton = document.querySelector("#login");
     loginButton.addEventListener("submit", function (event) {
       event.preventDefault();
-      let loginData = {
-        login_input: document.querySelector("#login_data").value,
-        password: document.querySelector("#password").value,
-      };
-      console.log(loginData);
-      localStorage.setItem("loginData", JSON.stringify(loginData));
-      localStorage.setItem("isUserLogin", "true");
+      let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
+      let isLogin = "false";
+      let incorrectPassword = "false";
+      signuparr.forEach((elem) =>{
+        if(elem.Email == document.querySelector("#login_data").value || elem.Mobile == document.querySelector("#login_data").value){
+          if(elem.password == document.querySelector("#password").value){
+            localStorage.setItem("signUpData", JSON.stringify(elem));
+            isLogin = "true";
+            return;
+          }else{
+            incorrectPassword = "true";
+            
+            
+            
+          }
+        }
+        
+      })
+      if(isLogin == "true"){
+        localStorage.setItem("isUserLogin", "true");
       window.location.href = "";
+        alert("login successful");
+      }
+      else if(incorrectPassword == "true"){
+        alert("Incorrect Password");
+      }
+      else{
+        localStorage.setItem("isUserLogin", "false");
+        alert("user not signed up");
+      }
+      // let loginData = {
+      //   login_input: document.querySelector("#login_data").value,
+      //   password: document.querySelector("#password").value,
+      // };
+      // console.log(loginData);
+      // localStorage.setItem("loginData", JSON.stringify(loginData));
+      
     });
   };
   for (let i = 0; i < loginSpan.length; i++) {

@@ -177,6 +177,8 @@
 
   let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   document.querySelector("#addtobag").addEventListener("click", () => {
+    let isLogin = localStorage.getItem("isUserLogin");
+    if(isLogin == "true"){
     if (proddetails.size === undefined) {
       document.querySelector("#select_size").style.display = "block";
     } else if (pincode.value.length === 0) {
@@ -188,5 +190,9 @@
       localStorage.setItem("cartarr", JSON.stringify(cartarr));
       animationForConfirmation("Added To Bag");
     }
+  }
+  else{
+    alert("Please login to continue")
+  }
   });
 </script>
