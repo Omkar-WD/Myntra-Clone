@@ -2,11 +2,7 @@ let rightdiv = document.getElementById("rightdiv");
 let profilediv = document.getElementById("profilediv");
 let profilecenterdiv = document.getElementById("profilecenterdiv");
 
-let profiledata = JSON.parse(localStorage.getItem("profileDetails"));
 let signUpData = JSON.parse(localStorage.getItem("signUpData"));
-
-profile(profiledata);
-
 let profileObject = {
   Fullname: signUpData.Fullname,
   Mobile: signUpData.Mobile,
@@ -18,6 +14,9 @@ let profileObject = {
   Hint_Name: "N/A",
 };
 localStorage.setItem("profileDetails", JSON.stringify(profileObject));
+
+let profiledata = JSON.parse(localStorage.getItem("profileDetails"));
+profile(profiledata);
 
 function profile(profiledata) {
   if (profiledata != null) {
