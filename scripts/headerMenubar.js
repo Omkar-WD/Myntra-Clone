@@ -136,14 +136,17 @@ setTimeout(() => {
     fullname.style.display = "block";
     fullname.innerHTML = `<h4>${Fullname}</h4>`;
     profile.style.display = "block";
+    orders.style.display = "block";
+    logout.style.display = "block";
+    profile.innerHTML = `<li id="profile"><a href="../historySection( S )/profile.html">Profile</a></li>`;
+    orders.innerHTML = `<li id="orders"><a href="../historySection( S )/order.html">Orders</a></li>`;
+    logout.innerHTML = `<li id="logout"><a href="">Logout</a></li>`;
     profile.addEventListener("click", () => {
       window.location.href = "../historySection( S )/profile.html";
     });
-    orders.style.display = "block";
     orders.addEventListener("click", () => {
       window.location.href = "../historySection( S )/order.html";
     });
-    logout.style.display = "block";
     logout.addEventListener("click", () => {
       localStorage.setItem("isUserLogin", "false");
       window.location.href = "";
