@@ -1,28 +1,19 @@
 #container {
   border-top: 1px solid grey;
-  max-width: 800px;
-  min-height: 300px;
   display: flex;
   margin: 30px auto;
+  width: 1000px;
 }
 
 #leftdiv {
-  width: 20%;
+  width: 15%;
+  height: 480px;
   border-right: 1px solid grey;
   line-height: 20px;
 }
 
-#leftdiv-heading {
-  width: 100%;
-  margin: auto;
-}
-
-.hoverp:hover {
-  color: #e83b6a;
-}
-
 #rightdiv {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,9 +21,90 @@
   margin: auto;
 }
 
+#carddiv {
+  height: 240px;
+  margin-top: 1%;
+}
+
+#carddivposterimage {
+  display: flex;
+  width: 100%;
+  height: 85%;
+}
+
+#carddivposterimage > div {
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#carddivposterimage > div > p {
+  margin: 10px;
+}
+
+#buttondiv {
+  width: 100%;
+  height: 10%;
+}
+
+.btnStyle {
+  border: 1px solid #e83b6a;
+  color: #e83b6a;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bolder;
+  margin: 10px;
+  width: 46%;
+  margin-top: 2%;
+  margin-left: 2%;
+  background-color: white;
+  color: black;
+}
+.btnStyle:hover {
+  color: white;
+  background-color: #e83b6a;
+}
+/* #buttondiv > button {
+  width: 46%;
+  margin-top: 2%;
+  margin-left: 2%;
+  background-color: white;
+  color: black;
+} */
+
 a {
   color: black;
   text-decoration: none;
+}
+
+.hrrulerwidth {
+  width: 60%;
+  margin-right: 75%;
+}
+
+#myntrainsider {
+  text-align: center;
+  width: 90%;
+  margin-top: 1%;
+  padding-left: 1%;
+  line-height: 5px;
+  color: white;
+  background-color: #e83b6a;
+  font-weight: bolder;
+}
+
+#carddivposterimage > div > img {
+  width: 100%;
+  height: 100%;
+}
+
+.dummyimage {
+  width: 50%;
+  height: 50%;
+  margin-left: 20%;
 }
 
 .colorgreen {
@@ -40,12 +112,22 @@ a {
 }
 
 #profilediv {
+  width: 85%;
+  height: 530px;
   border: 1px solid none;
-  margin: auto;
+  margin: 2%;
 }
 
 #profilecenterdiv {
+  width: 80%;
+  height: 80%;
+  border-top: 1px solid ghostwhite;
   margin: auto;
+  margin-top: 2%;
+}
+
+.aliglrftprofilehead {
+  margin-left: 10.5%;
 }
 
 td {
@@ -58,10 +140,15 @@ td {
 
 #editbutt {
   background-color: #e83b6a;
-  width: 100%;
+  width: 70%;
   height: 30px;
   margin-top: 7%;
   border: none;
+  margin-left: 0%;
+}
+
+.hoverp:hover {
+  color: #e83b6a;
 }
 
 #editdiv {
@@ -111,6 +198,11 @@ input {
     display: none;
   }
 
+  #container {
+    border: none;
+    width: 370px;
+  }
+
   #rightdiv {
     margin: auto;
     width: 100%;
@@ -132,6 +224,11 @@ input {
   #leftdiv,
   #myntrainsider {
     display: none;
+  }
+
+  #container {
+    border: none;
+    width: 500px;
   }
 
   #rightdiv {
