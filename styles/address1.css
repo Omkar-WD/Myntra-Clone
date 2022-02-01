@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2%;
-  /* margin-top: 30px; */
+  margin-top: 30px;
 }
 #main1 {
   width: 40%;

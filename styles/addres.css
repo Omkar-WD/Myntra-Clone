@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 10%;
-  /* margin-top: 30px; */
+  margin-top: 30px;
 }
 #main1 {
   width: 30%;
