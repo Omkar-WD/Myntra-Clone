@@ -39,75 +39,58 @@ a {
   color: rgb(52, 146, 52);
 }
 
-#profilediv {
-  border: 1px solid none;
-  margin: auto;
+#carddiv {
+  border-top: 2px solid black;
+  padding-bottom: 10px;
+}
+#carddivposterimage {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
-#profilecenterdiv {
-  margin: auto;
-}
-
-td {
-  width: 150px;
-  text-align: left;
-  border: 1px solid none;
-  padding: 5px;
-  font-size: 20px;
-}
-
-#editbutt {
-  background-color: #e83b6a;
+#imagediv {
+  text-align: center;
   width: 100%;
-  height: 30px;
-  margin-top: 7%;
-  border: none;
 }
-
-#editdiv {
-  width: 90%;
-  height: 530px;
-  border: 1px solid black;
-  margin: 1%;
+#descriptondiv {
+  width: 100%;
 }
-
-#editdetail {
-  margin-left: 10.5%;
-  margin-bottom: 1%;
-}
-
-#horizontal {
-  margin-left: 5%;
-  width: 60%;
-  color: grey;
-}
-.mobileditdiv {
-  width: 70%;
-  height: 40px;
-  border: 1px solid grey;
-  margin-left: 7%;
-  margin-top: 2%;
-  line-height: 10px;
-  font-size: 14px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-#savechange {
-  margin-left: 22%;
-  height: 50px;
+#imagediv > img {
   width: 50%;
-  background-color: #e83b6a;
+}
+
+#buttondiv {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+#buttondiv > button {
+  margin: 0 20px;
+}
+
+.btnStyle {
+  border: 1px solid #e83b6a;
+  color: #e83b6a;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bolder;
+  margin: 10px;
+  width: 26%;
+  margin-top: 2%;
+  margin-left: 2%;
+  background-color: white;
   color: black;
 }
-
-input {
-  width: 200%;
+.btnStyle:hover {
+  color: white;
+  background-color: #e83b6a;
 }
-
-@media only Screen and (min-width: 0px) and (max-width: 375px) {
-  #leftdiv,
-  #myntrainsider {
+@media only Screen and (min-width: 0px) and (max-width: 768px) {
+  #leftdiv {
     display: none;
   }
 
@@ -116,35 +99,10 @@ input {
     width: 100%;
   }
 
-  #carddiv {
-    width: 98%;
-    height: 270px;
-    margin-left: 0%;
-    margin-top: 2%;
-    line-height: 15px;
-  }
   #carddivposterimage {
-    height: 60%;
+    flex-direction: column;
   }
-}
-
-@media only Screen and (min-width: 376px) and (max-width: 768px) {
-  #leftdiv,
-  #myntrainsider {
-    display: none;
-  }
-
-  #rightdiv {
-    margin: auto;
-  }
-
-  #carddiv {
-    width: 98%;
-    height: 250px;
-    margin-left: 0%;
-    margin-top: 1%;
-  }
-  #carddivposterimage {
-    height: 60%;
+  #descriptondiv {
+    text-align: center;
   }
 }
