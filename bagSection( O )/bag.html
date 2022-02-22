@@ -118,7 +118,7 @@
     appendCartData,
     showMore,
     displayNameAndAddress,
-    suggetionDataAddedToLocalStorage,
+    // suggetionDataAddedToLocalStorage,
   } from "../scripts/bag.js";
   import header from "../components/header.js";
   import displayTotal from "../components/displayTotal.js";
@@ -146,10 +146,24 @@
     }
   });
 
-  suggetionDataAddedToLocalStorage();
+  // suggetionDataAddedToLocalStorage();
 
   let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
-  let suggestionData = JSON.parse(localStorage.getItem("suggetionArr")) || [];
+  // let suggestionData = JSON.parse(localStorage.getItem("suggetionArr")) || [];
+  let suggestionData;
+  async function gettingSuggestionData() {
+    let url = `http://localhost:2345/suggestionCartData`;
+    try {
+      let responce = await fetch(url);
+      let data = await responce.json();
+      suggestionData = data.suggetionArr;
+      appendSuggestionData(suggestionData);
+      console.log("Suggestion Data : ", suggestionData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingSuggestionData();
 
   document
     .querySelector("#moveToWishList")
@@ -176,11 +190,13 @@
                   999. Use code MBK500 on mobikwik TCA<br /><br />
                   . Flat Rs 200 Cashback on first Airtel Payments Bank transcation
                   on myntra on a min spend of Rs 2000 TCA`;
-    let { Fullname } = JSON.parse(localStorage.getItem("signUpData")) || { Fullname : "Username"};
+    let { Fullname } = JSON.parse(localStorage.getItem("signUpData")) || {
+      Fullname: "Username",
+    };
 
     displayNameAndAddress(Fullname);
     appendCartData(cartData);
-    appendSuggestionData(suggestionData);
+    // appendSuggestionData(suggestionData);
     displayTotalItems(cartData);
 
     let couponVar = localStorage.getItem("isCouponApplied");
