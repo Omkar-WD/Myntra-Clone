@@ -138,61 +138,79 @@
     }
   };
 
-  let proddetails = JSON.parse(localStorage.getItem("prodobj"));
-  console.log(proddetails);
-  let imgs = document.querySelectorAll(".prodimg");
-  imgs.forEach((elem) => {
-    elem.src = proddetails.img;
-  });
-  document.querySelector("#current-shirt").textContent = proddetails.title;
-  document.querySelector("#product_title").textContent = proddetails.title;
-  document.querySelector("#product_desc").textContent = proddetails.desc;
-  document.querySelector("#product_ratings").textContent =
-    proddetails.rating + " | " + proddetails.votes;
-  document.querySelector("#product_price").textContent = proddetails.price;
-  document.querySelector("#product_maxprice").textContent =
-    proddetails.maxprice;
-  document.querySelector("#product_discount").textContent =
-    proddetails.discount;
+  let proddetails;
+  gettingSingleProductData(localStorage.getItem("productId"));
 
-  let pincode = document.querySelector("#pincode");
-  pincode.addEventListener("keypress", pincodeStatus);
+  async function gettingSingleProductData(id) {
+    let url = `http://localhost:2345/products/${id}`;
+    try {
+      let response = await fetch(url);
+      let data = await response.json();
+      //console.log("productsingleData : ", data);
+      proddetails = data;
+      printProduct(proddetails);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-  let sizes = document.querySelectorAll(".product-size");
-
-  sizes.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      elem.style.border = "1px solid #FF527B";
-      elem.style.color = "#FF527B";
-      sizes.forEach((e) => {
-        if (e != elem) {
-          e.style.border = "1px solid black";
-          e.style.color = "black";
-        }
-      });
-      proddetails.size = elem.textContent;
-      document.querySelector("#select_size").style.display = "none";
+  function printProduct(proddetails) {
+    //console.log(proddetails);
+    let imgs = document.querySelectorAll(".prodimg");
+    imgs.forEach((elem) => {
+      elem.src = proddetails.img;
     });
-  });
+    document.querySelector("#current-shirt").textContent = proddetails.title;
+    document.querySelector("#product_title").textContent = proddetails.title;
+    document.querySelector("#product_desc").textContent = proddetails.desc;
+    document.querySelector("#product_ratings").textContent =
+      proddetails.rating + " | " + proddetails.vote;
+    document.querySelector("#product_price").textContent =
+      "Rs. " + proddetails.price;
+    document.querySelector("#product_maxprice").textContent =
+      "Rs. " + proddetails.maxprice;
+    document.querySelector("#product_discount").textContent =
+      "Rs. " + proddetails.discount;
 
+    let pincode = document.querySelector("#pincode");
+    pincode.addEventListener("keypress", pincodeStatus);
+
+    let sizes = document.querySelectorAll(".product-size");
+
+    sizes.forEach((elem) => {
+      elem.addEventListener("click", () => {
+        elem.style.border = "1px solid #FF527B";
+        elem.style.color = "#FF527B";
+        sizes.forEach((e) => {
+          if (e != elem) {
+            e.style.border = "1px solid black";
+            e.style.color = "black";
+          }
+        });
+        proddetails.size = elem.textContent;
+        document.querySelector("#select_size").style.display = "none";
+      });
+    });
+  }
+
+  //localStorage.setItem("productIdincart", )
   let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   document.querySelector("#addtobag").addEventListener("click", () => {
     let isLogin = localStorage.getItem("isUserLogin");
-    if(isLogin == "true"){
-    if (proddetails.size === undefined) {
-      document.querySelector("#select_size").style.display = "block";
-    } else if (pincode.value.length === 0) {
-      document.querySelector("#select_size").textContent =
-        "Please enter pincode";
-      document.querySelector("#select_size").style.display = "block";
+    if (isLogin == "true") {
+      if (proddetails.size === undefined) {
+        document.querySelector("#select_size").style.display = "block";
+      } else if (pincode.value.length === 0) {
+        document.querySelector("#select_size").textContent =
+          "Please enter pincode";
+        document.querySelector("#select_size").style.display = "block";
+      } else {
+        cartarr.push(proddetails);
+        localStorage.setItem("cartarr", JSON.stringify(cartarr));
+        animationForConfirmation("Added To Bag");
+      }
     } else {
-      cartarr.push(proddetails);
-      localStorage.setItem("cartarr", JSON.stringify(cartarr));
-      animationForConfirmation("Added To Bag");
+      alert("Please login to continue");
     }
-  }
-  else{
-    alert("Please login to continue")
-  }
   });
 </script>
