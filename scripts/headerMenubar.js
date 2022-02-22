@@ -117,6 +117,24 @@ setInterval(() => {
   wishlistItems.innerHTML = wishlistarrarr.length;
 }, 1000);
 setTimeout(() => {
+  let isLogin = localStorage.getItem("isUserLogin") || "false";
+  document.querySelector("#wishlist_div").addEventListener("click", () =>{
+    if(isLogin == "false"){
+      alert("please login to continue!!!")
+    }
+    else{
+      window.location.href="../wishList( O )/wishList.html"
+    }
+  })
+  document.querySelector("#bagdiv").addEventListener("click", () =>{
+    if(isLogin == "false"){
+      alert("please login to continue!!!")
+    }
+    else{
+      window.location.href="../bagSection( O )/bag.html"
+    }
+  })
+  
   dropDown1();
   dropDown2();
   dropDown3();
