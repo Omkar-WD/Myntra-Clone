@@ -1,7 +1,12 @@
 body {
   margin: 0;
+  /* background-color: #eee; */
 }
-
+#wishlist_div,
+#bagdiv,
+#profile_div {
+  cursor: pointer;
+}
 .header {
   top: 0;
   position: sticky;
@@ -16,7 +21,8 @@ body {
   background-color: white;
   top: 0;
   position: sticky;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+  /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; */
 }
 
 .company-logo {
@@ -34,7 +40,8 @@ body {
 #myLinks {
   display: none;
   position: sticky;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+  /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; */
   background-color: white;
 }
 

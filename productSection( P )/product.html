@@ -214,6 +214,8 @@
       wishdiv.append(wishpng, wishtext);
       wishdiv.setAttribute("id", "wishdiv");
       wishdiv.onclick = () => {
+        let isLogin = localStorage.getItem("isUserLogin");
+        if(isLogin == "true"){
         wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
         wishpng.src = "https://www.freeiconspng.com/uploads/heart-png-8.png";
         wishtext.textContent = "Wishlisted";
@@ -231,7 +233,12 @@
         wisharr.push(wishobj);
         localStorage.setItem("wisharr", JSON.stringify(wisharr));
         animationForConfirmation("Added To WishList");
+      }
+      else{
+        alert("Please login to continue!!!")
+      }
       };
+    
       let title = document.createElement("h3");
       title.textContent = elem.title;
       let price = document.createElement("span");

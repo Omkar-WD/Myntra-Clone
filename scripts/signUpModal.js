@@ -29,20 +29,20 @@ function signUpDesign() {
             <input
               type="text"
               placeholder="At least 6 characters"
-              id="password"
+              id="signup_password"
               required
             />
             <input id="signupButton1" type="submit" value="SignUp" />
           </form>
         </div>
-        <a id="loginButton1" href="">
+        <!-- <a id="loginButton1" href="">
           <button>Click here for Login</button>
-        </a>
+        </a> -->
       `;
 }
 
 let signUpSpan = document.getElementsByClassName("close");
-
+let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
 setTimeout(function () {
   let signUpBtn = document.getElementById("signUpModal");
   let signUpModal = document.getElementById("openSignUpPage");
@@ -52,23 +52,36 @@ setTimeout(function () {
     let submitButton = document.querySelector("#signUp");
     submitButton.addEventListener("submit", function (event) {
       event.preventDefault();
+      let isPresent = "false";
+      signuparr.forEach((elem) =>{
+        if(elem.Email == document.querySelector("#email").value || elem.Mobile == document.querySelector("#mobile").value){
+          
+          isPresent = "true";
+        }
+      })
+      if(isPresent == "false"){
       let signUpData = {
         Fullname: document.querySelector("#full_name").value,
         Email: document.querySelector("#email").value,
         Mobile: document.querySelector("#mobile").value,
-        password: document.querySelector("#password").value,
+        password: document.querySelector("#signup_password").value,
       };
 
       console.log(signUpData);
-      localStorage.setItem("signUpData", JSON.stringify(signUpData));
+
+      signuparr.push(signUpData);
+      
+      localStorage.setItem("signuparr", JSON.stringify(signuparr));
+      alert("Sign Up successful, please login")
       document.querySelector("#signUpContainer").style.display = "none";
       signUpModal.style.display = "none";
-      setTimeout(function () {
-        let loginModal = document.getElementById("openLoginPage");
-        document.querySelector("#loginContainer").innerHTML = loginDesign();
-        loginModal.style.display = "block";
-      }, 1000);
+    }
+    else{
+      alert("User already Exists!!!")
+    }
     });
+  
+  
   };
   for (let i = 0; i < signUpSpan.length; i++) {
     signUpSpan[i].addEventListener("click", function () {

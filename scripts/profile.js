@@ -1,6 +1,3 @@
-let profiledata = JSON.parse(localStorage.getItem("profileDetails"));
-let signUpData = JSON.parse(localStorage.getItem("signUpData"));
-
 let profileObject = {
   Fullname: signUpData.Fullname,
   Mobile: signUpData.Mobile,

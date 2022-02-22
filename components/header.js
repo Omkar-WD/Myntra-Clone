@@ -1,4 +1,5 @@
 function header() {
+  
   return `    <div class="navbar">
   <a href="../index.html">
   <div class="company-logo">
@@ -43,7 +44,7 @@ function header() {
     <li id="logout"><a></a></li>
   </ul>
   </div>
-    <div class="dropdown-content5 dropdown-content">
+    <div class="dropdown-content5 dropdown-content" id= "profile_div">
       <a href="">
         <img
           id="svg"
@@ -53,8 +54,8 @@ function header() {
       </a>
       <div>Profile</div>
     </div>
-    <div>
-      <a href="../wishList( O )/wishList.html">
+    <div id="wishlist_div">
+      <a>
         <img
           id="svg"
           src="https://www.svgrepo.com/show/14970/heart.svg"
@@ -66,8 +67,8 @@ function header() {
       <div id="wishlist-items"></div>
     </div>
 
-    <div>
-      <a href="../bagSection( O )/bag.html">
+    <div id="bagdiv">
+      <a >
         <img
           id="svg"
           src="https://www.svgrepo.com/show/17522/bag.svg"
