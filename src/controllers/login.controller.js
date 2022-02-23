@@ -1,3 +1,4 @@
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const { body, validationResult } = require("express-validator");
@@ -5,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 
 const newToken = (user) => {
-  return jwt.sign({ user }, "web14omkar");
+  return jwt.sign({ user }, process.env.JWT_TOKEN);
 };
 
 router.post(
