@@ -193,24 +193,51 @@
     });
   }
 
-  //localStorage.setItem("productIdincart", )
-  let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
+  //let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   document.querySelector("#addtobag").addEventListener("click", () => {
-    let isLogin = localStorage.getItem("isUserLogin");
-    if (isLogin == "true") {
-      if (proddetails.size === undefined) {
-        document.querySelector("#select_size").style.display = "block";
-      } else if (pincode.value.length === 0) {
-        document.querySelector("#select_size").textContent =
-          "Please enter pincode";
-        document.querySelector("#select_size").style.display = "block";
-      } else {
-        cartarr.push(proddetails);
-        localStorage.setItem("cartarr", JSON.stringify(cartarr));
-        animationForConfirmation("Added To Bag");
-      }
+    if (proddetails.size === undefined) {
+      document.querySelector("#select_size").style.display = "block";
+    } else if (pincode.value.length === 0) {
+      document.querySelector("#select_size").textContent =
+        "Please enter pincode";
+      document.querySelector("#select_size").style.display = "block";
     } else {
-      alert("Please login to continue");
+      let cartData = {
+        productId: proddetails._id,
+        userId: 1,
+      };
+      settingCartItem("http://localhost:2345/cart", cartData).then(
+        (cartData) => {
+          console.log("cartData:", cartData);
+        }
+      );
     }
+    // let isLogin = localStorage.getItem("isUserLogin");
+    // if (isLogin == "true") {
+    //   if (proddetails.size === undefined) {
+    //     document.querySelector("#select_size").style.display = "block";
+    //   } else if (pincode.value.length === 0) {
+    //     document.querySelector("#select_size").textContent =
+    //       "Please enter pincode";
+    //     document.querySelector("#select_size").style.display = "block";
+    //   } else {
+    //     cartarr.push(proddetails);
+    //     localStorage.setItem("cartarr", JSON.stringify(cartarr));
+    //     animationForConfirmation("Added To Bag");
+    //   }
+    // } else {
+    //   alert("Please login to continue");
+    // }
   });
+
+  async function settingCartItem(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
 </script>
