@@ -41,8 +41,18 @@ function signUpDesign() {
       `;
 }
 
+async function postData(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 let signUpSpan = document.getElementsByClassName("close");
-let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
 setTimeout(function () {
   let signUpBtn = document.getElementById("signUpModal");
   let signUpModal = document.getElementById("openSignUpPage");
@@ -52,40 +62,75 @@ setTimeout(function () {
     let submitButton = document.querySelector("#signUp");
     submitButton.addEventListener("submit", function (event) {
       event.preventDefault();
-      let isPresent = "false";
-      signuparr.forEach((elem) =>{
-        if(elem.Email == document.querySelector("#email").value || elem.Mobile == document.querySelector("#mobile").value){
-          
-          isPresent = "true";
-        }
-      })
-      if(isPresent == "false"){
       let signUpData = {
-        Fullname: document.querySelector("#full_name").value,
-        Email: document.querySelector("#email").value,
-        Mobile: document.querySelector("#mobile").value,
+        fullName: document.querySelector("#full_name").value,
+        email: document.querySelector("#email").value,
+        mobile: document.querySelector("#mobile").value,
         password: document.querySelector("#signup_password").value,
       };
-
-      console.log(signUpData);
-
-      signuparr.push(signUpData);
-      
-      localStorage.setItem("signuparr", JSON.stringify(signuparr));
-      alert("Sign Up successful, please login")
+      postData("http://localhost:2345/register", signUpData).then((data) => {
+        console.log(data);
+        if (data.message === "success") {
+          alert("Signup Successfull!!!");
+        } else {
+          alert("Signup Failed , email id already exists!!!");
+        }
+      });
       document.querySelector("#signUpContainer").style.display = "none";
       signUpModal.style.display = "none";
-    }
-    else{
-      alert("User already Exists!!!")
-    }
     });
-  
-  
   };
   for (let i = 0; i < signUpSpan.length; i++) {
     signUpSpan[i].addEventListener("click", function () {
       signUpModal.style.display = "none";
     });
   }
-}, 2000);
+}, 500);
+
+// let signUpSpan = document.getElementsByClassName("close");
+// let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
+// setTimeout(function () {
+//   let signUpBtn = document.getElementById("signUpModal");
+//   let signUpModal = document.getElementById("openSignUpPage");
+//   signUpBtn.onclick = function () {
+//     document.querySelector("#signUpContainer").innerHTML = signUpDesign();
+//     signUpModal.style.display = "block";
+//     let submitButton = document.querySelector("#signUp");
+//     submitButton.addEventListener("submit", function (event) {
+//       event.preventDefault();
+//       let isPresent = "false";
+//       signuparr.forEach((elem) => {
+//         if (
+//           elem.Email == document.querySelector("#email").value ||
+//           elem.Mobile == document.querySelector("#mobile").value
+//         ) {
+//           isPresent = "true";
+//         }
+//       });
+//       if (isPresent == "false") {
+//         let signUpData = {
+//           Fullname: document.querySelector("#full_name").value,
+//           Email: document.querySelector("#email").value,
+//           Mobile: document.querySelector("#mobile").value,
+//           password: document.querySelector("#signup_password").value,
+//         };
+
+//         console.log(signUpData);
+
+//         signuparr.push(signUpData);
+
+//         localStorage.setItem("signuparr", JSON.stringify(signuparr));
+//         alert("Sign Up successful, please login");
+//         document.querySelector("#signUpContainer").style.display = "none";
+//         signUpModal.style.display = "none";
+//       } else {
+//         alert("User already Exists!!!");
+//       }
+//     });
+//   };
+//   for (let i = 0; i < signUpSpan.length; i++) {
+//     signUpSpan[i].addEventListener("click", function () {
+//       signUpModal.style.display = "none";
+//     });
+//   }
+// }, 2000);
