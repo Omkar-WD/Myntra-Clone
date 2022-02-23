@@ -107,29 +107,29 @@ function dropDown5() {
     menu.style.display = "none";
   });
 }
+let token;
 
-async function gettingCartItem(url = "", data = {}) {
+async function gettingCartItem(url = "") {
   const response = await fetch(url, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
 setInterval(() => {
+  token = localStorage.getItem("userToken");
   let bagItems = document.querySelector("#bag-items");
   //let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   let cartarr;
-  gettingCartItem("http://localhost:2345/cart/arraylength", { userId: 1 }).then(
-    (cartData) => {
-      cartarr = cartData.cartArrayLength;
-      bagItems.innerHTML = cartarr;
-      //console.log("cartarr:", cartarr);
-    }
-  );
+  gettingCartItem("http://localhost:2345/cart/arraylength").then((cartData) => {
+    cartarr = cartData.cartArrayLength;
+    bagItems.innerHTML = cartarr;
+    console.log("cartarr:", cartarr);
+  });
   let wishlistItems = document.querySelector("#wishlist-items");
   let wishlistarrarr = JSON.parse(localStorage.getItem("wisharr")) || [];
   //console.log("cartarr 2nd", cartarr);

@@ -204,7 +204,6 @@
     } else {
       let cartData = {
         productId: proddetails._id,
-        userId: 1,
       };
       settingCartItem("http://localhost:2345/cart", cartData).then(
         (cartData) => {
@@ -230,11 +229,14 @@
     // }
   });
 
+  let token = localStorage.getItem("userToken");
+  console.log(token);
   async function settingCartItem(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
