@@ -208,6 +208,7 @@
       settingCartItem("http://localhost:2345/cart", cartData).then(
         (cartData) => {
           console.log("cartData:", cartData);
+          animationForConfirmation("Added To Bag");
         }
       );
     }
@@ -230,7 +231,6 @@
   });
 
   let token = localStorage.getItem("userToken");
-  console.log(token);
   async function settingCartItem(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.

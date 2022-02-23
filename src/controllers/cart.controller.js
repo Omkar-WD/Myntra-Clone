@@ -20,7 +20,9 @@ router.get("", async (req, res) => {
 router.post("/arraylength", async (req, res) => {
   try {
     const user = await Cart.findOne({ userId: req.body.userId }).lean().exec();
-    console.log(user.productId.length);
+    if (!user) {
+      return res.status(200).send({ cartArrayLength: 0 });
+    }
     return res.status(200).send({ cartArrayLength: user.productId.length });
   } catch (error) {
     return res.status(500).send({ message: error.message });
@@ -30,7 +32,6 @@ router.post("/arraylength", async (req, res) => {
 router.post("", async (req, res) => {
   try {
     const user = await Cart.findOne({ userId: req.body.userId }).lean().exec();
-    console.log("user:", user);
     if (!user) {
       const cartitem = await Cart.create(req.body);
       return res.status(201).send(cartitem);

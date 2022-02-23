@@ -13,7 +13,7 @@ const verifyToken = (token) => {
 
 module.exports = async (req, res, next) => {
   if (!req.params) {
-    next();
+    return next();
   }
   if (!req.headers.authorization)
     return res.status(400).send({
@@ -32,9 +32,9 @@ module.exports = async (req, res, next) => {
       message: "authorization token was not provided or was not valid 3",
     });
   }
-  console.log("request:", req.body);
+  // console.log("request:", req.body);
   req.body.userId = user.user._id;
-  console.log("authenticate:", req.body);
+  // console.log("authenticate:", req.body);
 
   return next();
 };
