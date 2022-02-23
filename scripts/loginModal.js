@@ -4,10 +4,10 @@ function loginDesign() {
       <div class="login_container">
         <form id="login">
           <h1>Login</h1>
-          <label>Email or Mobile</label>
+          <label>Email Id</label>
           <input
             type="text"
-            placeholder="enter email or mobile"
+            placeholder="enter email id"
             id="login_data"
             required
           />
@@ -26,8 +26,19 @@ function loginDesign() {
        </a> -->
     `;
 }
-let loginSpan = document.getElementsByClassName("close");
 
+async function postData(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+let loginSpan = document.getElementsByClassName("close");
 setTimeout(function () {
   let loginBtn = document.getElementById("loginModal");
   let loginModal = document.getElementById("openLoginPage");
@@ -37,43 +48,20 @@ setTimeout(function () {
     let loginButton = document.querySelector("#login");
     loginButton.addEventListener("submit", function (event) {
       event.preventDefault();
-      let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
-      let isLogin = "false";
-      let incorrectPassword = "false";
-      signuparr.forEach((elem) =>{
-        if(elem.Email == document.querySelector("#login_data").value || elem.Mobile == document.querySelector("#login_data").value){
-          if(elem.password == document.querySelector("#password").value){
-            localStorage.setItem("signUpData", JSON.stringify(elem));
-            isLogin = "true";
-            return;
-          }else{
-            incorrectPassword = "true";
-            
-            
-            
-          }
+      let loginData = {
+        email: document.querySelector("#login_data").value,
+        password: document.querySelector("#password").value,
+      };
+      postData("http://localhost:2345/login", loginData).then((data) => {
+        console.log(data);
+        if (data.message === "success") {
+          alert("Login Successfull!!!");
+        } else {
+          alert("Login Failed , email id or password does not exists!!!");
         }
-        
-      })
-      if(isLogin == "true"){
-        localStorage.setItem("isUserLogin", "true");
-      window.location.href = "";
-        alert("login successful");
-      }
-      else if(incorrectPassword == "true"){
-        alert("Incorrect Password");
-      }
-      else{
-        localStorage.setItem("isUserLogin", "false");
-        alert("user not signed up");
-      }
-      // let loginData = {
-      //   login_input: document.querySelector("#login_data").value,
-      //   password: document.querySelector("#password").value,
-      // };
-      // console.log(loginData);
-      // localStorage.setItem("loginData", JSON.stringify(loginData));
-      
+      });
+      document.querySelector("#loginContainer").style.display = "none";
+      loginModal.style.display = "none";
     });
   };
   for (let i = 0; i < loginSpan.length; i++) {
@@ -82,3 +70,49 @@ setTimeout(function () {
     });
   }
 }, 1000);
+
+// let loginSpan = document.getElementsByClassName("close");
+// setTimeout(function () {
+//   let loginBtn = document.getElementById("loginModal");
+//   let loginModal = document.getElementById("openLoginPage");
+//   loginBtn.onclick = function () {
+//     document.querySelector("#loginContainer").innerHTML = loginDesign();
+//     loginModal.style.display = "block";
+//     let loginButton = document.querySelector("#login");
+//     loginButton.addEventListener("submit", function (event) {
+//       event.preventDefault();
+//       let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
+//       let isLogin = "false";
+//       let incorrectPassword = "false";
+//       signuparr.forEach((elem) => {
+//         if (
+//           elem.Email == document.querySelector("#login_data").value ||
+//           elem.Mobile == document.querySelector("#login_data").value
+//         ) {
+//           if (elem.password == document.querySelector("#password").value) {
+//             localStorage.setItem("signUpData", JSON.stringify(elem));
+//             isLogin = "true";
+//             return;
+//           } else {
+//             incorrectPassword = "true";
+//           }
+//         }
+//       });
+//       if (isLogin == "true") {
+//         localStorage.setItem("isUserLogin", "true");
+//         window.location.href = "";
+//         alert("login successful");
+//       } else if (incorrectPassword == "true") {
+//         alert("Incorrect Password");
+//       } else {
+//         localStorage.setItem("isUserLogin", "false");
+//         alert("user not signed up");
+//       }
+//     });
+//   };
+//   for (let i = 0; i < loginSpan.length; i++) {
+//     loginSpan[i].addEventListener("click", function () {
+//       loginModal.style.display = "none";
+//     });
+//   }
+// }, 1000);
