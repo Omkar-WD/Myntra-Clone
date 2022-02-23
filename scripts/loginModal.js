@@ -53,8 +53,9 @@ setTimeout(function () {
         password: document.querySelector("#password").value,
       };
       postData("http://localhost:2345/login", loginData).then((data) => {
-        console.log(data);
+        console.log(data, data.token);
         if (data.message === "success") {
+          localStorage.setItem("userToken", data.token);
           alert("Login Successfull!!!");
         } else {
           alert("Login Failed , email id or password does not exists!!!");

@@ -107,34 +107,51 @@ function dropDown5() {
     menu.style.display = "none";
   });
 }
+let token;
+
+async function gettingCartItem(url = "") {
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
 
 setInterval(() => {
+  token = localStorage.getItem("userToken");
   let bagItems = document.querySelector("#bag-items");
-  let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
+  //let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
+  let cartarr;
+  gettingCartItem("http://localhost:2345/cart/arraylength").then((cartData) => {
+    cartarr = cartData.cartArrayLength;
+    bagItems.innerHTML = cartarr;
+    console.log("cartarr:", cartarr);
+  });
   let wishlistItems = document.querySelector("#wishlist-items");
   let wishlistarrarr = JSON.parse(localStorage.getItem("wisharr")) || [];
-  bagItems.innerHTML = cartarr.length;
+  //console.log("cartarr 2nd", cartarr);
   wishlistItems.innerHTML = wishlistarrarr.length;
 }, 1000);
 setTimeout(() => {
   let isLogin = localStorage.getItem("isUserLogin") || "false";
-  document.querySelector("#wishlist_div").addEventListener("click", () =>{
-    if(isLogin == "false"){
-      alert("please login to continue!!!")
+  document.querySelector("#wishlist_div").addEventListener("click", () => {
+    if (isLogin == "false") {
+      alert("please login to continue!!!");
+    } else {
+      window.location.href = "../wishList( O )/wishList.html";
     }
-    else{
-      window.location.href="../wishList( O )/wishList.html"
+  });
+  document.querySelector("#bagdiv").addEventListener("click", () => {
+    if (isLogin == "false") {
+      alert("please login to continue!!!");
+    } else {
+      window.location.href = "../bagSection( O )/bag.html";
     }
-  })
-  document.querySelector("#bagdiv").addEventListener("click", () =>{
-    if(isLogin == "false"){
-      alert("please login to continue!!!")
-    }
-    else{
-      window.location.href="../bagSection( O )/bag.html"
-    }
-  })
-  
+  });
+
   dropDown1();
   dropDown2();
   dropDown3();

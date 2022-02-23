@@ -158,7 +158,6 @@
   </body>
 </html>
 
-<script src="../scripts/productData.js"></script>
 <script src="../scripts/headerMenubar.js"></script>
 <script src="../scripts/loginModal.js"></script>
 <script src="../scripts/signUpModal.js"></script>
@@ -168,361 +167,361 @@
   import animationForConfirmation from "../components/animationForConfirmation.js";
   import header from "../components/header.js";
   import footer from "../components/footer.js";
-
-  document.querySelector(".header").innerHTML = header();
-  document.querySelector("#menuIcon").addEventListener("click", function () {
-    let x = document.getElementById("myLinks");
-    let w, h;
-    setInterval(() => {
-      w = window.innerWidth;
-      if (w > 768) {
-        x.style.display = "none";
-      }
-    }, 500);
-
-    if (x.style.display === "flex") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "flex";
+  let x;
+  let data2;
+  async function gettingProductData() {
+    let url = `http://localhost:2345/products`;
+    try {
+      let response = await fetch(url);
+      let data = await response.json();
+      data2 = data;
+      console.log("productData : ", data2);
+      superfunction();
+    } catch (err) {
+      console.log(err);
     }
-  });
-  document.querySelector(".footer").innerHTML = footer();
-
-  let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
-  function appendData(data) {
-    document.querySelector("#products_div").innerHTML = "";
-    data.forEach((elem) => {
-      let maindiv = document.createElement("div");
-      let imgdiv = document.createElement("div");
-      let textdiv = document.createElement("div");
-      let pricediv = document.createElement("div");
-      let img = document.createElement("img");
-      img.src = elem.img;
-      let rating = document.createElement("h6");
-      rating.textContent = (Math.random() * (5 - 3) + 3).toFixed(1) + "⭐";
-      let vote = document.createElement("h6");
-      vote.textContent = (Math.random() * (50 - 1) + 1).toFixed(1) + "k";
-      let ratingdiv = document.createElement("div");
-      ratingdiv.append(rating, " " + " " + "|" + " " + " ", vote);
-      ratingdiv.setAttribute("id", "ratingol");
-      let wishdiv = document.createElement("div");
-      let wishtext = document.createElement("p");
-      wishtext.textContent = "Wishlist";
-      let wishpng = document.createElement("img");
-      wishpng.src =
-        "https://img.icons8.com/material-outlined/24/000000/like--v1.png";
-      wishdiv.append(wishpng, wishtext);
-      wishdiv.setAttribute("id", "wishdiv");
-      wishdiv.onclick = () => {
-        let isLogin = localStorage.getItem("isUserLogin");
-        if(isLogin == "true"){
-        wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
-        wishpng.src = "https://www.freeiconspng.com/uploads/heart-png-8.png";
-        wishtext.textContent = "Wishlisted";
-        wishtext.style.color = "white";
-        let wishobj = {
-          img: elem.img,
-          rating: rating.textContent,
-          votes: vote.textContent,
-          title: title.textContent,
-          price: price.textContent,
-          maxprice: maxprice.textContent,
-          discount: discount.textContent,
-          desc: desc.textContent,
-        };
-        wisharr.push(wishobj);
-        localStorage.setItem("wisharr", JSON.stringify(wisharr));
-        animationForConfirmation("Added To WishList");
-      }
-      else{
-        alert("Please login to continue!!!")
-      }
-      };
-    
-      let title = document.createElement("h3");
-      title.textContent = elem.title;
-      let price = document.createElement("span");
-      price.textContent = "Rs: " + Math.round(elem.price);
-      let maxprice = document.createElement("span");
-      maxprice.textContent = "Rs: " + elem.maxprice;
-      let discount = document.createElement("span");
-      discount.textContent =
-        "(" + (100 - Math.round((elem.price * 100) / elem.maxprice)) + "% OFF)";
-      let desc = document.createElement("p");
-      desc.textContent = elem.desc;
-      imgdiv.append(img, ratingdiv, wishdiv);
-      img.addEventListener("click", () => {
-        productDeatils(elem, rating, vote);
-      });
-      textdiv.append(title, desc, pricediv);
-      textdiv.addEventListener("click", () => {
-        productDeatils(elem, rating, vote);
-      });
-      pricediv.append(price, maxprice, discount);
-      maindiv.append(imgdiv, textdiv);
-      // maindiv.addEventListener("click", () =>{
-
-      //   // let prodobj = {
-      //   //       img:elem.img,
-      //   //       rating: rating.textContent,
-      //   //       votes:vote.textContent,
-      //   //       title:title.textContent,
-      //   //       price: elem.price,
-      //   //       maxprice:elem.maxprice,
-      //   //       discount:discount.textContent,
-      //   //       desc:desc.textContent
-      //   //   }
-      //   //   localStorage.setItem("prodobj", JSON.stringify(prodobj));
-      //   //   window.location.href = "productdetails.html";
-      // })
-      document.querySelector("#products_div").append(maindiv);
-    });
   }
 
-  let productDeatils = (elem, rating, vote) => {
-    let prodobj = {
-      img: elem.img,
-      rating: rating.textContent,
-      votes: vote.textContent,
-      title: elem.title,
-      price: `Rs: ${elem.price}`,
-      maxprice: `Rs: ${elem.maxprice}`,
-      discount: `(${
-        100 - Math.round((elem.price * 100) / elem.maxprice)
-      }% OFF)`,
-      desc: elem.desc,
-    };
-    localStorage.setItem("prodobj", JSON.stringify(prodobj));
-    window.location.href = "productdetails.html";
-  };
-  appendData(data1);
-  let partdata = [];
-  let Checkbox = (e) => {
-    let name = e.name;
-    if (e.checked) {
-      data1.filter((elem) => {
-        if (elem.title == name) {
-          partdata.unshift(elem);
+ 
+  gettingProductData();
+
+  function superfunction() {
+    appendData(data2);
+    document.querySelector(".header").innerHTML = header();
+    document.querySelector("#menuIcon").addEventListener("click", function () {
+      let x = document.getElementById("myLinks");
+      let w, h;
+      setInterval(() => {
+        w = window.innerWidth;
+        if (w > 768) {
+          x.style.display = "none";
         }
-      });
-      appendData(partdata);
-    } else {
-      let newpartdata = partdata;
-      partdata = [];
-      newpartdata.filter((elem) => {
-        if (elem.title != name) {
-          partdata.push(elem);
-        }
-      });
-      if (partdata.length == 0) {
-        appendData(data1);
+      }, 500);
+
+      if (x.style.display === "flex") {
+        x.style.display = "none";
       } else {
-        appendData(partdata);
+        x.style.display = "flex";
       }
+    });
+    document.querySelector(".footer").innerHTML = footer();
+
+    let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
+    function appendData(data) {
+      document.querySelector("#products_div").innerHTML = "";
+      data.forEach((elem) => {
+        let maindiv = document.createElement("div");
+        let imgdiv = document.createElement("div");
+        let textdiv = document.createElement("div");
+        let pricediv = document.createElement("div");
+        let img = document.createElement("img");
+        img.src = elem.img;
+        let rating = document.createElement("h6");
+        rating.textContent = (Math.random() * (5 - 3) + 3).toFixed(1) + "⭐";
+        let vote = document.createElement("h6");
+        vote.textContent = (Math.random() * (50 - 1) + 1).toFixed(1) + "k";
+        let ratingdiv = document.createElement("div");
+        ratingdiv.append(rating, " " + " " + "|" + " " + " ", vote);
+        ratingdiv.setAttribute("id", "ratingol");
+        let wishdiv = document.createElement("div");
+        let wishtext = document.createElement("p");
+        wishtext.textContent = "Wishlist";
+        let wishpng = document.createElement("img");
+        wishpng.src =
+          "https://img.icons8.com/material-outlined/24/000000/like--v1.png";
+        wishdiv.append(wishpng, wishtext);
+        wishdiv.setAttribute("id", "wishdiv");
+        wishdiv.onclick = () => {
+          let isLogin = localStorage.getItem("isUserLogin");
+          if (isLogin == "true") {
+            wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
+            wishpng.src =
+              "https://www.freeiconspng.com/uploads/heart-png-8.png";
+            wishtext.textContent = "Wishlisted";
+            wishtext.style.color = "white";
+            let wishobj = {
+              img: elem.img,
+              rating: rating.textContent,
+              votes: vote.textContent,
+              title: title.textContent,
+              price: price.textContent,
+              maxprice: maxprice.textContent,
+              discount: discount.textContent,
+              desc: desc.textContent,
+            };
+            wisharr.push(wishobj);
+            localStorage.setItem("wisharr", JSON.stringify(wisharr));
+            animationForConfirmation("Added To WishList");
+          } else {
+            alert("Please login to continue!!!");
+          }
+        };
+
+        let title = document.createElement("h3");
+        title.textContent = elem.title;
+        let price = document.createElement("span");
+        price.textContent = "Rs: " + Math.round(elem.price);
+        let maxprice = document.createElement("span");
+        maxprice.textContent = "Rs: " + elem.maxprice;
+        let discount = document.createElement("span");
+        discount.textContent =
+          "(" +
+          (100 - Math.round((elem.price * 100) / elem.maxprice)) +
+          "% OFF)";
+        let desc = document.createElement("p");
+        desc.textContent = elem.desc;
+        imgdiv.append(img, ratingdiv, wishdiv);
+        img.addEventListener("click", () => {
+          console.log("elem:", elem._id);
+          localStorage.setItem("productId", elem._id);
+          window.location.href = "productdetails.html";
+        });
+        textdiv.append(title, desc, pricediv);
+        textdiv.addEventListener("click", () => {
+          console.log("elem:", elem._id);
+          localStorage.setItem("productId", elem._id);
+          window.location.href = "productdetails.html";
+        });
+        pricediv.append(price, maxprice, discount);
+        maindiv.append(imgdiv, textdiv);
+        document.querySelector("#products_div").append(maindiv);
+      });
     }
-  };
-  let partdata1 = [];
-  let pricedata = [];
-  let Checkbox1 = (a, b, e) => {
-    if (e.checked) {
-      console.log(e);
-      if (partdata.length === 0) {
-        data1.filter((elem) => {
-          if (elem.price <= b && elem.price > a) {
-            pricedata.unshift(elem);
+
+    // let productDeatils = (elem, rating, vote) => {
+    //   let prodobj = {
+    //     img: elem.img,
+    //     rating: rating.textContent,
+    //     votes: vote.textContent,
+    //     title: elem.title,
+    //     price: `Rs: ${elem.price}`,
+    //     maxprice: `Rs: ${elem.maxprice}`,
+    //     discount: `(${
+    //       100 - Math.round((elem.price * 100) / elem.maxprice)
+    //     }% OFF)`,
+    //     desc: elem.desc,
+    //   };
+    //   localStorage.setItem("prodobj", JSON.stringify(prodobj));
+    //   window.location.href = "productdetails.html";
+    // };
+    // appendData(data2);
+    let partdata = [];
+    let Checkbox = (e) => {
+      let name = e.name;
+      if (e.checked) {
+        data2.filter((elem) => {
+          if (elem.title == name) {
+            partdata.unshift(elem);
           }
         });
-
-        appendData(pricedata);
+        appendData(partdata);
       } else {
         let newpartdata = partdata;
-
+        partdata = [];
         newpartdata.filter((elem) => {
-          if (elem.price <= b && elem.price > a) {
-            partdata1.push(elem);
+          if (elem.title != name) {
+            partdata.push(elem);
           }
         });
-
-        appendData(partdata1);
-      }
-    } else {
-      let newpartdata = partdata;
-      partdata = [];
-      newpartdata.filter((elem) => {
-        if (elem.price > b || elem.price < a) {
-          partdata.shift(elem);
+        if (partdata.length == 0) {
+          appendData(data2);
+        } else {
+          appendData(partdata);
         }
-      });
-      if (partdata.length == 0) {
-        appendData(data1);
+      }
+    };
+    let partdata2 = [];
+    let pricedata = [];
+    let Checkbox1 = (a, b, e) => {
+      if (e.checked) {
+        console.log(e);
+        if (partdata.length === 0) {
+          data2.filter((elem) => {
+            if (elem.price <= b && elem.price > a) {
+              pricedata.unshift(elem);
+            }
+          });
+
+          appendData(pricedata);
+        } else {
+          let newpartdata = partdata;
+
+          newpartdata.filter((elem) => {
+            if (elem.price <= b && elem.price > a) {
+              partdata2.push(elem);
+            }
+          });
+
+          appendData(partdata2);
+        }
       } else {
-        console.log(partdata);
-        appendData(partdata);
-      }
-    }
-  };
-  let radiob = (a, e) => {
-    console.log("works");
-    if (partdata.length === 0) {
-      var discountdata = [];
-      data1.filter((elem) => {
-        let percent = 100 - Math.round((elem.price * 100) / elem.maxprice);
-        if (percent >= a) {
-          discountdata.push(elem);
+        let newpartdata = partdata;
+        partdata = [];
+        newpartdata.filter((elem) => {
+          if (elem.price > b || elem.price < a) {
+            partdata.shift(elem);
+          }
+        });
+        if (partdata.length == 0) {
+          appendData(data2);
+        } else {
+          console.log(partdata);
+          appendData(partdata);
         }
-      });
-      appendData(discountdata);
-    } else {
-      let newpartdata = partdata;
-      let partdata1 = [];
-      newpartdata.filter((elem) => {
-        let percent = 100 - Math.round((elem.price * 100) / elem.maxprice);
-        if (percent >= a) {
-          partdata1.unshift(elem);
-        }
-      });
-      appendData(partdata1);
-      // if(partdata.length.length === 0){
-      //     data1.filter((elem) =>{
-      //     let percent = Math.round((elem.price * 100) / elem.maxprice);
-      //     if(percent >= a){
-      //         partdata.push(elem);
-      //     }
-      // })
-      // appendData(partdata);
-      // }
-      // else{
-      //     appendData(partdata);
-      // }
-    }
-  };
-  let brandCount = () => {
-    let brands = document.querySelectorAll("#brand_filter > div > label");
-    brands.forEach((elem) => {
-      let title = elem.textContent;
-      let count = 0;
-      data1.forEach((elem) => {
-        if (title == elem.title) {
-          count++;
-        }
-      });
-      elem.textContent = title + "(" + count + ")";
-      //   console.log(title);
-    });
-  };
-  brandCount();
-  let sortBy = (e) => {
-    let value = document.querySelector("#sortby").value;
-    if (value == "high") {
-      let highdata = [];
-      highdata = data1.sort((a, b) => {
-        return b.price - a.price;
-      });
-      appendData(highdata);
-    } else if (value == "low") {
-      let lowdata = [];
-      lowdata = data1.sort((a, b) => {
-        return a.price - b.price;
-      });
-      appendData(lowdata);
-    } else if (value == "new") {
-      let newdata = [];
-      for (let i = data1.length - 1; i >= 0; i--) {
-        newdata.push(data1[i]);
       }
-      appendData(newdata);
-    } else if (value == "popular") {
-      let popdata = [];
-      for (let i = Math.round(data1.length / 2) - 1; i < data1.length; i++) {
-        popdata.push(data1[i]);
+    };
+    let radiob = (a, e) => {
+      console.log("works");
+      if (partdata.length === 0) {
+        var discountdata = [];
+        data2.filter((elem) => {
+          let percent = 100 - Math.round((elem.price * 100) / elem.maxprice);
+          if (percent >= a) {
+            discountdata.push(elem);
+          }
+        });
+        appendData(discountdata);
+      } else {
+        let newpartdata = partdata;
+        let partdata2 = [];
+        newpartdata.filter((elem) => {
+          let percent = 100 - Math.round((elem.price * 100) / elem.maxprice);
+          if (percent >= a) {
+            partdata2.unshift(elem);
+          }
+        });
+        appendData(partdata2);
       }
-      appendData(popdata);
-    } else if (value == "discount") {
-      let discdata = [];
-      discdata = data1.sort((a, b) => {
-        return (
-          100 -
-          Math.round((b.price * 100) / b.maxprice) -
-          (100 - Math.round((a.price * 100) / a.maxprice))
-        );
-      });
-      appendData(discdata);
-    }
-  };
+    };
 
-  document.querySelector("#sortby").addEventListener("change", sortBy);
-  document
-    .querySelector("#Roadster")
-    .addEventListener("change", Checkbox.bind(null, Roadster));
-  document
-    .querySelector("#Puma")
-    .addEventListener("change", Checkbox.bind(null, Puma));
-  document
-    .querySelector("#WROGN")
-    .addEventListener("change", Checkbox.bind(null, WROGN));
-  document
-    .querySelector("#HRX")
-    .addEventListener("change", Checkbox.bind(null, HRX));
-  document
-    .querySelector("#Huetrap")
-    .addEventListener("change", Checkbox.bind(null, Huetrap));
-  document
-    .querySelector("#Friskers")
-    .addEventListener("change", Checkbox.bind(null, Friskers));
-  document
-    .querySelector("#Duke")
-    .addEventListener("change", Checkbox.bind(null, Duke));
-  document
-    .querySelector("#below300")
-    .addEventListener("change", Checkbox1.bind(null, 0, 300, below300));
-  document
-    .querySelector("#below500")
-    .addEventListener("change", Checkbox1.bind(null, 300, 500, below500));
-  document
-    .querySelector("#below750")
-    .addEventListener("change", Checkbox1.bind(null, 500, 750, below750));
-  document
-    .querySelector("#below1300")
-    .addEventListener("change", Checkbox1.bind(null, 750, 1300, below1300));
-  document
-    .querySelector("#ten")
-    .addEventListener("change", radiob.bind(null, 10, ten));
-  document
-    .querySelector("#twenty")
-    .addEventListener("change", radiob.bind(null, 20, twenty));
-  document
-    .querySelector("#thirty")
-    .addEventListener("change", radiob.bind(null, 30, thirty));
-  document
-    .querySelector("#fourty")
-    .addEventListener("change", radiob.bind(null, 40, fourty));
-  document
-    .querySelector("#fifty")
-    .addEventListener("change", radiob.bind(null, 50, fifty));
-  document
-    .querySelector("#sixty")
-    .addEventListener("change", radiob.bind(null, 60, sixty));
-  document
-    .querySelector("#seventy")
-    .addEventListener("change", radiob.bind(null, 70, seventy));
-  document
-    .querySelector("#eighty")
-    .addEventListener("change", radiob.bind(null, 80, eighty));
+    let brandCount = () => {
+      let brands = document.querySelectorAll("#brand_filter > div > label");
+      brands.forEach((elem) => {
+        let title = elem.textContent;
+        let count = 0;
+        data2.forEach((elem) => {
+          if (title == elem.title) {
+            count++;
+          }
+        });
+        elem.textContent = title + "(" + count + ")";
+        //   console.log(title);
+      });
+    };
+    brandCount();
+    let sortBy = (e) => {
+      let value = document.querySelector("#sortby").value;
+      if (value == "high") {
+        let highdata = [];
+        highdata = data2.sort((a, b) => {
+          return b.price - a.price;
+        });
+        appendData(highdata);
+      } else if (value == "low") {
+        let lowdata = [];
+        lowdata = data2.sort((a, b) => {
+          return a.price - b.price;
+        });
+        appendData(lowdata);
+      } else if (value == "new") {
+        let newdata = [];
+        for (let i = data2.length - 1; i >= 0; i--) {
+          newdata.push(data2[i]);
+        }
+        appendData(newdata);
+      } else if (value == "popular") {
+        let popdata = [];
+        for (let i = Math.round(data2.length / 2) - 1; i < data2.length; i++) {
+          popdata.push(data2[i]);
+        }
+        appendData(popdata);
+      } else if (value == "discount") {
+        let discdata = [];
+        discdata = data2.sort((a, b) => {
+          return (
+            100 -
+            Math.round((b.price * 100) / b.maxprice) -
+            (100 - Math.round((a.price * 100) / a.maxprice))
+          );
+        });
+        appendData(discdata);
+      }
+    };
 
-  document.querySelector("#menuIcon").addEventListener("click", function () {
-    let x = document.getElementById("myLinks");
-    let w, h;
-    setInterval(() => {
-      w = window.innerWidth;
-      if (w > 768) {
+    document.querySelector("#sortby").addEventListener("change", sortBy);
+    document
+      .querySelector("#Roadster")
+      .addEventListener("change", Checkbox.bind(null, Roadster));
+    document
+      .querySelector("#Puma")
+      .addEventListener("change", Checkbox.bind(null, Puma));
+    document
+      .querySelector("#WROGN")
+      .addEventListener("change", Checkbox.bind(null, WROGN));
+    document
+      .querySelector("#HRX")
+      .addEventListener("change", Checkbox.bind(null, HRX));
+    document
+      .querySelector("#Huetrap")
+      .addEventListener("change", Checkbox.bind(null, Huetrap));
+    document
+      .querySelector("#Friskers")
+      .addEventListener("change", Checkbox.bind(null, Friskers));
+    document
+      .querySelector("#Duke")
+      .addEventListener("change", Checkbox.bind(null, Duke));
+    document
+      .querySelector("#below300")
+      .addEventListener("change", Checkbox1.bind(null, 0, 300, below300));
+    document
+      .querySelector("#below500")
+      .addEventListener("change", Checkbox1.bind(null, 300, 500, below500));
+    document
+      .querySelector("#below750")
+      .addEventListener("change", Checkbox1.bind(null, 500, 750, below750));
+    document
+      .querySelector("#below1300")
+      .addEventListener("change", Checkbox1.bind(null, 750, 1300, below1300));
+    document
+      .querySelector("#ten")
+      .addEventListener("change", radiob.bind(null, 10, ten));
+    document
+      .querySelector("#twenty")
+      .addEventListener("change", radiob.bind(null, 20, twenty));
+    document
+      .querySelector("#thirty")
+      .addEventListener("change", radiob.bind(null, 30, thirty));
+    document
+      .querySelector("#fourty")
+      .addEventListener("change", radiob.bind(null, 40, fourty));
+    document
+      .querySelector("#fifty")
+      .addEventListener("change", radiob.bind(null, 50, fifty));
+    document
+      .querySelector("#sixty")
+      .addEventListener("change", radiob.bind(null, 60, sixty));
+    document
+      .querySelector("#seventy")
+      .addEventListener("change", radiob.bind(null, 70, seventy));
+    document
+      .querySelector("#eighty")
+      .addEventListener("change", radiob.bind(null, 80, eighty));
+
+    document.querySelector("#menuIcon").addEventListener("click", function () {
+      let x = document.getElementById("myLinks");
+      let w, h;
+      setInterval(() => {
+        w = window.innerWidth;
+        if (w > 768) {
+          x.style.display = "none";
+        }
+      }, 500);
+
+      if (x.style.display === "flex") {
         x.style.display = "none";
+      } else {
+        x.style.display = "flex";
       }
-    }, 500);
-
-    if (x.style.display === "flex") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "flex";
-    }
-  });
+    });
+  }
 </script>
