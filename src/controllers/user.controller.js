@@ -49,4 +49,36 @@ router.post(
     }
   }
 );
+
+router.patch("", async (req, res) => {
+  try {
+    console.log("req body :", req.body);
+    const user = await User.findByIdAndUpdate(req.body.userId, req.body, {
+      new: true,
+    })
+      .lean()
+      .exec();
+    const token = newToken(user);
+    return res.status(200).send({ user, token, message: "success" });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const user = await User.findById(req.body.userId).lean().exec();
+    return res.status(200).send({ user, isLogin: true });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+});
+
+router.post("/logout", async (req, res) => {
+  try {
+    return res.status(200).send({ isLogin: false });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+});
 module.exports = router;

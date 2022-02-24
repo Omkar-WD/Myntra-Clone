@@ -195,42 +195,31 @@
 
   //let cartarr = JSON.parse(localStorage.getItem("cartarr")) || [];
   document.querySelector("#addtobag").addEventListener("click", () => {
-    if (proddetails.size === undefined) {
-      document.querySelector("#select_size").style.display = "block";
-    } else if (pincode.value.length === 0) {
-      document.querySelector("#select_size").textContent =
-        "Please enter pincode";
-      document.querySelector("#select_size").style.display = "block";
+    let isLogin = localStorage.getItem("userToken");
+    if (isLogin != "") {
+      if (proddetails.size === undefined) {
+        document.querySelector("#select_size").style.display = "block";
+      } else if (pincode.value.length === 0) {
+        document.querySelector("#select_size").textContent =
+          "Please enter pincode";
+        document.querySelector("#select_size").style.display = "block";
+      } else {
+        let cartData = {
+          productId: proddetails._id,
+        };
+        settingCartItem("http://localhost:2345/cart", cartData).then(
+          (cartData) => {
+            console.log("cartData:", cartData);
+            animationForConfirmation("Added To Bag");
+          }
+        );
+      }
     } else {
-      let cartData = {
-        productId: proddetails._id,
-      };
-      settingCartItem("http://localhost:2345/cart", cartData).then(
-        (cartData) => {
-          console.log("cartData:", cartData);
-        }
-      );
+      alert("Please login to continue");
     }
-    // let isLogin = localStorage.getItem("isUserLogin");
-    // if (isLogin == "true") {
-    //   if (proddetails.size === undefined) {
-    //     document.querySelector("#select_size").style.display = "block";
-    //   } else if (pincode.value.length === 0) {
-    //     document.querySelector("#select_size").textContent =
-    //       "Please enter pincode";
-    //     document.querySelector("#select_size").style.display = "block";
-    //   } else {
-    //     cartarr.push(proddetails);
-    //     localStorage.setItem("cartarr", JSON.stringify(cartarr));
-    //     animationForConfirmation("Added To Bag");
-    //   }
-    // } else {
-    //   alert("Please login to continue");
-    // }
   });
 
   let token = localStorage.getItem("userToken");
-  console.log(token);
   async function settingCartItem(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.

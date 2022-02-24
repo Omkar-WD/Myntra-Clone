@@ -175,14 +175,13 @@
       let response = await fetch(url);
       let data = await response.json();
       data2 = data;
-      console.log("productData : ", data2);
+      // console.log("productData : ", data2);
       superfunction();
     } catch (err) {
       console.log(err);
     }
   }
 
- 
   gettingProductData();
 
   function superfunction() {
@@ -232,26 +231,23 @@
         wishdiv.append(wishpng, wishtext);
         wishdiv.setAttribute("id", "wishdiv");
         wishdiv.onclick = () => {
-          let isLogin = localStorage.getItem("isUserLogin");
-          if (isLogin == "true") {
+          let isLogin = localStorage.getItem("userToken");
+          if (isLogin != "") {
             wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
             wishpng.src =
               "https://www.freeiconspng.com/uploads/heart-png-8.png";
             wishtext.textContent = "Wishlisted";
             wishtext.style.color = "white";
-            let wishobj = {
-              img: elem.img,
-              rating: rating.textContent,
-              votes: vote.textContent,
-              title: title.textContent,
-              price: price.textContent,
-              maxprice: maxprice.textContent,
-              discount: discount.textContent,
-              desc: desc.textContent,
+            let wishListData = {
+              productId: elem._id,
             };
-            wisharr.push(wishobj);
-            localStorage.setItem("wisharr", JSON.stringify(wisharr));
-            animationForConfirmation("Added To WishList");
+            settingWishListItem(
+              "http://localhost:2345/wishList",
+              wishListData
+            ).then((wishListDataVar) => {
+              console.log("wishList Data:", wishListDataVar);
+              animationForConfirmation("Added To WishList");
+            });
           } else {
             alert("Please login to continue!!!");
           }
@@ -523,5 +519,17 @@
         x.style.display = "flex";
       }
     });
+    let token = localStorage.getItem("userToken");
+    async function settingWishListItem(url = "", data = {}) {
+      const response = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+      });
+      return response.json(); // parses JSON response into native JavaScript objects
+    }
   }
 </script>
