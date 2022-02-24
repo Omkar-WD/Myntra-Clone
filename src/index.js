@@ -9,6 +9,7 @@ const loginController = require("./controllers/login.controller");
 const productController = require("./controllers/product.controller");
 const cartController = require("./controllers/cart.controller");
 const wishListController = require("./controllers/wishList.controller");
+const userController = require("./controllers/user.controller");
 
 const authenticate = require("./middlewares/authenticate");
 
@@ -24,6 +25,7 @@ app.use("/login", loginController);
 app.use("/products", productController);
 app.use("/cart", authenticate, cartController);
 app.use("/wishList", authenticate, wishListController);
+app.use("/user", authenticate, userController);
 
 app.listen(PORT, async () => {
   try {

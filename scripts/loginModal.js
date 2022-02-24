@@ -1,6 +1,6 @@
 function loginDesign() {
   return `
-      <img id="logo" src="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png" alt="logo" />
+      <img id="logo" src="../images/logo.png" alt="logo" />
       <div class="login_container">
         <form id="login">
           <h1>Login</h1>
@@ -56,6 +56,7 @@ setTimeout(function () {
         if (data.message === "success") {
           localStorage.setItem("userToken", data.token);
           alert("Login Successfull!!!");
+          console.log(data);
           window.location.href = "";
         } else {
           alert("Login Failed , email id or password does not exists!!!");

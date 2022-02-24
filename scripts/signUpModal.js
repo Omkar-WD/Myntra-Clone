@@ -1,6 +1,6 @@
 function signUpDesign() {
   return `
-        <img id="logo" src="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png" alt="logo" />
+        <img id="logo" src="../images/logo.png" alt="logo" />
         <div class="signUp_container">
           <form id="signUp">
             <h1>SignUp</h1>

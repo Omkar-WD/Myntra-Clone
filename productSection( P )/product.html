@@ -231,43 +231,26 @@
         wishdiv.append(wishpng, wishtext);
         wishdiv.setAttribute("id", "wishdiv");
         wishdiv.onclick = () => {
-          // let isLogin = localStorage.getItem("isUserLogin");
-          // if (isLogin == "true") {
-          //   wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
-          //   wishpng.src =
-          //     "https://www.freeiconspng.com/uploads/heart-png-8.png";
-          //   wishtext.textContent = "Wishlisted";
-          //   wishtext.style.color = "white";
-          //   let wishobj = {
-          //     img: elem.img,
-          //     rating: rating.textContent,
-          //     votes: vote.textContent,
-          //     title: title.textContent,
-          //     price: price.textContent,
-          //     maxprice: maxprice.textContent,
-          //     discount: discount.textContent,
-          //     desc: desc.textContent,
-          //   };
-          //   wisharr.push(wishobj);
-          //   localStorage.setItem("wisharr", JSON.stringify(wisharr));
-          //   animationForConfirmation("Added To WishList");
-          // } else {
-          //   alert("Please login to continue!!!");
-          // }
-          wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
-          wishpng.src = "https://www.freeiconspng.com/uploads/heart-png-8.png";
-          wishtext.textContent = "Wishlisted";
-          wishtext.style.color = "white";
-          let wishListData = {
-            productId: elem._id,
-          };
-          settingWishListItem(
-            "http://localhost:2345/wishList",
-            wishListData
-          ).then((wishListDataVar) => {
-            console.log("wishList Data:", wishListDataVar);
-            animationForConfirmation("Added To WishList");
-          });
+          let isLogin = localStorage.getItem("userToken");
+          if (isLogin != "") {
+            wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
+            wishpng.src =
+              "https://www.freeiconspng.com/uploads/heart-png-8.png";
+            wishtext.textContent = "Wishlisted";
+            wishtext.style.color = "white";
+            let wishListData = {
+              productId: elem._id,
+            };
+            settingWishListItem(
+              "http://localhost:2345/wishList",
+              wishListData
+            ).then((wishListDataVar) => {
+              console.log("wishList Data:", wishListDataVar);
+              animationForConfirmation("Added To WishList");
+            });
+          } else {
+            alert("Please login to continue!!!");
+          }
         };
 
         let title = document.createElement("h3");

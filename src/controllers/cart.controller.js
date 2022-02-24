@@ -17,6 +17,49 @@ router.get("", async (req, res) => {
   }
 });
 
+router.post("/userCartItem", async (req, res) => {
+  try {
+    const cartItems = await Cart.findOne({ userId: req.body.userId })
+      .populate("userId")
+      .populate("productId")
+      .lean()
+      .exec();
+    return res.status(200).send(cartItems);
+  } catch (error) {
+    return res.status(500).send({ message: error.message });
+  }
+});
+
+router.patch("/removeItem", async (req, res) => {
+  try {
+    let user = await Cart.findOne({ userId: req.body.userId }).lean().exec();
+    user.productId = user.productId.filter((elem, i) => {
+      if (i !== req.body.removeElemFromIndex) return elem;
+    });
+    user = await Cart.findOneAndUpdate(
+      { userId: req.body.userId },
+      { productId: user.productId },
+      { new: true }
+    );
+    return res.status(200).send(user);
+  } catch (error) {
+    return res.status(500).send({ message: error.message });
+  }
+});
+
+router.patch("/removeAllItem", async (req, res) => {
+  try {
+    let user = await Cart.findOneAndUpdate(
+      { userId: req.body.userId },
+      { productId: [] },
+      { new: true }
+    );
+    return res.status(200).send(user);
+  } catch (error) {
+    return res.status(500).send({ message: error.message });
+  }
+});
+
 router.post("/arraylength", async (req, res) => {
   try {
     const user = await Cart.findOne({ userId: req.body.userId }).lean().exec();
