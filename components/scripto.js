@@ -1,6 +1,8 @@
-function appendDatao(orderdata, orderDateArr, loco) {
-  if (orderdata.length !== 0) {
-    // orderdata.forEach(function (ele, i) {
+function appendDatao(gettingHistoryData, loco) {
+  let orderDateArr = "put date here";
+  gettingHistoryData("http://localhost:2345/orderHistory", {}).then((data) => {
+    console.log("history data:", data);
+    let orderdata = data.productId;
     for (let i = orderdata.length - 1; i >= 0; i--) {
       let ele = orderdata[i];
       let carddiv = document.createElement("div");
@@ -15,15 +17,17 @@ function appendDatao(orderdata, orderDateArr, loco) {
       let descriptondiv = document.createElement("div");
       descriptondiv.setAttribute("id", "descriptondiv");
       let orderId = document.createElement("p");
-      orderId.textContent = `Order Id :${i + 1}`;
+      orderId.textContent = `Order Id : ORD-${i}${ele._id}`;
       let name = document.createElement("p");
-      name.textContent = `Product :${ele.title}`;
+      name.textContent = `Product : ${ele.title}`;
       let size = document.createElement("p");
-      size.textContent = `Description:${ele.desc}`;
+      size.textContent = `Description : ${ele.desc}`;
       let price = document.createElement("p");
-      price.textContent = ele.price;
+      price.textContent = `Rs.${ele.price}`;
       let date = document.createElement("p");
-      date.textContent = `Order Date : ${orderDateArr[i]}`;
+      date.textContent = `Order Date : ${String(
+        new Date(data.createdAt)
+      ).substring(0, 15)}`;
       descriptondiv.append(orderId, name, size, price, date);
       carddivposterimage.append(imagediv, descriptondiv);
       let buttondiv = document.createElement("div");
@@ -38,6 +42,6 @@ function appendDatao(orderdata, orderDateArr, loco) {
       carddiv.append(carddivposterimage, buttondiv);
       loco.append(carddiv);
     }
-  }
+  });
 }
 export default appendDatao;

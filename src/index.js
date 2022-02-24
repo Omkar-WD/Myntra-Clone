@@ -10,6 +10,8 @@ const productController = require("./controllers/product.controller");
 const cartController = require("./controllers/cart.controller");
 const wishListController = require("./controllers/wishList.controller");
 const userController = require("./controllers/user.controller");
+const addressController = require("./controllers/address.controller");
+const orderHistoryController = require("./controllers/orderHistory.controller");
 
 const authenticate = require("./middlewares/authenticate");
 
@@ -26,6 +28,8 @@ app.use("/products", productController);
 app.use("/cart", authenticate, cartController);
 app.use("/wishList", authenticate, wishListController);
 app.use("/user", authenticate, userController);
+app.use("/address", authenticate, addressController);
+app.use("/orderHistory", authenticate, orderHistoryController);
 
 app.listen(PORT, async () => {
   try {
