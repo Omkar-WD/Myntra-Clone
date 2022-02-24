@@ -1,6 +1,6 @@
 function signUpDesign() {
   return `
-        <img id="logo" src="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png" alt="logo" />
+        <img id="logo" src="../images/logo.png" alt="logo" />
         <div class="signUp_container">
           <form id="signUp">
             <h1>SignUp</h1>
@@ -29,20 +29,30 @@ function signUpDesign() {
             <input
               type="text"
               placeholder="At least 6 characters"
-              id="password"
+              id="signup_password"
               required
             />
             <input id="signupButton1" type="submit" value="SignUp" />
           </form>
         </div>
-        <a id="loginButton1" href="">
+        <!-- <a id="loginButton1" href="">
           <button>Click here for Login</button>
-        </a>
+        </a> -->
       `;
 }
 
-let signUpSpan = document.getElementsByClassName("close");
+async function postData(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
 
+let signUpSpan = document.getElementsByClassName("close");
 setTimeout(function () {
   let signUpBtn = document.getElementById("signUpModal");
   let signUpModal = document.getElementById("openSignUpPage");
@@ -53,21 +63,21 @@ setTimeout(function () {
     submitButton.addEventListener("submit", function (event) {
       event.preventDefault();
       let signUpData = {
-        Fullname: document.querySelector("#full_name").value,
-        Email: document.querySelector("#email").value,
-        Mobile: document.querySelector("#mobile").value,
-        password: document.querySelector("#password").value,
+        fullName: document.querySelector("#full_name").value,
+        email: document.querySelector("#email").value,
+        mobile: document.querySelector("#mobile").value,
+        password: document.querySelector("#signup_password").value,
       };
-
-      console.log(signUpData);
-      localStorage.setItem("signUpData", JSON.stringify(signUpData));
+      postData("http://localhost:2345/register", signUpData).then((data) => {
+        console.log(data);
+        if (data.message === "success") {
+          alert("Signup Successfull!!!");
+        } else {
+          alert("Signup Failed , email id already exists!!!");
+        }
+      });
       document.querySelector("#signUpContainer").style.display = "none";
       signUpModal.style.display = "none";
-      setTimeout(function () {
-        let loginModal = document.getElementById("openLoginPage");
-        document.querySelector("#loginContainer").innerHTML = loginDesign();
-        loginModal.style.display = "block";
-      }, 1000);
     });
   };
   for (let i = 0; i < signUpSpan.length; i++) {
@@ -75,4 +85,52 @@ setTimeout(function () {
       signUpModal.style.display = "none";
     });
   }
-}, 2000);
+}, 500);
+
+// let signUpSpan = document.getElementsByClassName("close");
+// let signuparr = JSON.parse(localStorage.getItem("signuparr")) || [];
+// setTimeout(function () {
+//   let signUpBtn = document.getElementById("signUpModal");
+//   let signUpModal = document.getElementById("openSignUpPage");
+//   signUpBtn.onclick = function () {
+//     document.querySelector("#signUpContainer").innerHTML = signUpDesign();
+//     signUpModal.style.display = "block";
+//     let submitButton = document.querySelector("#signUp");
+//     submitButton.addEventListener("submit", function (event) {
+//       event.preventDefault();
+//       let isPresent = "false";
+//       signuparr.forEach((elem) => {
+//         if (
+//           elem.Email == document.querySelector("#email").value ||
+//           elem.Mobile == document.querySelector("#mobile").value
+//         ) {
+//           isPresent = "true";
+//         }
+//       });
+//       if (isPresent == "false") {
+//         let signUpData = {
+//           Fullname: document.querySelector("#full_name").value,
+//           Email: document.querySelector("#email").value,
+//           Mobile: document.querySelector("#mobile").value,
+//           password: document.querySelector("#signup_password").value,
+//         };
+
+//         console.log(signUpData);
+
+//         signuparr.push(signUpData);
+
+//         localStorage.setItem("signuparr", JSON.stringify(signuparr));
+//         alert("Sign Up successful, please login");
+//         document.querySelector("#signUpContainer").style.display = "none";
+//         signUpModal.style.display = "none";
+//       } else {
+//         alert("User already Exists!!!");
+//       }
+//     });
+//   };
+//   for (let i = 0; i < signUpSpan.length; i++) {
+//     signUpSpan[i].addEventListener("click", function () {
+//       signUpModal.style.display = "none";
+//     });
+//   }
+// }, 2000);
