@@ -177,3 +177,22 @@ function alertData() {
     alert("Invalid OTP!!!");
   }
 }
+
+let newToken = localStorage.getItem("userToken");
+async function transferringCartToHistoryData() {
+  let url = `http://localhost:2345/orderHistory/`;
+  try {
+    let responce = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${newToken}`,
+      },
+    });
+    let data = await responce.json();
+    console.log("Transfer Data : ", data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+transferringCartToHistoryData();
