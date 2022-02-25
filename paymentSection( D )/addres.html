@@ -160,7 +160,7 @@
             <p>Total MRP</p>
             <p>Discount on MRP</p>
             <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span> </p>
-            <h4>Total Amount</h4>  
+            <h4>Total Amount</h4>
         </div>
         <div class="submain2div2">
             <h4>(${totalItems} Items)</h4>
@@ -202,4 +202,29 @@
     console.log(data1);
     window.location.href = "address1.html";
   }
+  let addressData;
+  let newToken = localStorage.getItem("userToken");
+
+  async function gettingAddressData() {
+    let url = `http://localhost:2345/address/`;
+    try {
+      let responce = await fetch(url, {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${newToken}`,
+        },
+      });
+      addressData = await responce.json();
+      console.log("Address Data : ", addressData);
+      document.querySelector("#pin").value = addressData.pincode;
+      document.getElementById("add").value = addressData.address;
+      document.getElementById("town").value = addressData.town;
+      document.getElementById("dist").value = addressData.city;
+      document.getElementById("state").value = addressData.state;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingAddressData();
 </script>

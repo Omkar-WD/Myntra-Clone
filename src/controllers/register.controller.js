@@ -2,10 +2,12 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const express = require("express");
-
+const EventEmitter = require("events");
+const { sendMail, sendMailToAdmins } = require("../utils");
 const User = require("../models/user.model");
 
 const router = express.Router();
+const eventEmitter = new EventEmitter();
 
 const newToken = (user) => {
   return jwt.sign({ user }, process.env.JWT_TOKEN);
@@ -37,6 +39,9 @@ router.post(
       }
       const user = await User.create(req.body);
       const token = newToken(user);
+      eventEmitter.on("User Registered", sendMail);
+      eventEmitter.on("User Registered", sendMailToAdmins);
+      eventEmitter.emit("User Registered", user);
       res.status(201).send({ user, token, message: "success" });
     } catch (error) {
       return res.status(500).send(error.message);

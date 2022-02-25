@@ -113,7 +113,7 @@
   flex-direction: column;
 }
 #brand_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }
@@ -128,7 +128,7 @@ input {
   flex-direction: column;
 }
 #price_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }
@@ -143,7 +143,7 @@ input {
   flex-direction: column;
 }
 #discount_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }

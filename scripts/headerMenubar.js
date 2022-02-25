@@ -228,6 +228,7 @@ setInterval(() => {
   }
 }, 1000);
 setTimeout(() => {
+  token = localStorage.getItem("userToken");
   document.querySelector("#wishlist_div").addEventListener("click", () => {
     window.location.href = "../wishList( O )/wishList.html";
   });
@@ -239,7 +240,7 @@ setTimeout(() => {
   dropDown3();
   dropDown4();
   dropDown5();
-  if (localStorage.getItem("userToken") !== "") {
+  if (token != "") {
     gettingUserData();
   }
 }, 1000);
