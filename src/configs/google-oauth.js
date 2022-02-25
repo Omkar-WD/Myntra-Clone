@@ -14,10 +14,11 @@ passport.use(
       passReqToCallback: true,
     },
     async function (request, accessToken, refreshToken, profile, done) {
+      console.log("profile", profile);
       let user = await User.findOne({ email: profile?.email }).lean().exec();
       if (!user) {
         user = await User.create({
-          fullName: profile?.fullName,
+          fullName: profile?.displayName,
           mobile: 0000000000,
           email: profile?.email,
           password: uuidv4(),

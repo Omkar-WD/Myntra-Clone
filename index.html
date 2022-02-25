@@ -56,48 +56,6 @@
       <span class="dot" onclick="currentSlide(2)"></span>
       <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-
-    <!-- dropdown -->
-    <!-- <div class="dropdown-menu1 dropdown-menu">
-      <ul>
-        <li><a href="products.html">Shirts</a></li>
-        <li><a href="products.html">Tshirts</a></li>
-        <li><a href="products.html">Jeans</a></li>
-        <li><a href="products.html">Shoes</a></li>
-        <li><a href="products.html">Accessories</a></li>
-      </ul>
-    </div>
-
-    <div class="dropdown-menu2 dropdown-menu">
-      <ul>
-        <li><a href="products.html">Ethnic</a></li>
-        <li><a href="products.html">western wear</a></li>
-        <li><a href="products.html">Footwear</a></li>
-        <li><a href="products.html">sports wear</a></li>
-        <li><a href="products.html">Accessories</a></li>
-      </ul>
-    </div>
-
-    <div class="dropdown-menu3 dropdown-menu">
-      <ul>
-        <li><a href="products.html">Boys Clothing</a></li>
-        <li><a href="products.html">Girls Clothing</a></li>
-        <li><a href="products.html">infants</a></li>
-        <li><a href="products.html">boys footwear</a></li>
-        <li><a href="products.html">girls footwear</a></li>
-      </ul>
-    </div>
-
-    <div class="dropdown-menu4 dropdown-menu">
-      <ul>
-        <li><a href="products.html">make up</a></li>
-        <li><a href="products.html">skincare</a></li>
-        <li><a href="products.html">haircare</a></li>
-        <li><a href="products.html">fragrances</a></li>
-        <li><a href="products.html">mens grooming</a></li>
-      </ul>
-    </div> -->
-
     <!-- deals of the day -->
     <div class="text-banner-container">
       <h4 class="text-banner-title">DEALS OF THE DAY</h4>
@@ -331,4 +289,13 @@
       x.style.display = "flex";
     }
   });
+  let c = document.cookie
+    .split(";")
+    .reduce(
+      (ac, cv, i) =>
+        Object.assign(ac, { [cv.split("=")[0]]: cv.split("=")[1] }),
+      {}
+    );
+
+  console.log("cookies", c);
 </script>

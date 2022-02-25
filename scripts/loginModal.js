@@ -48,7 +48,7 @@ async function registerUserOauth(url = "", data = {}) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    // body: JSON.stringify(data), // body data type must match "Content-Type" header
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
@@ -61,11 +61,17 @@ setTimeout(function () {
     document.querySelector("#loginContainer").innerHTML = loginDesign();
     loginModal.style.display = "block";
 
-    document.querySelector("#googleLogo").addEventListener("click", () => {
-      registerUserOauth("http://localhost:2345/auth/google").then((data) => {
-        console.log("data", data);
+    document
+      .querySelector("#googleLogo")
+      .addEventListener("click", function () {
+        console.log("clicked");
+        // registerUserOauth("http://localhost:2345/auth/google", {}).then(
+        //   (data) => {
+        //     console.log("click");
+        //   }
+        // );
+        window.location.href = "http://localhost:2345/auth/google";
       });
-    });
 
     let loginButton = document.querySelector("#login");
     loginButton.addEventListener("submit", function (event) {
