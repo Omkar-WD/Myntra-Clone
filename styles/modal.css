@@ -3,7 +3,8 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 60px; /* Location of the box */
+  /* Location of the box */
+  padding-top: 30px;
   left: 0;
   /* top: 0; */
   width: 100%; /* Full width */

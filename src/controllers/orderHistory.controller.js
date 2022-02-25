@@ -34,6 +34,15 @@ router.post("", async (req, res) => {
         userId: req.body.userId,
         productId: productIdArray,
       });
+      const user2 = await Cart.findOneAndUpdate(
+        { userId: req.body.userId },
+        {
+          productId: [],
+        },
+        { new: true }
+      )
+        .lean()
+        .exec();
       return res.status(201).send(orderHistory);
     }
     const orderHistory = await OrderHistory.updateOne(

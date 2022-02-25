@@ -169,30 +169,29 @@ function appendData2() {
   upiIdbut.addEventListener("click", alertData);
 }
 
-function alertData() {
-  var otp = prompt("Please enter your OTP:", "");
-  if (otp == "1234") {
-    window.location.href = "./success.html";
-  } else {
-    alert("Invalid OTP!!!");
-  }
+let newToken = localStorage.getItem("userToken");
+async function gettingOTP(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${newToken}`,
+    },
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
 }
 
-let newToken = localStorage.getItem("userToken");
-async function transferringCartToHistoryData() {
-  let url = `http://localhost:2345/orderHistory/`;
-  try {
-    let responce = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${newToken}`,
-      },
-    });
-    let data = await responce.json();
-    console.log("Transfer Data : ", data);
-  } catch (err) {
-    console.log(err);
-  }
+function alertData() {
+  let systemOTP;
+  gettingOTP("http://localhost:2345/gettingPaymentOTP").then((data) => {
+    systemOTP = data.otp;
+    console.log("Otp", systemOTP);
+    let userOTP = prompt("Please enter your OTP:", "");
+    if (userOTP == systemOTP) {
+      window.location.href = "./success.html";
+    } else {
+      alert("Invalid OTP!!!");
+      window.location.href = "";
+    }
+  });
 }
-transferringCartToHistoryData();
