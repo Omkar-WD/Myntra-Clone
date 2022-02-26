@@ -54,6 +54,7 @@ body {
 .nav-last > div {
   text-align: center;
   margin-left: 15px;
+  margin-top: 15px;
 }
 
 #svg {
@@ -81,6 +82,7 @@ body {
   border: none;
   background-color: #eee;
   text-align: center;
+  padding: 10px 20px;
 }
 a {
   text-decoration: none;
@@ -116,7 +118,7 @@ a {
 .dropdown-menu {
   display: none;
   position: fixed;
-  background: white;
+  background: rgb(249, 249, 249);
   top: 70px;
   z-index: 20;
   padding: 10px 30px 10px;

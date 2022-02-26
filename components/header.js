@@ -1,10 +1,9 @@
 function header() {
-  
   return `    <div class="navbar">
   <a href="../index.html">
   <div class="company-logo">
     <img
-      src="https://logosarchive.com/wp-content/uploads/2021/12/Myntra-icon-logo.png"
+      src="../images/logo.png"
       alt=""
     />
   </div>

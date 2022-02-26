@@ -1,7 +1,11 @@
 #loginContainer {
   text-align: center;
 }
-#logo {
+#logo,
+#googleLogo,
+#githubLogo,
+#facebookLogo,
+#twitterLogo {
   margin-left: 15px;
   width: 10%;
 }

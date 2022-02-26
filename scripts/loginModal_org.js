@@ -1,13 +1,9 @@
 function loginDesign() {
   return `
+      <img id="logo" src="../images/logo.png" alt="logo" />
       <div class="login_container">
         <form id="login">
-          <h4>Continue With</h4>
-          <img id="googleLogo" src="../images/google.png" alt="logo" />
-          <img id="githubLogo" src="../images/github.png" alt="logo" />
-          <img id="facebookLogo" src="../images/facebook.png" alt="logo" />
-          <img id="twitterLogo" src="../images/twitter1.png" alt="logo" />
-          <h3>OR</h3>
+          <h1>Login</h1>
           <label>Email Id</label>
           <input
             type="text"
@@ -49,14 +45,6 @@ setTimeout(function () {
   loginBtn.onclick = function () {
     document.querySelector("#loginContainer").innerHTML = loginDesign();
     loginModal.style.display = "block";
-
-    document
-      .querySelector("#googleLogo")
-      .addEventListener("click", function () {
-        // console.log("clicked");
-        window.location.href = "http://localhost:2345/auth/google";
-      });
-
     let loginButton = document.querySelector("#login");
     loginButton.addEventListener("submit", function (event) {
       event.preventDefault();
