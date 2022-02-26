@@ -170,7 +170,7 @@
     document.querySelector("#product_maxprice").textContent =
       "Rs. " + proddetails.maxprice;
     document.querySelector("#product_discount").textContent =
-      "Rs. " + proddetails.discount;
+      proddetails.discount + "%OFF";
 
     let pincode = document.querySelector("#pincode");
     pincode.addEventListener("keypress", pincodeStatus);
