@@ -9,10 +9,6 @@
       href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
       type="image/icon type"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <title>Product</title>
     <link href="../styles/header.css" rel="stylesheet" />
     <link rel="stylesheet" href="../styles/product.css" />
@@ -198,14 +194,6 @@
         </div>
         <div id="products_div"></div>
       </div>
-      <div class="pagination">
-        <ul>
-          <li class="pages_pagination">1</li>
-          <li class="pages_pagination">2</li>
-          <li class="pages_pagination">3</li>
-          <li class="pages_pagination">4</li>
-        </ul>
-      </div>
     </div>
     <div class="footer"></div>
   </body>
@@ -222,101 +210,23 @@
   import footer from "../components/footer.js";
   let x;
   let data2;
-  var totalpagesfrombackend;
-  async function gettingProductData(page) {
-    let url = `http://localhost:2345/products?page=${page}`;
+  async function gettingProductData() {
+    let url = `http://localhost:2345/products`;
     try {
       let response = await fetch(url);
       let data = await response.json();
-      data2 = [];
-      data2 = data.products;
-      totalpagesfrombackend = data.pages;
-      console.log("productData : ", data2);
-      appendData(data2);
+      data2 = data;
+      // console.log("productData : ", data2);
       superfunction();
     } catch (err) {
       console.log(err);
     }
   }
 
-  gettingProductData(1);
+  gettingProductData();
 
-  function appendData(data) {
-    document.querySelector("#products_div").innerHTML = "";
-    data.forEach((elem) => {
-      let maindiv = document.createElement("div");
-      let imgdiv = document.createElement("div");
-      let textdiv = document.createElement("div");
-      let pricediv = document.createElement("div");
-      let img = document.createElement("img");
-      img.src = elem.img;
-      let rating = document.createElement("h6");
-      rating.textContent = (Math.random() * (5 - 3) + 3).toFixed(1) + "⭐";
-      let vote = document.createElement("h6");
-      vote.textContent = (Math.random() * (50 - 1) + 1).toFixed(1) + "k";
-      let ratingdiv = document.createElement("div");
-      ratingdiv.append(rating, " " + " " + "|" + " " + " ", vote);
-      ratingdiv.setAttribute("id", "ratingol");
-      let wishdiv = document.createElement("div");
-      let wishtext = document.createElement("p");
-      wishtext.textContent = "Wishlist";
-      let wishpng = document.createElement("img");
-      wishpng.src =
-        "https://img.icons8.com/material-outlined/24/000000/like--v1.png";
-      wishdiv.append(wishpng, wishtext);
-      wishdiv.setAttribute("id", "wishdiv");
-      wishdiv.onclick = () => {
-        let isLogin = localStorage.getItem("userToken");
-        if (isLogin != "") {
-          wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
-          wishpng.src = "https://www.freeiconspng.com/uploads/heart-png-8.png";
-          wishtext.textContent = "Wishlisted";
-          wishtext.style.color = "white";
-          let wishListData = {
-            productId: elem._id,
-          };
-          settingWishListItem(
-            "http://localhost:2345/wishList",
-            wishListData
-          ).then((wishListDataVar) => {
-            console.log("wishList Data:", wishListDataVar);
-            animationForConfirmation("Added To WishList");
-          });
-        } else {
-          alert("Please login to continue!!!");
-        }
-      };
-
-      let title = document.createElement("h3");
-      title.textContent = elem.title;
-      let price = document.createElement("span");
-      price.textContent = "Rs: " + Math.round(elem.price);
-      let maxprice = document.createElement("span");
-      maxprice.textContent = "Rs: " + elem.maxprice;
-      let discount = document.createElement("span");
-      discount.textContent =
-        "(" + (100 - Math.round((elem.price * 100) / elem.maxprice)) + "% OFF)";
-      let desc = document.createElement("p");
-      desc.textContent = elem.desc;
-      imgdiv.append(img, ratingdiv, wishdiv);
-      img.addEventListener("click", () => {
-        console.log("elem:", elem._id);
-        localStorage.setItem("productId", elem._id);
-        window.location.href = "productdetails.html";
-      });
-      textdiv.append(title, desc, pricediv);
-      textdiv.addEventListener("click", () => {
-        console.log("elem:", elem._id);
-        localStorage.setItem("productId", elem._id);
-        window.location.href = "productdetails.html";
-      });
-      pricediv.append(price, maxprice, discount);
-      maindiv.append(imgdiv, textdiv);
-      document.querySelector("#products_div").append(maindiv);
-    });
-  }
   function superfunction() {
-    //appendData(data2);
+    appendData(data2);
     document.querySelector(".header").innerHTML = header();
     document.querySelector("#menuIcon").addEventListener("click", function () {
       let x = document.getElementById("myLinks");
@@ -337,6 +247,83 @@
     document.querySelector(".footer").innerHTML = footer();
 
     let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
+    function appendData(data) {
+      document.querySelector("#products_div").innerHTML = "";
+      data.forEach((elem) => {
+        let maindiv = document.createElement("div");
+        let imgdiv = document.createElement("div");
+        let textdiv = document.createElement("div");
+        let pricediv = document.createElement("div");
+        let img = document.createElement("img");
+        img.src = elem.img;
+        let rating = document.createElement("h6");
+        rating.textContent = (Math.random() * (5 - 3) + 3).toFixed(1) + "⭐";
+        let vote = document.createElement("h6");
+        vote.textContent = (Math.random() * (50 - 1) + 1).toFixed(1) + "k";
+        let ratingdiv = document.createElement("div");
+        ratingdiv.append(rating, " " + " " + "|" + " " + " ", vote);
+        ratingdiv.setAttribute("id", "ratingol");
+        let wishdiv = document.createElement("div");
+        let wishtext = document.createElement("p");
+        wishtext.textContent = "Wishlist";
+        let wishpng = document.createElement("img");
+        wishpng.src =
+          "https://img.icons8.com/material-outlined/24/000000/like--v1.png";
+        wishdiv.append(wishpng, wishtext);
+        wishdiv.setAttribute("id", "wishdiv");
+        wishdiv.onclick = () => {
+          let isLogin = localStorage.getItem("userToken");
+          if (isLogin != "") {
+            wishdiv.style.backgroundColor = "rgb(44, 44, 44)";
+            wishpng.src =
+              "https://www.freeiconspng.com/uploads/heart-png-8.png";
+            wishtext.textContent = "Wishlisted";
+            wishtext.style.color = "white";
+            let wishListData = {
+              productId: elem._id,
+            };
+            settingWishListItem(
+              "http://localhost:2345/wishList",
+              wishListData
+            ).then((wishListDataVar) => {
+              console.log("wishList Data:", wishListDataVar);
+              animationForConfirmation("Added To WishList");
+            });
+          } else {
+            alert("Please login to continue!!!");
+          }
+        };
+
+        let title = document.createElement("h3");
+        title.textContent = elem.title;
+        let price = document.createElement("span");
+        price.textContent = "Rs: " + Math.round(elem.price);
+        let maxprice = document.createElement("span");
+        maxprice.textContent = "Rs: " + elem.maxprice;
+        let discount = document.createElement("span");
+        discount.textContent =
+          "(" +
+          (100 - Math.round((elem.price * 100) / elem.maxprice)) +
+          "% OFF)";
+        let desc = document.createElement("p");
+        desc.textContent = elem.desc;
+        imgdiv.append(img, ratingdiv, wishdiv);
+        img.addEventListener("click", () => {
+          console.log("elem:", elem._id);
+          localStorage.setItem("productId", elem._id);
+          window.location.href = "productdetails.html";
+        });
+        textdiv.append(title, desc, pricediv);
+        textdiv.addEventListener("click", () => {
+          console.log("elem:", elem._id);
+          localStorage.setItem("productId", elem._id);
+          window.location.href = "productdetails.html";
+        });
+        pricediv.append(price, maxprice, discount);
+        maindiv.append(imgdiv, textdiv);
+        document.querySelector("#products_div").append(maindiv);
+      });
+    }
     let partdata = [];
     let Checkbox = (e) => {
       let name = e.name;
@@ -426,21 +413,21 @@
       }
     };
 
-    // let brandCount = () => {
-    //   let brands = document.querySelectorAll("#brand_filter > div > label");
-    //   brands.forEach((elem) => {
-    //     let title = elem.textContent;
-    //     let count = 0;
-    //     data2.forEach((elem) => {
-    //       if (title == elem.title) {
-    //         count++;
-    //       }
-    //     });
-    //     elem.textContent = title + "(" + count + ")";
-    //     //   console.log(title);
-    //   });
-    // };
-    // brandCount();
+    let brandCount = () => {
+      let brands = document.querySelectorAll("#brand_filter > div > label");
+      brands.forEach((elem) => {
+        let title = elem.textContent;
+        let count = 0;
+        data2.forEach((elem) => {
+          if (title == elem.title) {
+            count++;
+          }
+        });
+        elem.textContent = title + "(" + count + ")";
+        //   console.log(title);
+      });
+    };
+    brandCount();
     let sortBy = (e) => {
       let value = document.querySelector("#sortby").value;
       if (value == "high") {
@@ -568,20 +555,4 @@
       return response.json(); // parses JSON response into native JavaScript objects
     }
   }
-  let pagination = document.querySelectorAll(".pages_pagination");
-
-  // for (let i = 0; i < pagination.length; i++) {
-  //   pagination[i].addEventListener("click", function () {
-  //     console.log(pagination[i].textContent);
-  //     gettingProductData(pagination[i].textContent);
-
-  //   });
-  // }
-  pagination.forEach((elem) => {
-    elem.addEventListener("click", function () {
-      console.log(elem.textContent);
-      gettingProductData(elem.textContent);
-    });
-  });
-  //gettingProductData(1);
 </script>
