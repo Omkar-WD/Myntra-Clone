@@ -22,6 +22,11 @@
     <!-- for navbar -->
     <div class="header"></div>
 
+    <!-- for animation add to cart -->
+    <div id="pop-up">
+      <div class="container"></div>
+    </div>
+
     <!-- pop-up for apply coupon -->
     <div id="applyCoupon" class="modal">
       <div class="modal-content">
@@ -118,12 +123,12 @@
     appendCartData,
     showMore,
     displayNameAndAddress,
-    suggetionDataAddedToLocalStorage,
   } from "../scripts/bag.js";
   import header from "../components/header.js";
   import displayTotal from "../components/displayTotal.js";
   import calculateSubtotal from "../components/calculateSubtotal.js";
   import emptyBag from "../components/emptyBag.js";
+  import animationForConfirmation from "../components/animationForConfirmation.js";
 
   import footer from "../components/footer.js";
   document.querySelector(".footer").innerHTML = footer();
@@ -146,10 +151,45 @@
     }
   });
 
-  suggetionDataAddedToLocalStorage();
-
   let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
-  let suggestionData = JSON.parse(localStorage.getItem("suggetionArr")) || [];
+  let newCartData;
+  let token;
+  async function gettingCartData() {
+    let url = `http://localhost:2345/cart/userCartItem`;
+    token = localStorage.getItem("userToken");
+    try {
+      let responce = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      newCartData = await responce.json();
+      console.log("Cart Data : ", newCartData);
+      appendCartData(newCartData.productId);
+      displayTotalItems(newCartData.productId);
+      discountSection(newCartData.productId);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingCartData();
+
+  let suggestionData;
+  async function gettingSuggestionData() {
+    let url = `http://localhost:2345/suggestionCartData`;
+    try {
+      let responce = await fetch(url);
+      let data = await responce.json();
+      suggestionData = data.suggetionArr;
+      appendSuggestionData(suggestionData);
+      console.log("Suggestion Data : ", suggestionData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingSuggestionData();
 
   document
     .querySelector("#moveToWishList")
@@ -157,18 +197,21 @@
       window.location.href = "../wishList( O )/wishList.html";
     });
 
-  document.querySelector("#emptyCart").addEventListener("click", function () {
-    let cartData = [];
-    localStorage.setItem("cartarr", JSON.stringify(cartData));
-    window.location.href = "";
+  document
+    .querySelector("#emptyCart")
+    .addEventListener("click", function () {});
+
+  function displayTotalItems(arr) {
+    document.querySelector("#count-of-items").innerHTML = `<h4>
+        <span>TOTAL ITEMS : ${arr.length}</span>
+      </h4>`;
+  }
+
+  document.querySelector("#myBtn").addEventListener("click", () => {
+    showMore();
   });
 
-  if (cartData.length !== 0) {
-    document.querySelector("#myBtn").addEventListener("click", () => {
-      showMore();
-    });
-
-    document.querySelector("#more").innerHTML = `<br/>
+  document.querySelector("#more").innerHTML = `<br/>
       . 5% Unlimited Cashback on Flipkart Axis Bank Ctedit Card TCA<br /><br />
                   . 10% Cashback upto Rs 250 on a minimum spend of Rs 1500 with
                   PayZapp TCA<br /><br />
@@ -176,74 +219,28 @@
                   999. Use code MBK500 on mobikwik TCA<br /><br />
                   . Flat Rs 200 Cashback on first Airtel Payments Bank transcation
                   on myntra on a min spend of Rs 2000 TCA`;
-    let { Fullname } = JSON.parse(localStorage.getItem("signUpData"));
 
-    displayNameAndAddress(Fullname);
-    appendCartData(cartData);
-    appendSuggestionData(suggestionData);
-    displayTotalItems(cartData);
+  setTimeout(() => {
+    displayNameAndAddress(userData.user.fullName);
+  }, 2000);
 
-    let couponVar = localStorage.getItem("isCouponApplied");
+  let totalItems, subTotalInRs;
+  let couponVar = localStorage.getItem("isCouponApplied");
 
-    let totalItems, subTotalInRs;
+  function discountSection(arr) {
+    totalItems = arr.length;
+    subTotalInRs = calculateSubtotal(arr);
+    document.querySelector(".bag-container-right-price-details").innerHTML =
+      displayTotal(totalItems, subTotalInRs, couponVar);
+  }
 
-    let qtyArr = JSON.parse(localStorage.getItem("qtyArr")) || [];
-
-    let itemQty = document.querySelectorAll("#item-qty");
-
-    itemQty.forEach(function (elem, i) {
-      qtyArr[i] = +elem.value;
-      localStorage.setItem("qtyArr", JSON.stringify(qtyArr));
-    });
-
-    itemQty.forEach(function (elem, i) {
-      elem.addEventListener("change", function () {
-        qtyArr[i] = +elem.value;
-        localStorage.setItem("qtyArr", JSON.stringify(qtyArr));
-        discountSection(cartData);
-      });
-    });
-
-    discountSection(cartData);
-
-    function displayTotalItems(arr) {
-      document.querySelector("#count-of-items").innerHTML = `<h4>
-        <span>TOTAL ITEMS : ${arr.length}</span>
-      </h4>`;
-    }
-
-    function discountSection(arr) {
-      totalItems = cartData.length;
-      subTotalInRs = calculateSubtotal(cartData, qtyArr);
-      document.querySelector(".bag-container-right-price-details").innerHTML =
-        displayTotal(totalItems, subTotalInRs, couponVar);
-    }
-
+  setTimeout(() => {
     document
       .querySelector("#remove-coupon")
       .addEventListener("click", function () {
         localStorage.setItem("isCouponApplied", "false");
         window.location.href = "";
       });
-
-    let addToCart = document.querySelectorAll("#addToCart");
-    addToCart.forEach(function (e, i) {
-      e.addEventListener("click", function () {
-        cartData.push(suggestionData[i]);
-        localStorage.setItem("cartarr", JSON.stringify(cartData));
-        window.location.href = "";
-      });
-    });
-
-    let removeFromCart = document.querySelectorAll("#removeFromCart");
-    removeFromCart.forEach(function (elem, i) {
-      elem.addEventListener("click", function () {
-        cartData.splice(i, 1);
-        localStorage.setItem("cartarr", JSON.stringify(cartData));
-        window.location.href = "";
-      });
-    });
-
     document
       .querySelector("#place-order-btn")
       .addEventListener("click", function () {
@@ -253,10 +250,40 @@
           alert("Add Items in Bags!!!");
         }
       });
-  } else {
-    document.querySelector(".bag-container").style.display = "none";
-    document.querySelector(".suggetion-container").style.display = "none";
-    document.querySelector(".empty-cart").style.display = "flex";
-    document.querySelector(".empty-cart").innerHTML = emptyBag();
+
+    let removeFromCart = document.querySelectorAll("#removeFromCart");
+    removeFromCart.forEach(function (elem, i) {
+      elem.addEventListener("click", function () {
+        deletingCartItem("http://localhost:2345/cart/removeItem", {
+          removeElemFromIndex: i,
+        }).then((removeData) => {
+          console.log("cartData:", removeData);
+          console.log("click");
+          window.location.href = "";
+        });
+      });
+    });
+
+    let emptyCart = document.querySelector("#emptyCart");
+    emptyCart.addEventListener("click", function () {
+      deletingCartItem("http://localhost:2345/cart/removeAllItem", {}).then(
+        (removeData) => {
+          window.location.href = "";
+        }
+      );
+    });
+  }, 1500);
+
+  let newToken = localStorage.getItem("userToken");
+  async function deletingCartItem(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${newToken}`,
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
   }
 </script>

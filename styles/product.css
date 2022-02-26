@@ -23,7 +23,8 @@
 #products_div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 40px;
 }
 #products_div > div {
   height: 300px;
@@ -113,7 +114,7 @@
   flex-direction: column;
 }
 #brand_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }
@@ -128,7 +129,7 @@ input {
   flex-direction: column;
 }
 #price_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }
@@ -143,7 +144,7 @@ input {
   flex-direction: column;
 }
 #discount_filter h3,
-input {
+.inputTag {
   margin-left: 10px;
   line-height: 0;
 }
@@ -176,4 +177,23 @@ input {
 #topfilter_div > div > div:nth-child(1) {
   display: flex;
   align-items: center;
+}
+.pagination ul {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.pagination ul li {
+  border: 1px solid #e83b6a;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+  color: #e83b6a;
+  text-align: center;
+}
+.pagination ul li:hover {
+  background-color: #e83b6a;
+  color: white;
+  cursor: pointer;
 }
