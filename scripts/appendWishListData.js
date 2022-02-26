@@ -47,7 +47,7 @@ function appendWishListData(data, animationForConfirmation) {
         let cartData = {
           productId: elem._id,
         };
-        settingCartItem("http://localhost:2345/cart", cartData).then(
+        settingCartItem("http://44.203.71.82:2345/cart", cartData).then(
           (cartData) => {
             console.log("cartData:", cartData);
             animationForConfirmation("Added To Bag");

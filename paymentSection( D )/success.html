@@ -27,7 +27,7 @@
   localStorage.setItem("isCouponApplied", "false");
   let newToken = localStorage.getItem("userToken");
   async function transferringCartToHistoryData() {
-    let url = `http://localhost:2345/orderHistory/`;
+    let url = `http://44.203.71.82:2345/orderHistory/`;
     try {
       let responce = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.

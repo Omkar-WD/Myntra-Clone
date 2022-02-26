@@ -1,6 +1,6 @@
 let newToken = localStorage.getItem("userToken");
 async function gettingUserPersonalData() {
-  let url = `http://localhost:2345/user/login`;
+  let url = `http://44.203.71.82:2345/user/login`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -25,7 +25,7 @@ async function gettingUserPersonalData() {
 gettingUserPersonalData();
 
 async function settingUserData(userDataToSave) {
-  let url = `http://localhost:2345/user/`;
+  let url = `http://44.203.71.82:2345/user/`;
   try {
     let responce = await fetch(url, {
       method: "PATCH", // *GET, POST, PUT, DELETE, etc.
