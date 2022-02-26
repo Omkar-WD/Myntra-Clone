@@ -42,17 +42,6 @@ async function postData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-async function registerUserOauth(url = "", data = {}) {
-  const response = await fetch(url, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
-
 let loginSpan = document.getElementsByClassName("close");
 setTimeout(function () {
   let loginBtn = document.getElementById("loginModal");
@@ -64,12 +53,7 @@ setTimeout(function () {
     document
       .querySelector("#googleLogo")
       .addEventListener("click", function () {
-        console.log("clicked");
-        // registerUserOauth("http://localhost:2345/auth/google", {}).then(
-        //   (data) => {
-        //     console.log("click");
-        //   }
-        // );
+        // console.log("clicked");
         window.location.href = "http://localhost:2345/auth/google";
       });
 
