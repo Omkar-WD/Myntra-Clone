@@ -169,11 +169,29 @@ function appendData2() {
   upiIdbut.addEventListener("click", alertData);
 }
 
+let newToken = localStorage.getItem("userToken");
+async function gettingOTP(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${newToken}`,
+    },
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 function alertData() {
-  var otp = prompt("Please enter your OTP:", "");
-  if (otp == "1234") {
-    window.location.href = "./success.html";
-  } else {
-    alert("Invalid OTP!!!");
-  }
+  let systemOTP;
+  gettingOTP("http://44.203.71.82:2345/gettingPaymentOTP").then((data) => {
+    systemOTP = data.otp;
+    console.log("Otp", systemOTP);
+    let userOTP = prompt("Please enter your OTP:", "");
+    if (userOTP == systemOTP) {
+      window.location.href = "./success.html";
+    } else {
+      alert("Invalid OTP!!!");
+      window.location.href = "";
+    }
+  });
 }

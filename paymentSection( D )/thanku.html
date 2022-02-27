@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank you</title>
+    <link
+      rel="icon"
+      href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
+      type="image/icon type"
+    />
+    <style>
+      .thanku-container {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      #thanku_logo {
+        margin: 0 auto;
+        width: 10%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="thanku-container">
+      <img id="thanku_logo" src="../images/logo.png" alt="logo" />
+      <h1>Thank you for purchasing</h1>
+      <p>Wait for a seconds , Redirecting...</p>
+    </div>
+  </body>
+</html>
+
+<script>
+  const myTimeout = setTimeout(myGreeting, 4000);
+  function myGreeting() {
+    window.location.href = "../index.html";
+  }
+</script>

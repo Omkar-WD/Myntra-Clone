@@ -32,15 +32,15 @@
                 </div>
                 <div id="main12">
                     <div class="main121">
-                        <div><h3 id="h31">Dhananajya dhoke</h3></div>
+                        <div><h3 id="h31"></h3></div>
                         <div>  <button id="homebutton">HOME</button></div>
                     </div>
                     <div>
-                      <span id="span1">hingna road ,</span><br>
-                      <span id="span2">Nagpur ,</span>
-                      <span id="span3">Maharashtra, </span>
-                      <span id="span4">441106</span><br>
-                      <span >Mobile :</span><span id="span5">987465123</span>
+                      <span id="span1"></span><br>
+                      <span id="span2"></span>
+                      <span id="span3"></span>
+                      <span id="span4"></span><br>
+                      <span >Mobile :</span><span id="span5"></span>
 
 
                     </div>
@@ -113,7 +113,7 @@
 <script src="../scripts/loginModal.js"></script>
 <script src="../scripts/signUpModal.js"></script>
 <script src="../scripts/headerMenubar.js"></script>
-<script src="../scripts/addresss1.js"></script>
+
 <script type="module">
   import header from "../components/header.js";
   document.querySelector(".header").innerHTML = header();
@@ -135,25 +135,51 @@
   });
   let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
   let {totalItems,cartTotal,discount,finalTotal} = objDetails;
-  document.querySelector("#main2").innerHTML=` <h3>PRICE DETAILS</h3>
-                  <div id="pricedetail">
-                    <div class="pricediv1">
-                        <p>Total MRP</p>
-                        <p>Discount on MRP</p>
-                        <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span></p> 
-                        <h4>Total Amount</h4>  
-                    </div>
-                    <div class="pricediv2">                   
-                        <p>Rs.${cartTotal}</p>
-                        <p class="green">-Rs.${discount}</p>
-                        <p class="linep">Rs.99 </p> <span class="green">FREE</span>
-                        <h4>Rs.${finalTotal}</h4>
-                    </div>
-                  </div>
-                    <div id="buttondiv">
-                       <a href="./payment.html"> <button id="contbutton">CONTINUE</button></a>
-                    </div>
-                   
-                  </div>
-                 </div>`;
+  document.querySelector("#main2").innerHTML=` 
+  <h3>PRICE DETAILS</h3>
+    <div id="pricedetail">
+      <div class="pricediv1">
+          <p>Total MRP</p>
+          <p>Discount on MRP</p>
+          <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span></p> 
+          <h4>Total Amount</h4>  
+      </div>
+      <div class="pricediv2">                   
+          <p>Rs.${cartTotal}</p>
+          <p class="green">-Rs.${discount}</p>
+          <p class="linep">Rs.99 </p> <span class="green">FREE</span>
+          <h4>Rs.${finalTotal}</h4>
+      </div>
+    </div>
+      <div id="buttondiv">
+          <a href="./payment.html"> <button id="contbutton">CONTINUE</button></a>
+      </div>
+      
+    </div>
+  </div>`;
+  let addressData;  
+  let newToken = localStorage.getItem("userToken");
+  async function gettingAddressData() {
+    let url = `http://44.203.71.82:2345/address/`;
+    try {
+      let responce = await fetch(url, {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${newToken}`,
+        },
+      });
+      addressData = await responce.json();
+      console.log("Address Data : ", addressData);
+      document.querySelector("#h31").textContent = addressData.userId.fullName;
+      document.querySelector("#span1").textContent = addressData.address+" , "+addressData.town+" , ";
+      document.querySelector("#span2").textContent = addressData.city+" , ";
+      document.querySelector("#span3").textContent = addressData.state+" - ";
+      document.querySelector("#span4").textContent = addressData.pincode;
+      document.querySelector("#span5").textContent = addressData.userId.mobile;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingAddressData();             
 </script>

@@ -23,17 +23,15 @@ document.querySelector("#menuIcon").addEventListener("click", function () {
 
 let cont = document.getElementById("rightdiv");
 
-let orderarr = JSON.parse(localStorage.getItem("orderArr")) || [];
-let orderDateArr = JSON.parse(localStorage.getItem("orderDateArr")) || [];
-if (orderarr.length !== 0) {
-  appendDatao(orderarr, orderDateArr, cont);
-} else {
-  cont.innerHTML = "";
-  let dummyimage = document.createElement("img");
-  dummyimage.setAttribute(
-    "src",
-    "https://myntraweb.blob.core.windows.net/selfserveui/assets/images/cards@2x.png"
-  );
-  dummyimage.setAttribute("class", "dummyimage");
-  cont.append(dummyimage);
+let newToken = localStorage.getItem("userToken");
+async function gettingHistoryData(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${newToken}`,
+    },
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
 }
+appendDatao(gettingHistoryData, cont);

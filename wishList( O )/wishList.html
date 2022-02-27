@@ -62,9 +62,25 @@
       x.style.display = "flex";
     }
   });
-
-  let wisharr = JSON.parse(localStorage.getItem("wisharr")) || [];
-  let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
-
-  appendWishListData(wisharr, cartData, animationForConfirmation);
+  let wishListData;
+  let token;
+  async function gettingWishListData() {
+    let url = `http://44.203.71.82:2345/wishList/userCartItem`;
+    token = localStorage.getItem("userToken");
+    try {
+      let responce = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      wishListData = await responce.json();
+      appendWishListData(wishListData.productId, animationForConfirmation);
+      console.log("wishList Data : ", wishListData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingWishListData();
 </script>

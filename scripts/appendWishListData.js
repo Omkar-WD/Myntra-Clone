@@ -1,4 +1,17 @@
-function appendWishListData(data, cartarr, animationForConfirmation) {
+let token = localStorage.getItem("userToken");
+async function settingCartItem(url = "", data = {}) {
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+function appendWishListData(data, animationForConfirmation) {
   document.querySelector("#products_div").innerHTML = "";
   if (data.length !== 0) {
     data.forEach((elem, i) => {
@@ -31,10 +44,15 @@ function appendWishListData(data, cartarr, animationForConfirmation) {
       movetobagbutton.setAttribute("id", "moveToBagBtn");
       movetobagbutton.setAttribute("class", "btnStyle");
       movetobagbutton.addEventListener("click", function () {
-        cartarr.push(elem);
-        localStorage.setItem("cartarr", JSON.stringify(cartarr));
-        animationForConfirmation("Added To Bag");
-        console.log("click", i);
+        let cartData = {
+          productId: elem._id,
+        };
+        settingCartItem("http://44.203.71.82:2345/cart", cartData).then(
+          (cartData) => {
+            console.log("cartData:", cartData);
+            animationForConfirmation("Added To Bag");
+          }
+        );
       });
       imgdiv.append(img, ratingdiv);
       textdiv.append(title, desc, pricediv);

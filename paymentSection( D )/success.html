@@ -25,18 +25,25 @@
 
 <script>
   localStorage.setItem("isCouponApplied", "false");
-  let date = new Date();
-  let orderDateArr = JSON.parse(localStorage.getItem("orderDateArr")) || [];
-  let cartData = JSON.parse(localStorage.getItem("cartarr")) || [];
-  let orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
-  while (cartData.length !== 0) {
-    orderDateArr.push(String(date).substring(0, 24));
-    orderArr.push(cartData.pop());
+  let newToken = localStorage.getItem("userToken");
+  async function transferringCartToHistoryData() {
+    let url = `http://44.203.71.82:2345/orderHistory/`;
+    try {
+      let responce = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${newToken}`,
+        },
+      });
+      let data = await responce.json();
+      console.log("Transfer Data : ", data);
+    } catch (err) {
+      console.log(err);
+    }
   }
-  localStorage.setItem("orderDateArr", JSON.stringify(orderDateArr));
-  localStorage.setItem("cartarr", JSON.stringify(cartData));
-  localStorage.setItem("orderArr", JSON.stringify(orderArr));
+  transferringCartToHistoryData();
   setTimeout(() => {
-    window.location.href = "../index.html";
-  }, 1800);
+    window.location.href = "./thanku.html";
+  }, 3000);
 </script>

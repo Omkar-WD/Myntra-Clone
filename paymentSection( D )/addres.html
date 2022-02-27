@@ -1,119 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment</title>
     <link
-    rel="icon"
-    href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
-    type="image/icon type"
-  />
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/addres.css">
+      rel="icon"
+      href="https://constant.myntassets.com/web/assets/img/icon.5d108c858a0db793700f0be5d3ad1e120a01a500_2021.png"
+      type="image/icon type"
+    />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/addres.css" />
     <link rel="stylesheet" href="../styles/signUp.css" />
     <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/modal.css" />
-</head>
-<body>
-  <div class="header"></div>
+  </head>
+  <body>
+    <div class="header"></div>
     <div id="container1">
-       <div id="main1">
-           <form id="formdata" >
-               <div class="forpadding">
-               <div class="formdiv contact">
+      <div id="main1">
+        <form id="formdata">
+          <div class="forpadding">
+            <!-- <div class="formdiv contact">
                 <h3 class="onlyh3">CONTACT DETAILS</h3><br>
-                <input id="name" class="input1" type="text" placeholder="Name*"><br><br>
-                <input id="mobile" class="input1" type="number" placeholder="Mobile No*"><br><br>
-            
-              </div>
-              
+                <input id="name" class="input1" type="text" placeholder="Name" required><br><br>
+                <input id="mobile" class="input1" type="number" placeholder="Mobile No" required><br><br>
+              </div> -->
             <div class="formdiv Addres">
-               <h3 class="onlyh3">ADDRESS</h3><br>
-               <input id="pin" class="input1"  type="number" placeholder="Pin Code*"><br><br>
-               <input id="add" class="input1" type="text" placeholder="Addres (House No,Building,Street,Area)*"><br><br>
-               <input id="town" class="input1" type="text" placeholder="Locality/Town*"><br><br>
-               <input id="dist" class="input2"  type="text" placeholder="City/District*">
-               <input id="state" class="input2" type="text" placeholder="State*">
-
-            </div><br>
+              <h3 class="onlyh3">ADDRESS</h3>
+              <br />
+              <input
+                id="pin"
+                class="input1"
+                type="number"
+                placeholder="Pin Code"
+                required
+              /><br /><br />
+              <input
+                id="add"
+                class="input1"
+                type="text"
+                placeholder="Addres (House No,Building,Street,Area)"
+                required
+              /><br /><br />
+              <input
+                id="town"
+                class="input1"
+                type="text"
+                placeholder="Locality/Town"
+                required
+              /><br /><br />
+              <input
+                id="dist"
+                class="input2"
+                type="text"
+                placeholder="City/District"
+                required
+              />
+              <input
+                id="state"
+                class="input2"
+                type="text"
+                placeholder="State"
+                required
+              />
+            </div>
+            <br />
             <div class="formdiv saveaddress">
-                <h3 class="onlyh3">SAVE ADDRESS AS</h3><br>
-                <button  class="button1 homebutton" >Home</button>
-                <button class="button1 workbutton" >Work</button><br><br><br>
-                
-                <input type="checkbox" name="" id="">
-                <label class="checkbox">Make this my default address</label>
+              <h3 class="onlyh3">SAVE ADDRESS AS</h3>
+              <br />
+              <button class="button1 homebutton">Home</button>
+              <button class="button1 workbutton">Work</button><br /><br /><br />
+              <input type="checkbox" name="" id="" />
+              <label class="checkbox">Make this my default address</label>
             </div>
-        </div>
             <div class="formdiv addaddres">
-                <button id="addbutton" class="button2">ADD ADDRESS</button>
+              <button id="addbutton" class="button2">ADD ADDRESS</button>
             </div>
-           </form>
-       </div>
-       <div id="main2">
-        </div>
-       </div>
-
-
+          </div>
+        </form>
+      </div>
+      <div id="main2"></div>
     </div>
     <div id="container2">
-        <div class="footer">
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
-            />
-            <img
-              class="images"
-              src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
-            />
-          </div>
-          <div class="help"> Need Help? Contact Us</div>
+      <div class="footer">
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+        />
+        <img
+          class="images"
+          src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+        />
+      </div>
+      <div class="help">Need Help? Contact Us</div>
     </div>
-</body>
+  </body>
 </html>
 <script src="../scripts/loginModal.js"></script>
 <script src="../scripts/signUpModal.js"></script>
-<script src="../scripts/addres.js"></script>
 <script src="../scripts/headerMenubar.js"></script>
 <script type="module">
-    import header from "../components/header.js";
-    document.querySelector(".header").innerHTML = header();
-    document.querySelector("#menuIcon").addEventListener("click", function () {
+  import header from "../components/header.js";
+  document.querySelector(".header").innerHTML = header();
+  document.querySelector("#menuIcon").addEventListener("click", function () {
     let x = document.getElementById("myLinks");
     let w, h;
     setInterval(() => {
@@ -130,13 +154,13 @@
     }
   });
   let objDetails = JSON.parse(localStorage.getItem("finalTotalObj"));
-  let {totalItems,cartTotal,discount,finalTotal} = objDetails;
-  document.querySelector("#main2").innerHTML=`<div class="submain2div1">
+  let { totalItems, cartTotal, discount, finalTotal } = objDetails;
+  document.querySelector("#main2").innerHTML = `<div class="submain2div1">
             <h4>PRICE DETAILS</h4>
             <p>Total MRP</p>
             <p>Discount on MRP</p>
             <p>Convenience Fee  <span style="color:#ff3f6c ;">Know More</span> </p>
-            <h4>Total Amount</h4>  
+            <h4>Total Amount</h4>
         </div>
         <div class="submain2div2">
             <h4>(${totalItems} Items)</h4>
@@ -145,4 +169,62 @@
             <p class="linep">Rs.99 </p> <span class="green">FREE</span>
             <h4>Rs.${finalTotal}</h4>
         </div>`;
+  document.getElementById("formdata").addEventListener("submit", address);
+
+  async function address(event) {
+    event.preventDefault();
+    let data = {
+      // fullName: document.getElementById("name").value,
+      // mobileNo: document.getElementById("mobile").value,
+      pincode: document.getElementById("pin").value,
+      address: document.getElementById("add").value,
+      town: document.getElementById("town").value,
+      city: document.getElementById("dist").value,
+      state: document.getElementById("state").value,
+    };
+    for (let x in data) {
+      if (data[x].length === 0) {
+        alert("Please fill empty field");
+        return;
+      }
+    }
+    let newToken = localStorage.getItem("userToken");
+    let responce = await fetch("http://44.203.71.82:2345/address", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${newToken}`,
+      },
+    });
+
+    let data1 = await responce.json();
+    console.log(data1);
+    window.location.href = "address1.html";
+  }
+  let addressData;
+  let newToken = localStorage.getItem("userToken");
+
+  async function gettingAddressData() {
+    let url = `http://44.203.71.82:2345/address/`;
+    try {
+      let responce = await fetch(url, {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${newToken}`,
+        },
+      });
+      addressData = await responce.json();
+      console.log("Address Data : ", addressData);
+      document.querySelector("#pin").value = addressData.pincode;
+      document.getElementById("add").value = addressData.address;
+      document.getElementById("town").value = addressData.town;
+      document.getElementById("dist").value = addressData.city;
+      document.getElementById("state").value = addressData.state;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  gettingAddressData();
 </script>
