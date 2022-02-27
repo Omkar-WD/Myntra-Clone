@@ -223,8 +223,20 @@
   let x;
   let data2;
   var totalpagesfrombackend;
+  let token = localStorage.getItem("userToken");
+  async function settingWishListItem(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
   async function gettingProductData(page) {
-    let url = `http://localhost:2345/products?page=${page}`;
+    let url = `https://masai-myntra-clone.herokuapp.com/products?page=${page}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -276,7 +288,7 @@
             productId: elem._id,
           };
           settingWishListItem(
-            "http://localhost:2345/wishList",
+            "https://masai-myntra-clone.herokuapp.com/wishList",
             wishListData
           ).then((wishListDataVar) => {
             console.log("wishList Data:", wishListDataVar);
@@ -555,18 +567,6 @@
         x.style.display = "flex";
       }
     });
-    let token = localStorage.getItem("userToken");
-    async function settingWishListItem(url = "", data = {}) {
-      const response = await fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-      });
-      return response.json(); // parses JSON response into native JavaScript objects
-    }
   }
   let pagination = document.querySelectorAll(".pages_pagination");
 

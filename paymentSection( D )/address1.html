@@ -160,7 +160,7 @@
   let addressData;  
   let newToken = localStorage.getItem("userToken");
   async function gettingAddressData() {
-    let url = `http://localhost:2345/address/`;
+    let url = `https://masai-myntra-clone.herokuapp.com/address/`;
     try {
       let responce = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.

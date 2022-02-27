@@ -1,6 +1,9 @@
 function appendDatao(gettingHistoryData, loco) {
   let orderDateArr = "put date here";
-  gettingHistoryData("http://localhost:2345/orderHistory", {}).then((data) => {
+  gettingHistoryData(
+    "https://masai-myntra-clone.herokuapp.com/orderHistory",
+    {}
+  ).then((data) => {
     console.log("history data:", data);
     let orderdata = data.productId;
     for (let i = orderdata.length - 1; i >= 0; i--) {

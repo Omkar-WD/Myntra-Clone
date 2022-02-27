@@ -132,7 +132,7 @@ async function gettingWishListItem(url = "") {
 }
 
 async function userLogout() {
-  let url = `http://localhost:2345/user/logout`;
+  let url = `https://masai-myntra-clone.herokuapp.com/user/logout`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -149,7 +149,7 @@ async function userLogout() {
 
 let userData;
 async function gettingUserData() {
-  let url = `http://localhost:2345/user/login`;
+  let url = `https://masai-myntra-clone.herokuapp.com/user/login`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -210,18 +210,18 @@ setInterval(() => {
   let cartarr;
   let wishlistarrarr;
   if (token) {
-    gettingCartItem("http://localhost:2345/cart/arraylength").then(
-      (cartData) => {
-        cartarr = cartData.cartArrayLength;
-        bagItems.innerHTML = cartarr;
-      }
-    );
-    gettingWishListItem("http://localhost:2345/wishList/arraylength").then(
-      (wishListData) => {
-        wishlistarrarr = wishListData.wishListArrayLength;
-        wishlistItems.innerHTML = wishlistarrarr;
-      }
-    );
+    gettingCartItem(
+      "https://masai-myntra-clone.herokuapp.com/cart/arraylength"
+    ).then((cartData) => {
+      cartarr = cartData.cartArrayLength;
+      bagItems.innerHTML = cartarr;
+    });
+    gettingWishListItem(
+      "https://masai-myntra-clone.herokuapp.com/wishList/arraylength"
+    ).then((wishListData) => {
+      wishlistarrarr = wishListData.wishListArrayLength;
+      wishlistItems.innerHTML = wishlistarrarr;
+    });
   } else {
     bagItems.innerHTML = 0;
     wishlistItems.innerHTML = 0;

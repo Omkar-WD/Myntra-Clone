@@ -47,12 +47,13 @@ function appendWishListData(data, animationForConfirmation) {
         let cartData = {
           productId: elem._id,
         };
-        settingCartItem("http://localhost:2345/cart", cartData).then(
-          (cartData) => {
-            console.log("cartData:", cartData);
-            animationForConfirmation("Added To Bag");
-          }
-        );
+        settingCartItem(
+          "https://masai-myntra-clone.herokuapp.com/cart",
+          cartData
+        ).then((cartData) => {
+          console.log("cartData:", cartData);
+          animationForConfirmation("Added To Bag");
+        });
       });
       imgdiv.append(img, ratingdiv);
       textdiv.append(title, desc, pricediv);
