@@ -18,7 +18,7 @@ const paymentOTPController = require("./controllers/paymentOTP.controller");
 
 const authenticate = require("./middlewares/authenticate");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 2345;
 const app = express();
 
 app.use(express.json());
