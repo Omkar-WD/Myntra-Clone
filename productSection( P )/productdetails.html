@@ -142,7 +142,7 @@
   gettingSingleProductData(localStorage.getItem("productId"));
 
   async function gettingSingleProductData(id) {
-    let url = `http://localhost:2345/products/${id}`;
+    let url = `http://44.203.71.82:2345/products/${id}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -207,7 +207,7 @@
         let cartData = {
           productId: proddetails._id,
         };
-        settingCartItem("http://localhost:2345/cart", cartData).then(
+        settingCartItem("http://44.203.71.82:2345/cart", cartData).then(
           (cartData) => {
             console.log("cartData:", cartData);
             animationForConfirmation("Added To Bag");

@@ -68,7 +68,7 @@ setTimeout(function () {
         mobile: document.querySelector("#mobile").value,
         password: document.querySelector("#signup_password").value,
       };
-      postData("http://localhost:2345/register", signUpData).then((data) => {
+      postData("http://44.203.71.82:2345/register", signUpData).then((data) => {
         console.log(data);
         if (data.message === "success") {
           alert("Signup Successfull!!!");
@@ -85,4 +85,4 @@ setTimeout(function () {
       signUpModal.style.display = "none";
     });
   }
-}, 500);
+}, 1000);

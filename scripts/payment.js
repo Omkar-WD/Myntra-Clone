@@ -183,7 +183,7 @@ async function gettingOTP(url = "", data = {}) {
 
 function alertData() {
   let systemOTP;
-  gettingOTP("http://localhost:2345/gettingPaymentOTP").then((data) => {
+  gettingOTP("http://44.203.71.82:2345/gettingPaymentOTP").then((data) => {
     systemOTP = data.otp;
     console.log("Otp", systemOTP);
     let userOTP = prompt("Please enter your OTP:", "");

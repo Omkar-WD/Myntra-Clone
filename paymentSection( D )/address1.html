@@ -160,7 +160,7 @@
   let addressData;  
   let newToken = localStorage.getItem("userToken");
   async function gettingAddressData() {
-    let url = `http://localhost:2345/address/`;
+    let url = `http://44.203.71.82:2345/address/`;
     try {
       let responce = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
