@@ -68,7 +68,10 @@ setTimeout(function () {
         mobile: document.querySelector("#mobile").value,
         password: document.querySelector("#signup_password").value,
       };
-      postData("http://44.203.71.82:2345/register", signUpData).then((data) => {
+      postData(
+        "https://masai-myntra-clone.herokuapp.com/register",
+        signUpData
+      ).then((data) => {
         console.log(data);
         if (data.message === "success") {
           alert("Signup Successfull!!!");

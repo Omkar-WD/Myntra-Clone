@@ -155,7 +155,7 @@
   let newCartData;
   let token;
   async function gettingCartData() {
-    let url = `http://44.203.71.82:2345/cart/userCartItem`;
+    let url = `https://masai-myntra-clone.herokuapp.com/cart/userCartItem`;
     token = localStorage.getItem("userToken");
     try {
       let responce = await fetch(url, {
@@ -178,7 +178,7 @@
 
   let suggestionData;
   async function gettingSuggestionData() {
-    let url = `http://44.203.71.82:2345/suggestionCartData`;
+    let url = `https://masai-myntra-clone.herokuapp.com/suggestionCartData`;
     try {
       let responce = await fetch(url);
       let data = await responce.json();
@@ -254,9 +254,12 @@
     let removeFromCart = document.querySelectorAll("#removeFromCart");
     removeFromCart.forEach(function (elem, i) {
       elem.addEventListener("click", function () {
-        deletingCartItem("http://44.203.71.82:2345/cart/removeItem", {
-          removeElemFromIndex: i,
-        }).then((removeData) => {
+        deletingCartItem(
+          "https://masai-myntra-clone.herokuapp.com/cart/removeItem",
+          {
+            removeElemFromIndex: i,
+          }
+        ).then((removeData) => {
           console.log("cartData:", removeData);
           console.log("click");
           window.location.href = "";
@@ -266,11 +269,12 @@
 
     let emptyCart = document.querySelector("#emptyCart");
     emptyCart.addEventListener("click", function () {
-      deletingCartItem("http://44.203.71.82:2345/cart/removeAllItem", {}).then(
-        (removeData) => {
-          window.location.href = "";
-        }
-      );
+      deletingCartItem(
+        "https://masai-myntra-clone.herokuapp.com/cart/removeAllItem",
+        {}
+      ).then((removeData) => {
+        window.location.href = "";
+      });
     });
   }, 1500);
 

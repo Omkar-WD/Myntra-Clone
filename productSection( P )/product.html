@@ -236,7 +236,7 @@
     return response.json(); // parses JSON response into native JavaScript objects
   }
   async function gettingProductData(page) {
-    let url = `http://44.203.71.82:2345/products?page=${page}`;
+    let url = `https://masai-myntra-clone.herokuapp.com/products?page=${page}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -288,7 +288,7 @@
             productId: elem._id,
           };
           settingWishListItem(
-            "http://44.203.71.82:2345/wishList",
+            "https://masai-myntra-clone.herokuapp.com/wishList",
             wishListData
           ).then((wishListDataVar) => {
             console.log("wishList Data:", wishListDataVar);

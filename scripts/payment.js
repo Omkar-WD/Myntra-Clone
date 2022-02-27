@@ -183,15 +183,17 @@ async function gettingOTP(url = "", data = {}) {
 
 function alertData() {
   let systemOTP;
-  gettingOTP("http://44.203.71.82:2345/gettingPaymentOTP").then((data) => {
-    systemOTP = data.otp;
-    console.log("Otp", systemOTP);
-    let userOTP = prompt("Please enter your OTP:", "");
-    if (userOTP == systemOTP) {
-      window.location.href = "./success.html";
-    } else {
-      alert("Invalid OTP!!!");
-      window.location.href = "";
+  gettingOTP("https://masai-myntra-clone.herokuapp.com/gettingPaymentOTP").then(
+    (data) => {
+      systemOTP = data.otp;
+      console.log("Otp", systemOTP);
+      let userOTP = prompt("Please enter your OTP:", "");
+      if (userOTP == systemOTP) {
+        window.location.href = "./success.html";
+      } else {
+        alert("Invalid OTP!!!");
+        window.location.href = "";
+      }
     }
-  });
+  );
 }
