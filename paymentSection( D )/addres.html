@@ -189,14 +189,17 @@
       }
     }
     let newToken = localStorage.getItem("userToken");
-    let responce = await fetch("http://44.203.71.82:2345/address", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${newToken}`,
-      },
-    });
+    let responce = await fetch(
+      "https://masai-myntra-clone.herokuapp.com/address",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${newToken}`,
+        },
+      }
+    );
 
     let data1 = await responce.json();
     console.log(data1);
@@ -206,7 +209,7 @@
   let newToken = localStorage.getItem("userToken");
 
   async function gettingAddressData() {
-    let url = `http://44.203.71.82:2345/address/`;
+    let url = `https://masai-myntra-clone.herokuapp.com/address/`;
     try {
       let responce = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.

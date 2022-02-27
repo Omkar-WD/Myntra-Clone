@@ -54,7 +54,8 @@ setTimeout(function () {
       .querySelector("#googleLogo")
       .addEventListener("click", function () {
         // console.log("clicked");
-        window.location.href = "http://44.203.71.82:2345/auth/google";
+        window.location.href =
+          "https://masai-myntra-clone.herokuapp.com/auth/google";
       });
 
     let loginButton = document.querySelector("#login");
@@ -64,7 +65,10 @@ setTimeout(function () {
         email: document.querySelector("#login_data").value,
         password: document.querySelector("#password").value,
       };
-      postData("http://44.203.71.82:2345/login", loginData).then((data) => {
+      postData(
+        "https://masai-myntra-clone.herokuapp.com/login",
+        loginData
+      ).then((data) => {
         if (data.message === "success") {
           localStorage.setItem("userToken", data.token);
           alert("Login Successfull!!!");

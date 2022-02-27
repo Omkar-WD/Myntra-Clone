@@ -142,7 +142,7 @@
   gettingSingleProductData(localStorage.getItem("productId"));
 
   async function gettingSingleProductData(id) {
-    let url = `http://44.203.71.82:2345/products/${id}`;
+    let url = `https://masai-myntra-clone.herokuapp.com/products/${id}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -207,12 +207,13 @@
         let cartData = {
           productId: proddetails._id,
         };
-        settingCartItem("http://44.203.71.82:2345/cart", cartData).then(
-          (cartData) => {
-            console.log("cartData:", cartData);
-            animationForConfirmation("Added To Bag");
-          }
-        );
+        settingCartItem(
+          "https://masai-myntra-clone.herokuapp.com/cart",
+          cartData
+        ).then((cartData) => {
+          console.log("cartData:", cartData);
+          animationForConfirmation("Added To Bag");
+        });
       }
     } else {
       alert("Please login to continue");
