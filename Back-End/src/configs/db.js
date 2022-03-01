@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const dataBase = `mongodb+srv://${process.env.Mongo_Email}:${process.env.Mongo_Password}@cluster0.sthef.mongodb.net/${process.env.Mongo_DataBase}?retryWrites=true&w=majority`;
 module.exports = () => {
-  return mongoose.connect(dataBase);
+  return mongoose.connect(
+    `mongodb+srv://omkar:15018000@cluster0.sthef.mongodb.net/myntraClone?retryWrites=true&w=majority`
+  );
 };
