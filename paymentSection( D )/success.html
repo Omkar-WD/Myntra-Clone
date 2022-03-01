@@ -27,7 +27,7 @@
   localStorage.setItem("isCouponApplied", "false");
   let newToken = localStorage.getItem("userToken");
   async function transferringCartToHistoryData() {
-    let url = `https://masai-myntra-clone.herokuapp.com/orderHistory/`;
+    let url = `https://clone-myntra.herokuapp.com/orderHistory/`;
     try {
       let responce = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.

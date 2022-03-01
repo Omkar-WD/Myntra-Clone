@@ -183,7 +183,7 @@ async function gettingOTP(url = "", data = {}) {
 
 function alertData() {
   let systemOTP;
-  gettingOTP("https://masai-myntra-clone.herokuapp.com/gettingPaymentOTP").then(
+  gettingOTP("https://clone-myntra.herokuapp.com/gettingPaymentOTP").then(
     (data) => {
       systemOTP = data.otp;
       console.log("Otp", systemOTP);

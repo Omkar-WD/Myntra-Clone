@@ -142,7 +142,7 @@
   gettingSingleProductData(localStorage.getItem("productId"));
 
   async function gettingSingleProductData(id) {
-    let url = `https://masai-myntra-clone.herokuapp.com/products/${id}`;
+    let url = `https://clone-myntra.herokuapp.com/products/${id}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -208,7 +208,7 @@
           productId: proddetails._id,
         };
         settingCartItem(
-          "https://masai-myntra-clone.herokuapp.com/cart",
+          "https://clone-myntra.herokuapp.com/cart",
           cartData
         ).then((cartData) => {
           console.log("cartData:", cartData);

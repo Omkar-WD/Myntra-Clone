@@ -68,17 +68,16 @@ setTimeout(function () {
         mobile: document.querySelector("#mobile").value,
         password: document.querySelector("#signup_password").value,
       };
-      postData(
-        "https://masai-myntra-clone.herokuapp.com/register",
-        signUpData
-      ).then((data) => {
-        console.log(data);
-        if (data.message === "success") {
-          alert("Signup Successfull!!!");
-        } else {
-          alert("Signup Failed , email id already exists!!!");
+      postData("https://clone-myntra.herokuapp.com/register", signUpData).then(
+        (data) => {
+          console.log(data);
+          if (data.message === "success") {
+            alert("Signup Successfull!!!");
+          } else {
+            alert("Signup Failed , email id already exists!!!");
+          }
         }
-      });
+      );
       document.querySelector("#signUpContainer").style.display = "none";
       signUpModal.style.display = "none";
     });

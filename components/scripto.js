@@ -1,7 +1,7 @@
 function appendDatao(gettingHistoryData, loco) {
   let orderDateArr = "put date here";
   gettingHistoryData(
-    "https://masai-myntra-clone.herokuapp.com/orderHistory",
+    "https://clone-myntra.herokuapp.com/orderHistory",
     {}
   ).then((data) => {
     console.log("history data:", data);

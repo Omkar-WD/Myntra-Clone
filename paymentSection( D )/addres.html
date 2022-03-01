@@ -189,17 +189,14 @@
       }
     }
     let newToken = localStorage.getItem("userToken");
-    let responce = await fetch(
-      "https://masai-myntra-clone.herokuapp.com/address",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${newToken}`,
-        },
-      }
-    );
+    let responce = await fetch("https://clone-myntra.herokuapp.com/address", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${newToken}`,
+      },
+    });
 
     let data1 = await responce.json();
     console.log(data1);
@@ -209,7 +206,7 @@
   let newToken = localStorage.getItem("userToken");
 
   async function gettingAddressData() {
-    let url = `https://masai-myntra-clone.herokuapp.com/address/`;
+    let url = `https://clone-myntra.herokuapp.com/address/`;
     try {
       let responce = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.

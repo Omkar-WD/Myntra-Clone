@@ -155,7 +155,7 @@
   let newCartData;
   let token;
   async function gettingCartData() {
-    let url = `https://masai-myntra-clone.herokuapp.com/cart/userCartItem`;
+    let url = `https://clone-myntra.herokuapp.com/cart/userCartItem`;
     token = localStorage.getItem("userToken");
     try {
       let responce = await fetch(url, {
@@ -178,7 +178,7 @@
 
   let suggestionData;
   async function gettingSuggestionData() {
-    let url = `https://masai-myntra-clone.herokuapp.com/suggestionCartData`;
+    let url = `https://clone-myntra.herokuapp.com/suggestionCartData`;
     try {
       let responce = await fetch(url);
       let data = await responce.json();
@@ -254,12 +254,9 @@
     let removeFromCart = document.querySelectorAll("#removeFromCart");
     removeFromCart.forEach(function (elem, i) {
       elem.addEventListener("click", function () {
-        deletingCartItem(
-          "https://masai-myntra-clone.herokuapp.com/cart/removeItem",
-          {
-            removeElemFromIndex: i,
-          }
-        ).then((removeData) => {
+        deletingCartItem("https://clone-myntra.herokuapp.com/cart/removeItem", {
+          removeElemFromIndex: i,
+        }).then((removeData) => {
           console.log("cartData:", removeData);
           console.log("click");
           window.location.href = "";
@@ -270,7 +267,7 @@
     let emptyCart = document.querySelector("#emptyCart");
     emptyCart.addEventListener("click", function () {
       deletingCartItem(
-        "https://masai-myntra-clone.herokuapp.com/cart/removeAllItem",
+        "https://clone-myntra.herokuapp.com/cart/removeAllItem",
         {}
       ).then((removeData) => {
         window.location.href = "";

@@ -48,7 +48,7 @@ function appendWishListData(data, animationForConfirmation) {
           productId: elem._id,
         };
         settingCartItem(
-          "https://masai-myntra-clone.herokuapp.com/cart",
+          "https://clone-myntra.herokuapp.com/cart",
           cartData
         ).then((cartData) => {
           console.log("cartData:", cartData);

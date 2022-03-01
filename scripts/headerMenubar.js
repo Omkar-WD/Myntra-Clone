@@ -132,7 +132,7 @@ async function gettingWishListItem(url = "") {
 }
 
 async function userLogout() {
-  let url = `https://masai-myntra-clone.herokuapp.com/user/logout`;
+  let url = `https://clone-myntra.herokuapp.com/user/logout`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -149,7 +149,7 @@ async function userLogout() {
 
 let userData;
 async function gettingUserData() {
-  let url = `https://masai-myntra-clone.herokuapp.com/user/login`;
+  let url = `https://clone-myntra.herokuapp.com/user/login`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -210,14 +210,14 @@ setInterval(() => {
   let cartarr;
   let wishlistarrarr;
   if (token) {
-    gettingCartItem(
-      "https://masai-myntra-clone.herokuapp.com/cart/arraylength"
-    ).then((cartData) => {
-      cartarr = cartData.cartArrayLength;
-      bagItems.innerHTML = cartarr;
-    });
+    gettingCartItem("https://clone-myntra.herokuapp.com/cart/arraylength").then(
+      (cartData) => {
+        cartarr = cartData.cartArrayLength;
+        bagItems.innerHTML = cartarr;
+      }
+    );
     gettingWishListItem(
-      "https://masai-myntra-clone.herokuapp.com/wishList/arraylength"
+      "https://clone-myntra.herokuapp.com/wishList/arraylength"
     ).then((wishListData) => {
       wishlistarrarr = wishListData.wishListArrayLength;
       wishlistItems.innerHTML = wishlistarrarr;

@@ -65,7 +65,7 @@
   let wishListData;
   let token;
   async function gettingWishListData() {
-    let url = `https://masai-myntra-clone.herokuapp.com/wishList/userCartItem`;
+    let url = `https://clone-myntra.herokuapp.com/wishList/userCartItem`;
     token = localStorage.getItem("userToken");
     try {
       let responce = await fetch(url, {
