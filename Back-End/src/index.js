@@ -49,7 +49,6 @@ app.get(
   (req, res) => {
     const { user } = req;
     const token = newToken(user);
-    // res.send({ user, token });
     res.cookie("user", token);
     console.log(user, token);
     res.redirect(302, "http://127.0.0.1:5501/index.html");
