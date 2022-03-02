@@ -1,5 +1,4 @@
-var localhost = `https://test-myntra-clone.herokuapp.com`;
-// var localhost = `https://clone-myntra.herokuapp.com`;
+var localhost = `https://testing-app-ver-1.herokuapp.com`;
 // var localhost = `http://localhost:2345`;
 function dropDown1() {
   let content = document.querySelector(".dropdown-content1");
