@@ -189,7 +189,7 @@
       }
     }
     let newToken = localStorage.getItem("userToken");
-    let responce = await fetch("https://clone-myntra.herokuapp.com/address", {
+    let responce = await fetch(`${localhost}/address`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -206,7 +206,7 @@
   let newToken = localStorage.getItem("userToken");
 
   async function gettingAddressData() {
-    let url = `https://clone-myntra.herokuapp.com/address/`;
+    let url = `${localhost}/address/`;
     try {
       let responce = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.

@@ -1,6 +1,6 @@
 let newToken = localStorage.getItem("userToken");
 async function gettingUserPersonalData() {
-  let url = `https://clone-myntra.herokuapp.com/user/login`;
+  let url = `${localhost}/user/login`;
   try {
     let responce = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -25,7 +25,7 @@ async function gettingUserPersonalData() {
 gettingUserPersonalData();
 
 async function settingUserData(userDataToSave) {
-  let url = `https://clone-myntra.herokuapp.com/user/`;
+  let url = `${localhost}/user/`;
   try {
     let responce = await fetch(url, {
       method: "PATCH", // *GET, POST, PUT, DELETE, etc.

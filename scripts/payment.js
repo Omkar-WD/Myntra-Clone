@@ -183,17 +183,15 @@ async function gettingOTP(url = "", data = {}) {
 
 function alertData() {
   let systemOTP;
-  gettingOTP("https://clone-myntra.herokuapp.com/gettingPaymentOTP").then(
-    (data) => {
-      systemOTP = data.otp;
-      console.log("Otp", systemOTP);
-      let userOTP = prompt("Please enter your OTP:", "");
-      if (userOTP == systemOTP) {
-        window.location.href = "./success.html";
-      } else {
-        alert("Invalid OTP!!!");
-        window.location.href = "";
-      }
+  gettingOTP(`${localhost}/gettingPaymentOTP`).then((data) => {
+    systemOTP = data.otp;
+    console.log("Otp", systemOTP);
+    let userOTP = prompt("Please enter your OTP:", "");
+    if (userOTP == systemOTP) {
+      window.location.href = "./success.html";
+    } else {
+      alert("Invalid OTP!!!");
+      window.location.href = "";
     }
-  );
+  });
 }

@@ -142,7 +142,7 @@
   gettingSingleProductData(localStorage.getItem("productId"));
 
   async function gettingSingleProductData(id) {
-    let url = `https://clone-myntra.herokuapp.com/products/${id}`;
+    let url = `${localhost}/products/${id}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -207,10 +207,7 @@
         let cartData = {
           productId: proddetails._id,
         };
-        settingCartItem(
-          "https://clone-myntra.herokuapp.com/cart",
-          cartData
-        ).then((cartData) => {
+        settingCartItem(`${localhost}/cart`, cartData).then((cartData) => {
           console.log("cartData:", cartData);
           animationForConfirmation("Added To Bag");
         });

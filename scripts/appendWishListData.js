@@ -47,10 +47,7 @@ function appendWishListData(data, animationForConfirmation) {
         let cartData = {
           productId: elem._id,
         };
-        settingCartItem(
-          "https://clone-myntra.herokuapp.com/cart",
-          cartData
-        ).then((cartData) => {
+        settingCartItem(`${localhost}/cart`, cartData).then((cartData) => {
           console.log("cartData:", cartData);
           animationForConfirmation("Added To Bag");
         });

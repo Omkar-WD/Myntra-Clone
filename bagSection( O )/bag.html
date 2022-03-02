@@ -155,7 +155,7 @@
   let newCartData;
   let token;
   async function gettingCartData() {
-    let url = `https://clone-myntra.herokuapp.com/cart/userCartItem`;
+    let url = `${localhost}/cart/userCartItem`;
     token = localStorage.getItem("userToken");
     try {
       let responce = await fetch(url, {
@@ -178,7 +178,7 @@
 
   let suggestionData;
   async function gettingSuggestionData() {
-    let url = `https://clone-myntra.herokuapp.com/suggestionCartData`;
+    let url = `${localhost}/suggestionCartData`;
     try {
       let responce = await fetch(url);
       let data = await responce.json();
@@ -254,7 +254,7 @@
     let removeFromCart = document.querySelectorAll("#removeFromCart");
     removeFromCart.forEach(function (elem, i) {
       elem.addEventListener("click", function () {
-        deletingCartItem("https://clone-myntra.herokuapp.com/cart/removeItem", {
+        deletingCartItem(`${localhost}/cart/removeItem`, {
           removeElemFromIndex: i,
         }).then((removeData) => {
           console.log("cartData:", removeData);
@@ -266,12 +266,11 @@
 
     let emptyCart = document.querySelector("#emptyCart");
     emptyCart.addEventListener("click", function () {
-      deletingCartItem(
-        "https://clone-myntra.herokuapp.com/cart/removeAllItem",
-        {}
-      ).then((removeData) => {
-        window.location.href = "";
-      });
+      deletingCartItem(`${localhost}/cart/removeAllItem`, {}).then(
+        (removeData) => {
+          window.location.href = "";
+        }
+      );
     });
   }, 1500);
 

@@ -236,7 +236,7 @@
     return response.json(); // parses JSON response into native JavaScript objects
   }
   async function gettingProductData(page) {
-    let url = `https://clone-myntra.herokuapp.com/products?page=${page}`;
+    let url = `${localhost}/products?page=${page}`;
     try {
       let response = await fetch(url);
       let data = await response.json();
@@ -287,13 +287,12 @@
           let wishListData = {
             productId: elem._id,
           };
-          settingWishListItem(
-            "https://clone-myntra.herokuapp.com/wishList",
-            wishListData
-          ).then((wishListDataVar) => {
-            console.log("wishList Data:", wishListDataVar);
-            animationForConfirmation("Added To WishList");
-          });
+          settingWishListItem(`${localhost}/wishList`, wishListData).then(
+            (wishListDataVar) => {
+              console.log("wishList Data:", wishListDataVar);
+              animationForConfirmation("Added To WishList");
+            }
+          );
         } else {
           alert("Please login to continue!!!");
         }
