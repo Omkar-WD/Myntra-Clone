@@ -61,3 +61,6 @@ https://medium.com/@vantureprakash1903/construct-week-project-at-masai-myntra-cl
 
 ## Deploy Link :
 https://masai-myntra-clone.netlify.app/
+
+## Clone Myntra-Backend :
+    https://github.com/Omkar-WD/Myntra-Backend.git
