@@ -22,8 +22,8 @@
     </div>
   </body>
 </html>
-
 <script>
+  var localhost = `https://testing-app-ver-1.herokuapp.com`;
   localStorage.setItem("isCouponApplied", "false");
   let newToken = localStorage.getItem("userToken");
   async function transferringCartToHistoryData() {
@@ -47,3 +47,5 @@
     window.location.href = "./thanku.html";
   }, 3000);
 </script>
+
+<!-- <script src="../scripts/headerMenubar.js"></script> -->
