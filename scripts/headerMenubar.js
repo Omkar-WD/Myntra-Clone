@@ -1,4 +1,4 @@
-var localhost = `https://testing-app-ver-1.herokuapp.com`;
+var localhost = `https://myntra-backend-4kdj.onrender.com/`;
 // var localhost = `http://localhost:2345`;
 function dropDown1() {
   let content = document.querySelector(".dropdown-content1");
